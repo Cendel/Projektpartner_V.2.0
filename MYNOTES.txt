@@ -1,0 +1,24 @@
+Bu proje icin npm (3rd Party Libraries) yüklemelerim:
+        @reduxjs/toolkit 
+        @sweetalert2/themes 
+        axios 
+        bootstrap 
+        sass
+        buffer 
+        encrypt-storage 
+        formik 
+        js-file-download 
+        moment 
+        react-bootstrap 
+        react-data-table-component 
+        react-icons 
+        react-input-mask-next 
+        react-redux 
+        react-router-dom 
+        react-secure-storage 
+        sweetalert2 
+        swiper 
+        yup
+
+# contact form u kopyaladim, renk, dil düzenlemesi gerekiyor
+# functions da swal i kopyaladim. renk ayarini styles/variables dosyasindan yapmam gerekiyor

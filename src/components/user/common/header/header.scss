@@ -1,0 +1,74 @@
+@use "../../../../assets/scss/variables"as v;
+@use "../../../../assets/scss/mixins"as m;
+
+.navbar {
+    border-bottom: 0.1px solid v.$color4;
+
+    .toggle {
+        background-color: v.$color4;
+        border: 3px solid v.$color2;
+        box-shadow: 0rem 0px .3rem;
+
+
+    }
+
+}
+
+.offCanvas {
+    background-color: v.$color4;
+
+    ul {
+        @include m.reset-list();
+        padding: .5rem 0 .5rem .5rem;
+
+        &:hover {
+            background-color: v.$color4;
+
+            a {
+                color: white;
+            }
+
+        }
+
+    }
+
+
+
+    .separator {
+        padding-top: 5rem;
+        border-bottom: 1px solid v.$color4;
+        margin-bottom: 1rem;
+    }
+
+    .userName {
+        background-color: v.$color4;
+        color: white;
+        margin-left: 1rem;
+        position: relative;
+
+        a {
+            padding-left: 1rem;
+        }
+
+        .dropdown-menu {
+            padding-left: 0;
+            margin: 0;
+
+            a:hover {
+                background-color: v.$color2;
+                color: white;
+            }
+
+        }
+    }
+
+    .active {
+        color: v.$color3;
+    }
+
+
+
+    a {
+        text-decoration: none;
+    }
+}
