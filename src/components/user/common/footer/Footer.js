@@ -49,7 +49,7 @@ const Footer = () => {
                   to="/projects"
                   className={pathname.startsWith("/projects") ? "active" : ""}
                 >
-                  <AiOutlineFundProjectionScreen /> Projekts
+                  <AiOutlineFundProjectionScreen /> Projekte
                 </Link>
               </li>
               <li>

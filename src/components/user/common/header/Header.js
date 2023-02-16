@@ -40,7 +40,7 @@ const Header = () => {
                     to="/projects"
                     className={pathname.startsWith("/projects") ? "active" : ""}
                   >
-                    Projekts
+                    Projekte
                   </Link>
                 </li>
               </ul>

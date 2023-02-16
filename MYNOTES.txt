@@ -1,4 +1,4 @@
-Bu proje icin npm (3rd Party Libraries) yüklemelerim:
+﻿Bu proje icin npm (3rd Party Libraries) yüklemelerim:
         @reduxjs/toolkit 
         @sweetalert2/themes 
         axios 
