@@ -13,59 +13,23 @@
     .toggle {
         border: none;
         color: v.$color4;
+
+        @media(min-width: 879px) {
+            display: none;
+        }
     }
+
 }
 
 .offCanvas {
+
     background-color: v.$color4;
 
     .title {
         color: v.$color5;
     }
 
-    ul {
-        @include m.reset-list();
-        padding: .5rem 0 .5rem .5rem;
 
-        &:hover {
-            background-color: v.$color4;
-
-            a {
-                color: v.$color6;
-                ;
-            }
-        }
-    }
-
-    .separator {
-        padding-top: 2rem;
-        border-bottom: 1px solid v.$color4;
-        margin-bottom: 1rem;
-    }
-
-    .userName {
-        background-color: v.$color4;
-        color: v.$color5;
-        margin-left: 1rem;
-        position: relative;
-
-        a {
-            padding-left: 1rem;
-        }
-
-        .dropdown-menu {
-            padding-left: 0;
-            margin: 0;
-            background-color: v.$color4;
-            border-radius: 0;
-
-            a:hover {
-                background-color: v.$color4;
-                color: v.$color6;
-            }
-
-        }
-    }
 
     .active {
         color: v.$color2;
@@ -76,4 +40,70 @@
     a {
         text-decoration: none;
     }
+}
+
+ul {
+    @include m.reset-list();
+    padding: .5rem 0 .5rem .5rem;
+
+    &:hover {
+        background-color: v.$color4;
+
+        a {
+            color: v.$color6;
+            ;
+        }
+    }
+}
+
+.separator {
+    padding-top: 2rem;
+    border-bottom: 1px solid v.$color4;
+    margin-bottom: 1rem;
+}
+
+.userName {
+    background-color: v.$color4;
+    color: v.$color5;
+    margin-left: 1rem;
+    position: relative;
+
+    a {
+        padding-left: 1rem;
+    }
+
+    .dropdown-menu {
+        padding-left: 0;
+        margin: 0;
+        background-color: v.$color4;
+        border-radius: 0;
+
+        a:hover {
+            background-color: v.$color4;
+            color: v.$color6;
+        }
+
+    }
+
+}
+
+.menubar {
+    @media(max-width: 879px) {
+        display: none;
+
+    }
+
+    flex: 1;
+
+    a {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-left: 3rem;
+    }
+
+
+
+
+
+
 }

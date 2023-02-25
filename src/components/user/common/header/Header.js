@@ -10,13 +10,17 @@ import {
 import "./header.scss";
 import { settings } from "../../../../helpers/settings";
 import { Link, useLocation } from "react-router-dom";
+import Menubar from "./Menubar";
 
 const Header = () => {
   const { pathname } = useLocation();
   return (
     <Navbar expand={false} className="mb-3 navbar">
       <Container fluid>
-        <Navbar.Brand href="#">{settings.siteName}</Navbar.Brand>
+        <Navbar.Brand href="/">
+          <h5>{settings.siteName}</h5>
+        </Navbar.Brand>
+        <Menubar />
         <Navbar.Toggle className="toggle" />
         <Navbar.Offcanvas placement="end" className="offCanvas">
           <Offcanvas.Header closeButton>
