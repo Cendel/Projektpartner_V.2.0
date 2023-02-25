@@ -1,9 +1,6 @@
 import React from "react";
 import {
-  Button,
-  Col,
   Container,
-  Form,
   Nav,
   Navbar,
   NavDropdown,
@@ -23,14 +20,16 @@ const Header = () => {
         <Navbar.Toggle className="toggle" />
         <Navbar.Offcanvas placement="end" className="offCanvas">
           <Offcanvas.Header closeButton>
-            <Offcanvas.Title>{settings.siteName}</Offcanvas.Title>
+            <Offcanvas.Title className="title">
+              <h3>{settings.siteName}</h3>
+            </Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className="justify-content-end flex-grow-1 pe-3">
               <ul>
                 <li>
                   <Link to="/" className={pathname === "/" ? "active" : ""}>
-                    Home
+                    <h5>Home</h5>
                   </Link>
                 </li>
               </ul>
@@ -40,7 +39,17 @@ const Header = () => {
                     to="/projects"
                     className={pathname.startsWith("/projects") ? "active" : ""}
                   >
-                    Projekte
+                    <h5>Projekte</h5>
+                  </Link>
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  <Link
+                    to="/about"
+                    className={pathname.startsWith("/about") ? "active" : ""}
+                  >
+                    <h5>Über uns</h5>
                   </Link>
                 </li>
               </ul>

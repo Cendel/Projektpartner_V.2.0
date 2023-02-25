@@ -1,21 +1,27 @@
 @use "../../../../assets/scss/variables"as v;
 @use "../../../../assets/scss/mixins"as m;
 
+.offcanvas-body,
+.offcanvas-header {
+    background-color: v.$color6;
+}
+
 .navbar {
-    border-bottom: 0.1px solid v.$color4;
+    background-color: v.$color4;
+    color: v.$color3;
 
     .toggle {
-        background-color: v.$color4;
-        border: 3px solid v.$color2;
-        box-shadow: 0rem 0px .3rem;
-
-
+        border: none;
+        color: v.$color4;
     }
-
 }
 
 .offCanvas {
     background-color: v.$color4;
+
+    .title {
+        color: v.$color5;
+    }
 
     ul {
         @include m.reset-list();
@@ -25,24 +31,21 @@
             background-color: v.$color4;
 
             a {
-                color: white;
+                color: v.$color6;
+                ;
             }
-
         }
-
     }
 
-
-
     .separator {
-        padding-top: 5rem;
+        padding-top: 2rem;
         border-bottom: 1px solid v.$color4;
         margin-bottom: 1rem;
     }
 
     .userName {
         background-color: v.$color4;
-        color: white;
+        color: v.$color5;
         margin-left: 1rem;
         position: relative;
 
@@ -53,17 +56,19 @@
         .dropdown-menu {
             padding-left: 0;
             margin: 0;
+            background-color: v.$color4;
+            border-radius: 0;
 
             a:hover {
-                background-color: v.$color2;
-                color: white;
+                background-color: v.$color4;
+                color: v.$color6;
             }
 
         }
     }
 
     .active {
-        color: v.$color3;
+        color: v.$color2;
     }
 
 

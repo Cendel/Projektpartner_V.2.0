@@ -2,7 +2,7 @@
 @use "../../../../assets/scss/mixins"as m;
 
 footer {
-    background-color: v.$color1;
+    background-color: v.$color5;
     padding: 5rem 0;
 
     @media(max-width:992px) {
@@ -24,7 +24,7 @@ footer {
         }
 
         .active {
-            color: v.$color3;
+            color: v.$color2;
         }
 
         a {
