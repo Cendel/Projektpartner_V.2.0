@@ -1,6 +1,8 @@
 @use "../../../../assets/scss/variables"as v;
 @use "../../../../assets/scss/mixins"as m;
 
+
+
 .offcanvas-body,
 .offcanvas-header {
     background-color: v.$color6;
@@ -10,16 +12,24 @@
     background-color: v.$color4;
     color: v.$color3;
 
-    .toggle {
+    button {
         border: none;
-        color: v.$color4;
-
-        @media(min-width: 879px) {
-            display: none;
-        }
     }
-
 }
+
+.navbar-toggler:focus {
+    color: v.$color4;
+}
+
+.navbar .toggle {
+    border: none;
+    color: v.$color4;
+
+    @media(min-width: 879px) {
+        display: none;
+    }
+}
+
 
 .offCanvas {
 
@@ -40,29 +50,30 @@
     a {
         text-decoration: none;
     }
-}
 
-ul {
-    @include m.reset-list();
-    padding: .5rem 0 .5rem .5rem;
+    ul {
+        @include m.reset-list();
+        padding: .5rem 0 .5rem .5rem;
 
-    &:hover {
-        background-color: v.$color4;
+        &:hover {
+            background-color: v.$color4;
 
-        a {
-            color: v.$color6;
-            ;
+            a {
+                color: v.$color6;
+                ;
+            }
         }
+    }
+
+    .separator {
+        padding-top: 2rem;
+        border-bottom: 1px solid v.$color4;
+        margin-bottom: 1rem;
     }
 }
 
-.separator {
-    padding-top: 2rem;
-    border-bottom: 1px solid v.$color4;
-    margin-bottom: 1rem;
-}
 
-.userName {
+.navbar .userName {
     background-color: v.$color4;
     color: v.$color5;
     margin-left: 1rem;
@@ -72,22 +83,24 @@ ul {
         padding-left: 1rem;
     }
 
-    .dropdown-menu {
-        padding-left: 0;
-        margin: 0;
+}
+
+.dropdown .dropdown-menu {
+    padding-left: 0;
+    margin: 0;
+    background-color: v.$color4;
+    border-radius: 5px;
+
+    a:hover {
         background-color: v.$color4;
-        border-radius: 0;
-
-        a:hover {
-            background-color: v.$color4;
-            color: v.$color6;
-        }
-
+        color: v.$color6;
     }
 
 }
 
-.menubar {
+
+
+.navbar .menubar {
     @media(max-width: 879px) {
         display: none;
 
@@ -95,7 +108,7 @@ ul {
 
     flex: 1;
 
-    a {
+    .navbar-nav a {
         padding-top: 0;
         padding-bottom: 0;
         margin-left: 3rem;

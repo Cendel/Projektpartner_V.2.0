@@ -1,37 +1,51 @@
-import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
 import "./projectDetails.scss";
+import image from "../../../assets/img/breads-1867459_1920.jpg";
+import imageRounded from "../../../assets/img/rounded-bottom.svg";
+import { Container } from "react-bootstrap";
 
 const ProjectDetails = () => {
+  useEffect(() => {
+    //
+    const handleScroll = () => {
+      const scrollPos = window.scrollY;
+      const detailsEl = document.querySelector(".project-details");
+      console.log("scroll: " + scrollPos);
+      console.log(window.innerHeight);
+      console.log(window.innerHeight - scrollPos);
+
+      if (window.innerHeight >= scrollPos) {
+        detailsEl.style.marginTop = `${window.innerHeight - scrollPos}px`;
+      } else {
+        detailsEl.style.marginTop = "0px";
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <Container className="project-details-container">
-      <Row>
-        <Col xs={12} md={6}>
-          <img
-            src="https://via.placeholder.com/400x300.png?text=Project+Image"
-            alt="Project"
-            className="project-details-image"
-          />
-        </Col>
-        <Col xs={12} md={6} className="project-details-text">
-          <h1 className="project-details-title">Project Title</h1>
-          <p className="project-details-description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
-            risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing
-            nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas
-            ligula massa, varius a, semper congue, euismod non, mi. Proin
-            porttitor, orci nec nonummy molestie, enim est eleifend mi, non
-            fermentum diam nisl sit amet erat.
-          </p>
-          <p className="project-details-created-by">Created by: John Doe</p>
-          <p className="project-details-created-at">Created at: 12/10/2022</p>
-          <p className="project-details-tags">
-            Tags: <a href="#">tag1</a>, <a href="#">tag2</a>,{" "}
-            <a href="#">tag3</a>
-          </p>
-        </Col>
-      </Row>
-    </Container>
+    <div className="project-details-container">
+      <div>
+        <img src={imageRounded} alt="" className="imageRounded" />
+      </div>
+
+      <div>
+        <img src={image} alt="My Image" className="project-screen-image" />
+      </div>
+      <Container fluid="lg" className="project-details">
+        <div className="first-part">
+          <div className="title">
+            <h5>sdfsadf</h5>
+            <h5></h5>
+          </div>
+          <div className="info"></div>
+        </div>
+        <div className="second-part"></div>
+      </Container>
+    </div>
   );
 };
 

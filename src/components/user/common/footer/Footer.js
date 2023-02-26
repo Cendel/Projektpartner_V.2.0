@@ -30,10 +30,7 @@ const Footer = () => {
               />
             </Link>
             <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod,
-              saepe blanditiis. Quidem sed provident nam. Iure labore ea odit
-              exercitationem recusandae. Tempore vitae laudantium voluptatem
-              veniam quisquam laborum pariatur beatae!
+            Wir glauben an die Kraft von Kreativität, Zusammenarbeit und Innovation.
             </p>
           </Col>
           <Col lg={6} xl={3}>

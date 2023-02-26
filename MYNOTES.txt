@@ -22,3 +22,4 @@
 
 # contact form u kopyaladim, renk, dil düzenlemesi gerekiyor
 # functions da swal i kopyaladim. renk ayarini styles/variables dosyasindan yapmam gerekiyor
+
