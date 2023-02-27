@@ -5,21 +5,41 @@ div {
   max-width: 100%;
 }
 
+.main-title {
+  width: 100%;
+  text-align: center;
+
+  h1 {
+    margin-top: 6rem;
+    font-size: 5rem;
+    color: v.$color3;
+    font-weight: 900;
+    opacity: 0.7;
+    text-transform: uppercase;
+    text-shadow: 0rem 0rem 4rem v.$color6;
+
+  }
+}
+
+
+.project-screen-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 0.3s ease;
+  z-index: -2;
+
+}
+
 .project-details-container {
   position: relative;
-  z-index: -1;
+  z-index: -2;
 
-  .project-screen-image {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    transition: opacity 0.3s ease;
-    z-index: -5;
-  }
 
   .imageRounded {
 
@@ -29,98 +49,148 @@ div {
     -o-transform: rotate(180deg);
     transform: rotate(180deg);
 
+
     position: static;
     margin: -30px 0 0 0;
-    z-index: -3;
-
-
 
     width: 100vw;
     object-fit: fill;
     max-width: 100%;
 
+
     filter: invert(49%) sepia(98%) saturate(1594%) hue-rotate(332deg) brightness(102%) contrast(87%);
     opacity: .5;
   }
 
-  .project-details {
-    margin-top: 100vw;
 
-    .title {
-      @include m.flexbox();
 
-      h5 {
-        background-color: v.$color5;
-        color: v.$color6;
-        font-size: 1rem;
-        width: auto;
-        padding: .3rem 1rem .3rem 1rem;
-        margin-bottom: 0;
-        box-shadow: -6px 0 0 1px v.$color1;
 
-      }
 
-      span {
-        flex: 3;
-      }
+}
+
+.project-details {
+  margin-top: 100vw;
+  padding: 0;
+
+
+  .title {
+    @include m.flexbox();
+
+    h5 {
+      background-color: v.$color5;
+      color: v.$color6;
+      font-size: 1rem;
+      width: auto;
+      padding: .3rem 1rem .3rem 1rem;
+      margin-bottom: 0;
+      box-shadow: -6px 0 0 1px v.$color1;
+
     }
 
-    .details-box {
-      background-color: v.$color6;
-      padding: 3rem;
-      border: 5px black;
-      border-style: inset;
-      border-color: #ff000077;
+    span {
+      flex: 3;
+    }
+  }
+
+  .details-box {
+    background-color: v.$color6;
+    padding: 3rem;
+    box-shadow: 0px 0px 5px 0.5px v.$color4;
+    border-radius: .3rem;
 
 
-      .first-part {
-        @include m.flexbox($gap:2rem);
-        padding-bottom: 1rem;
-        flex-wrap: wrap;
 
-        .info-left {
-          text-align: left;
-        }
+    .first-part {
+      @include m.flexbox($gap:2rem);
+      padding-bottom: 1rem;
+      flex-wrap: nowrap;
 
-        .info-right {
-          text-align: right;
-        }
-
+      .info-left {
+        text-align: left;
       }
 
-      .second-part {
-        @include m.flexbox($gap:2rem);
-        padding-bottom: 1rem;
-        flex-wrap: wrap;
+      .info-right {
+        text-align: right;
+        color: v.$color5;
+
+        a {
+          text-decoration: none;
+          cursor: pointer;
 
 
-        .left {
-          flex: 1;
+        }
+      }
+
+    }
+
+    .second-part {
+      @include m.flexbox($gap:2rem);
+      padding-bottom: 1rem;
+      flex-wrap: wrap;
+      position: relative;
+
+
+      .left {
+        flex: 1;
+        @include m.flexbox($direction:column, $gap:1.2rem);
+
+        .progress {
+          width: 100%;
         }
 
-        .right {
-          @include m.flexbox($direction:column, $gap:1rem);
-          align-items: end;
-          flex-wrap: wrap;
+        .numeric-info {
+          @include m.flexbox($gap:2rem);
+          width: 100%;
+          justify-content: space-around;
+          position: relative;
 
-          button {
-            width: 6.5rem;
-            text-align: center;
-            padding: 0.4rem 0.4rem 0.4rem 0.4rem;
-            background-color: v.$color1;
-            color: v.$color6;
+          div {
+            @include m.flexbox($direction:column, $gap:.2rem);
+            align-items: center;
+
+
+            h4 {
+              font-size: 2rem;
+
+            }
+
+            text {}
+
           }
 
         }
       }
+
+      .right {
+        @include m.flexbox($direction:column, $gap:1rem);
+        align-items: end;
+        flex-wrap: wrap;
+
+        button {
+          width: 6.5rem;
+          text-align: center;
+          padding: 0.4rem 0.4rem 0.4rem 0.4rem;
+          background-color: v.$color1;
+          color: v.$color6;
+          border-radius: .3rem;
+
+          &:hover {
+            background-color: v.$color5;
+          }
+
+        }
+
+      }
     }
-
-
-
-
-
   }
 
 
+}
 
+.project-media {
+  @include m.flexbox();
+
+  .title {}
+
+  .media {}
 }

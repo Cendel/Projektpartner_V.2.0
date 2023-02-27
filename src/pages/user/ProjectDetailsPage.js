@@ -6,6 +6,7 @@ const ProjectDetailPage = () => {
   return (
     <UserTemplate>
       <ProjectDetails />
+      
     </UserTemplate>
   );
 };
