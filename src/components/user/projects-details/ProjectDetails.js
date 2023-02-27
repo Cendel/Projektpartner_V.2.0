@@ -99,16 +99,15 @@ const ProjectDetails = () => {
               />
               <div className="numeric-info">
                 <div>
+                  <h5> 5. Oktober 2022</h5>
                   <span>Startdatum</span>
-                  <h4> 5. Oktober 2022</h4>
                 </div>
                 <div>
-                  <span>Projektbeteiligte</span>
-                  <h4> 7</h4>
+                  <h5> 7</h5> <span>Projektbeteiligte</span>
                 </div>
                 <div>
+                  <h5> 2. Juni 2023</h5>
                   <span>Fertigstellungsdatum</span>
-                  <h4> 2. Juni 2023</h4>
                 </div>
               </div>
             </div>
@@ -123,6 +122,7 @@ const ProjectDetails = () => {
       <Container>
         <DownloadSection files={files} />
       </Container>
+
       <Spacer />
     </div>
   );

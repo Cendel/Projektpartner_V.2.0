@@ -4,15 +4,21 @@ import { getFileExtension } from "../../../helpers/functions/fileFunctions";
 import {
   AiOutlineFilePdf,
   AiOutlineFileImage,
-  AiOutlineFileText,
+  AiFillFolderOpen,
 } from "react-icons/ai";
+import { IoCloudDownloadSharp } from "react-icons/io5";
 
 const DownloadSection = ({ files }) => {
   return (
-    <div className="download-media">
+    <div>
       {files && files.length > 0 && (
-        <div>
-          <h5>Downloads:</h5>
+        <div className="download-media">
+          <div className="head">
+            <span>
+              <IoCloudDownloadSharp />
+            </span>
+            <h5>PROJEKTMEDIEN</h5>
+          </div>
           <ul>
             {files.map((file) => (
               <li key={file.name}>
@@ -23,7 +29,7 @@ const DownloadSection = ({ files }) => {
                     getFileExtension(file.url) === "png" ? (
                     <AiOutlineFileImage />
                   ) : (
-                    <AiOutlineFileText />
+                    <AiFillFolderOpen />
                   )}
                 </span>
                 <a href={file.url} target="_blank" download={file.name}>
