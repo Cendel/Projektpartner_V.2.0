@@ -5,10 +5,30 @@ import imageRounded from "../../../assets/img/rounded-bottom.svg";
 import { Button, Container } from "react-bootstrap";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Spacer from "../../common/spacer/Spacer";
+import DownloadSection from "./DownloadSection";
 
 const ProjectDetails = () => {
+  const files = [
+    {
+      name: "Leistungen",
+      url: "https://file-examples.com/storage/fe00fb1b6463fa60ca184a7/2017/10/file-sample_150kB.pdf",
+    },
+    {
+      name: "ProjectbildPng",
+      url: "https://file-examples.com/storage/fe00fb1b6463fa60ca184a7/2017/10/file_example_PNG_500kB.png",
+    },
+    {
+      name: "Projectbild",
+      url: "https://file-examples.com/storage/fe00fb1b6463fa60ca184a7/2017/10/file_example_JPG_2500kB.jpg",
+    },
+
+    {
+      name: "Projektdokument",
+      url: "https://sample-videos.com/doc/Sample-doc-file-100kb.doc",
+    },
+  ];
+
   useEffect(() => {
-    //
     const handleScroll = () => {
       const scrollPos = window.scrollY;
       const detailsEl = document.querySelector(".project-details");
@@ -99,12 +119,9 @@ const ProjectDetails = () => {
           </div>
         </div>
       </Container>
-      <Spacer height={50} />
-      <Container className="project-media">
-        <div className="title">
-          <h4>Projektmedien</h4>
-        </div>
-        <div className="media"></div>
+      <Spacer height={30} />
+      <Container>
+        <DownloadSection files={files} />
       </Container>
       <Spacer />
     </div>

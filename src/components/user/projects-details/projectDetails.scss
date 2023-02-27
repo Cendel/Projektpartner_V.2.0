@@ -186,11 +186,3 @@ div {
 
 
 }
-
-.project-media {
-  @include m.flexbox();
-
-  .title {}
-
-  .media {}
-}
