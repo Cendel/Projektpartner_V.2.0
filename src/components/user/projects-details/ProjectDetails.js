@@ -41,7 +41,9 @@ const ProjectDetails = () => {
       } else {
         detailsEl.style.marginTop = "0px";
       }
-      detailsContainerEl.style.opacity = `0.${window.innerHeight - scrollPos}`;
+      detailsContainerEl.style.opacity = `0.${
+        scrollPos < 450 ? 999 - scrollPos : 549
+      }`;
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -124,7 +126,7 @@ const ProjectDetails = () => {
       </Container>
       <Spacer height={30} />
       <Container>
-        <Accordion className="accordion-info">
+        <Accordion className="accordion-info" alwaysOpen>
           <Accordion.Item eventKey="0" className="item">
             <Accordion.Header className="ada">
               Worum geht es in dem Projekt?
