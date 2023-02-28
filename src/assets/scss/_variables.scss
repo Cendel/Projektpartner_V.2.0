@@ -8,8 +8,18 @@ $color6: #e0fbfc;
 
 $font-family-sans-serif : "Roboto";
 
+//bootstrap color custom settings
 $primary : $color1;
 $secondary : $color2;
-
 $success:$color2;
 $danger:$color3;
+
+//bootstrap accordion custom settings
+$accordion-bg:$color6;
+$accordion-border-color:$color6;
+$accordion-border-width:0;
+$accordion-color:$color5;
+$accordion-button-active-bg:$color1;
+$accordion-button-active-color:$color6;
+$accordion-button-color:$color5;
+$accordion-inner-border-radius:2rem;

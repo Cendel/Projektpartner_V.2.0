@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./projectDetails.scss";
 import image from "../../../assets/img/breads-1867459_1920.jpg";
 import imageRounded from "../../../assets/img/rounded-bottom.svg";
-import { Button, Container } from "react-bootstrap";
+import { Accordion, Button, Container } from "react-bootstrap";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Spacer from "../../common/spacer/Spacer";
 import DownloadSection from "./DownloadSection";
@@ -50,7 +50,7 @@ const ProjectDetails = () => {
   }, []);
 
   return (
-    <div>
+    <div className="project-details-main-component">
       <div>
         <img src={image} alt="bakery" className="project-screen-image" />
       </div>
@@ -62,7 +62,7 @@ const ProjectDetails = () => {
       <div className="main-title">
         <h1>Bröselige Köstlichkeiten</h1>
       </div>
-      <Container fluid="lg" className="project-details">
+      <Container className="project-details">
         <div className="title">
           <h5>Bröselige Köstlichkeiten</h5>
         </div>
@@ -122,7 +122,51 @@ const ProjectDetails = () => {
       <Container>
         <DownloadSection files={files} />
       </Container>
-
+      <Spacer height={30} />
+      <Container>
+        <Accordion className="accordion-info">
+          <Accordion.Item eventKey="0" className="item">
+            <Accordion.Header className="ada">
+              Worum geht es in dem Projekt?
+            </Accordion.Header>
+            <Accordion.Body>
+              Das Projekt dreht sich um die Herstellung von veganen,
+              glutenfreien Snacks ohne Industriezucker unter der Marke "no
+              sweets". Die Snacks werden in Deutschland mit hochwertigen Zutaten
+              hergestellt und bieten eine gesunde und schuldgefreie Snackoption
+              für diejenigen, die sich gesund und befriedigend ernähren möchten,
+              ohne dabei auf Geschmack zu verzichten.
+            </Accordion.Body>
+          </Accordion.Item>
+          <Accordion.Item eventKey="1">
+            <Accordion.Header>
+              Was sind die Ziele und wer ist die Zielgruppe?
+            </Accordion.Header>
+            <Accordion.Body>
+              Das Ziel des Projekts ist es, gesunde Snackoptionen für eine
+              breitere Zielgruppe zugänglich zu machen und das Bewusstsein für
+              eine gesunde Snackkultur zu fördern. Die Zielgruppe sind Menschen,
+              die sich bewusst ernähren und auf eine gesunde Ernährung achten.
+              Dies kann Menschen umfassen, die eine glutenfreie, vegane oder
+              zuckerfreie Ernährung bevorzugen oder aufgrund von Allergien oder
+              Unverträglichkeiten darauf angewiesen sind.
+            </Accordion.Body>
+          </Accordion.Item>
+          <Accordion.Item eventKey="2">
+            <Accordion.Header>Wer steht hinter dem Projekt?</Accordion.Header>
+            <Accordion.Body>
+              Das Unternehmen, das dieses Projekt durchführt, steht hinter der
+              Herstellung und Vermarktung dieser Snacks. Das Unternehmen wurde
+              nicht namentlich genannt, aber es wird betont, dass es sich um ein
+              Unternehmen handelt, das seine Snacks mit viel Liebe und
+              hochwertigen Zutaten in Deutschland herstellt. Das Unternehmen
+              sucht derzeit nach neuen Investoren, um sein Geschäft auszubauen
+              und seine leckeren Snacks einem breiteren Publikum zugänglich zu
+              machen.
+            </Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
+      </Container>
       <Spacer />
     </div>
   );
