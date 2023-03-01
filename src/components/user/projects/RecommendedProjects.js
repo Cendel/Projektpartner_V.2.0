@@ -5,7 +5,7 @@ import ProjectCard from "./ProjectCard";
 import "./projects.scss";
 import { Link } from "react-router-dom";
 
-const Projects = () => {
+const RecommendedProjects = () => {
   const image = "breads-1867459_1920.jpg";
   const image1 = "try1.jpg";
   const image2 = "try2.jpg";
@@ -18,19 +18,17 @@ const Projects = () => {
       <Spacer />
       <div className="project-group">
         <Row className="g-5 groupRow">
-          <h2 className="projects-title">Projekte</h2>
-
+          <h2>Empfohlene Projekte</h2>
           <Col md={6} lg={4} as={Link} to="/projects/1" className="groupCol">
             <ProjectCard ada={image} />
           </Col>
-
           <Col md={6} lg={4}>
             <ProjectCard ada={image1} />
           </Col>
           <Col md={6} lg={4}>
             <ProjectCard ada={image2} />
           </Col>
-          <Col md={6} lg={4}>
+          <Col>
             <ProjectCard ada={image3} />
           </Col>
           <Col md={6} lg={4}>
@@ -46,10 +44,9 @@ const Projects = () => {
           mehr anzeigen
         </Button>
       </div>
-
       <Spacer />
     </Container>
   );
 };
 
-export default Projects;
+export default RecommendedProjects;

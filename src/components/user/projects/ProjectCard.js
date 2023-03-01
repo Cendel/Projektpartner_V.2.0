@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { Button, ProgressBar } from "react-bootstrap";
 import "./projects.scss";
 
 const ProjectCard = (props) => {
@@ -13,7 +13,7 @@ const ProjectCard = (props) => {
         />
       </div>
       <div className="details">
-        <h5>Bröselige Köstlichkeiten</h5>
+        <h5>"no sweets - Köstliches, schuldfreies Snacken"</h5>
 
         <div className="desc">
           "No Sweets" stellt in Mannheim köstliche und gesunde vegane Snacks
@@ -22,6 +22,19 @@ const ProjectCard = (props) => {
         <div className="button-wrapper">
           <Button variant="primary">erstellt von Creavision GmBH</Button>
         </div>
+        <div className="progress">
+          <ProgressBar
+            striped
+            variant="success"
+            now={4}
+            max={7}
+            label={""}
+            className="progress-bar-card"
+          />
+        </div>
+        <h5 className="under-rogress">
+          <span>noch</span> 34 Tage
+        </h5>
       </div>
     </div>
   );

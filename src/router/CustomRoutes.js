@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ScrollToTop from "../components/common/scroll-to-top/ScrollToTop";
 import AuthPage from "../pages/common/AuthPage";
 import NotFoundPage from "../pages/common/NotFoundPage";
 import UnauthorizedPage from "../pages/common/UnauthorizedPage";
@@ -13,6 +14,7 @@ import ProjectsPage from "../pages/user/ProjectsPage";
 const CustomRoutes = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/">
           <Route index element={<Homepage />} />
@@ -23,7 +25,7 @@ const CustomRoutes = () => {
           <Route path="unauthorized" element={<UnauthorizedPage />} />
           <Route path="projects">
             <Route index element={<ProjectsPage />} />
-            <Route path=":pojectId" element={<ProjectDetailsPage />} />
+            <Route path=":projectId" element={<ProjectDetailsPage />} />
           </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Route>
