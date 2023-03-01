@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row, Spinner } from "react-bootstrap";
-import Spacer from "../../../common/spacer/spacer";
-import ContactInfo from "../contact-info/contact-info";
+import Spacer from "../../../common/spacer/Spacer";
 import "./contactForm.scss";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import { sendMessage } from "../../../../api/contact-service";
+
 import { toast } from "../../../../helpers/functions/swal";
+import ContactInfo from "../contact-info/ContactInfo";
 
 const ContactForm = () => {
-  const [loading, setLoading] = useState(false); //Form un disabled ini ve spinner i bu variable üzerinden kontrol edecegiz.
-
+  const [loading, setLoading] = useState(false);
   const initialValues = {
     name: "",
     email: "",
@@ -18,69 +17,57 @@ const ContactForm = () => {
     body: "",
   };
 
-  //2- validationSchema kismini "yup" ile yapiyorduk, o yüzden önce yukaridan yup'i import ediyoruz.
-  //validation objemizi olusuturuyoruz ve validate etmek istedigimiz ne varsa, burada tanimliyoruz:
   const validationSchema = Yup.object({
-    name: Yup.string().required("Enter your name"),
-    //validate etmek istedigimiz alanimizi yazdik (name), türünü yazdik(string()), doldurulmasi gerektigi bilgisini verdik (.required), son olarak ise göstermek istedigimiz hata mesajini girdik ("Enter your name")
-    //ayni sekilde devam ediyoruz:
+    name: Yup.string().required("Gib Ihren Namen ein"),
     email: Yup.string()
-      .email("Enter a valid email")
-      .required("Enter your email"),
+      .email("Geben Sie eine gültige E-Mail-Adresse ein")
+      .required("Geben sie ihre E-Mail Adresse ein"),
     subject: Yup.string()
-      .max(50, "The subject should be max 50 chars")
-      .min(5, "The subject should be min 5 chars")
-      .required("Enter a subject"),
+      .max(50, "Der Betreff sollte maximal 50 Zeichen lang sein")
+      .min(5, "Der Betreff sollte mindestens 5 Zeichen lang sein")
+      .required("Geben Sie einen Betreff ein"),
     body: Yup.string()
-      .max(200, "The message should max 200 chars")
-      .min(20, "The message should be min 20 chars")
-      .required("Enter a message"),
+      .max(200, "Die Nachricht sollte maximal 200 Zeichen lang sein")
+      .min(20, "Die Nachricht sollte mindestens 20 Zeichen lang sein")
+      .required("Geben Sie eine Nachricht ein"),
   });
 
-  //submit durumununda ne yapilacagi. (values, formumuzdan api ye gönderilecek olan veriler)
   const onSubmit = async (values) => {
     setLoading(true);
 
     try {
-      await sendMessage(values); //sendMessage fonksiyonumuzun basina await ifademizi ekledik, await den dolayi üst fonksiyonumuza da async ifadesi ekliyoruz. Bu ifade gectiyse demek ki basarili olmus, o yüzden formu temizliyor ve hemen altina basarili oldugu mesaji:
-      formik.resetForm(); //bu form temizleme formik e ait bir method
-      //alert("Your message has been sent successfully.");
-      //yukaridaki, html in default alert i yerine, görsel tercih nedeniyle sweetalert kütüphanesini kullanacagiz, o kütüphanenin kodlarini buraya yazip burayi kalabaliklastirmak yerine helpers klasörümüzün icerisinde bu kütüphane ile ilgili olusturdugumuz dosyamizdaki fonksiyonu burada cagiracagiz:
-      toast("Your message has been sent successfully.", "success");
+      toast("Ihre Nachricht wurde erfolgreich gesendet.", "success");
     } catch (err) {
-      //eger await deki ifade gecmediyse buraya düsmüs demektir. o halde hata mesajimiz:
       alert(err.response.data.message);
     } finally {
-      setLoading(false); //loading imizi, sonraki kullanimlar icin tekrar false a cektik.
+      setLoading(false);
     }
   };
 
-  //Simdi bu ücünü birlestiriyoruz, Formik'in useFormik hook'u ile:
   const formik = useFormik({
     initialValues,
     validationSchema,
     onSubmit,
   });
 
-  //Formik'i kullanmaya baslamadan önce, Form'un html5'den gelen default handler'ini, Form taginda noValidate yazarak devre disi birakiyoruz.
-  // ve ardindan yine ayni yerde onSubmit tanimlamasi yapiyor, formik'in handleSubmit metodunu devreye sokuyoruz.
-  // Formik
   return (
-    <Container className="contact-form">
+    <Container className="contact-contact-form">
       <Row className="gy-5">
         <Col md={6}>
           <p>
-            Looking for a small or medium economy car rental or something a
-            little larger to fit all the family? We have a great range of new
-            and comfortable rental cars to choose from. Browse our fleet range
-            now and rent a car online today.
+            Wir glauben an die Kraft von Kreativität, Zusammenarbeit und
+            Innovation. Wenn Sie Fragen haben, Anregungen geben möchten oder
+            einfach mit uns in Kontakt treten möchten, freuen wir uns auf Ihre
+            Nachricht!
           </p>
+          <div className="contact-contact-info">
+            <ContactInfo />
+          </div>
           <Spacer height={30} />
-          <ContactInfo />
         </Col>
         <Col md={6}>
           <Form noValidate onSubmit={formik.handleSubmit}>
-            <Form.Group className="mb-3">
+            <Form.Group className="mb-3 form-group">
               <Form.Label>Name</Form.Label>
               <Form.Control
                 type="text"
@@ -93,8 +80,8 @@ const ContactForm = () => {
               </Form.Control.Feedback>
             </Form.Group>
 
-            <Form.Group className="mb-3">
-              <Form.Label>Email</Form.Label>
+            <Form.Group className="mb-3 form-group">
+              <Form.Label>E-Mail</Form.Label>
               <Form.Control
                 type="email"
                 {...formik.getFieldProps("email")}
@@ -106,8 +93,8 @@ const ContactForm = () => {
               </Form.Control.Feedback>
             </Form.Group>
 
-            <Form.Group className="mb-3">
-              <Form.Label>Subject</Form.Label>
+            <Form.Group className="mb-3 form-group">
+              <Form.Label>Betreff</Form.Label>
               <Form.Control
                 type="text"
                 {...formik.getFieldProps("subject")}
@@ -119,8 +106,8 @@ const ContactForm = () => {
               </Form.Control.Feedback>
             </Form.Group>
 
-            <Form.Group className="mb-3">
-              <Form.Label>Message</Form.Label>
+            <Form.Group className="mb-3 form-group">
+              <Form.Label>Nachricht</Form.Label>
               <Form.Control
                 type="text"
                 as="textarea"
@@ -135,15 +122,17 @@ const ContactForm = () => {
             </Form.Group>
 
             <Button
+              className="send-button"
               variant="primary"
               type="submit"
               disabled={!(formik.dirty && formik.isValid) || loading}
             >
-              {loading && <Spinner animation="border" size="sm" />} Send Message
+              {loading && <Spinner animation="border" size="sm" />} Nachricht
+              senden
             </Button>
           </Form>
         </Col>
-      </Row>{" "}
+      </Row>
     </Container>
   );
 };
