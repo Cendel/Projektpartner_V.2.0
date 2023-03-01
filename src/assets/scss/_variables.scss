@@ -17,9 +17,10 @@ $danger:$color3;
 //bootstrap accordion custom settings
 $accordion-bg:$color6;
 $accordion-border-color:$color6;
-$accordion-border-width:0;
-$accordion-color:$color5;
+$accordion-border-width:1rem;
+$accordion-color:$color1;
 $accordion-button-active-bg:$color1;
 $accordion-button-active-color:$color6;
 $accordion-button-color:$color5;
-$accordion-inner-border-radius:2rem;
+$accordion-inner-border-radius:0.5rem;
+$accordion-body-padding-y:2rem;

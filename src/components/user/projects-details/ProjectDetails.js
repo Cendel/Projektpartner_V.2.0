@@ -27,7 +27,6 @@ const ProjectDetails = () => {
       url: "https://sample-videos.com/doc/Sample-doc-file-100kb.doc",
     },
   ];
-
   useEffect(() => {
     const handleScroll = () => {
       const scrollPos = window.scrollY;
@@ -129,7 +128,7 @@ const ProjectDetails = () => {
         <Accordion className="accordion-info" alwaysOpen>
           <Accordion.Item eventKey="0" className="item">
             <Accordion.Header className="ada">
-              Worum geht es in dem Projekt?
+              <h5>Worum geht es in dem Projekt?</h5>
             </Accordion.Header>
             <Accordion.Body>
               Das Projekt dreht sich um die Herstellung von veganen,
@@ -142,7 +141,7 @@ const ProjectDetails = () => {
           </Accordion.Item>
           <Accordion.Item eventKey="1">
             <Accordion.Header>
-              Was sind die Ziele und wer ist die Zielgruppe?
+              <h5>Was sind die Ziele und wer ist die Zielgruppe?</h5>
             </Accordion.Header>
             <Accordion.Body>
               Das Ziel des Projekts ist es, gesunde Snackoptionen für eine
@@ -155,7 +154,9 @@ const ProjectDetails = () => {
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="2">
-            <Accordion.Header>Wer steht hinter dem Projekt?</Accordion.Header>
+            <Accordion.Header>
+              <h5>Wer steht hinter dem Projekt?</h5>
+            </Accordion.Header>
             <Accordion.Body>
               Das Unternehmen, das dieses Projekt durchführt, steht hinter der
               Herstellung und Vermarktung dieser Snacks. Das Unternehmen wurde
