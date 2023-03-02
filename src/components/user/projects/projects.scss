@@ -6,6 +6,9 @@
 }
 
 .project-group {
+    .project-group-title {
+        color: v.$color1;
+    }
 
 
 
@@ -164,7 +167,7 @@
 
 .more-button-div {
     text-align: right;
-    
+
 
     .more-button {
         margin: 1rem 5rem 0rem 0rem;

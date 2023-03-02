@@ -15,10 +15,10 @@ const RecommendedProjects = () => {
 
   return (
     <Container>
-      <Spacer />
+      <Spacer height={30} />
       <div className="project-group">
         <Row className="g-5 groupRow">
-          <h2>Empfohlene Projekte</h2>
+          <h2 className="project-group-title">Empfohlene Projekte</h2>
           <Col md={6} lg={4} as={Link} to="/projects/1" className="groupCol">
             <ProjectCard ada={image} />
           </Col>

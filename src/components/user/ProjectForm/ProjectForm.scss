@@ -2,6 +2,10 @@
 @use "../../../assets/scss/mixins"as m;
 
 .project-form {
+    div {
+        padding: 0;
+        margin: 0;
+    }
 
 
     padding: 3rem;
