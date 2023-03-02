@@ -171,20 +171,8 @@
 
     .more-button {
         margin: 1rem 5rem 0rem 0rem;
-        color: v.$color6;
-        background-color: v.$color1;
-        cursor: pointer;
-        transition: all 0.5s ease-in-out;
-        transform-style: preserve-3d;
-        border: none;
 
-        &:hover {
-            box-shadow: 0 1px 5px v.$color2;
-            background-color: v.$color2;
-            color: v.$color6;
-
-
-        }
+        @include m.custom-button();
 
     }
 

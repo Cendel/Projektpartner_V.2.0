@@ -99,32 +99,7 @@
     }
 
     button {
-        margin: 1rem 1rem 0 1rem;
-        background-color: v.$color6;
-        color: v.$color2;
-        border-color: v.$color4;
-        font-size: 1rem;
-        font-weight: bold;
-        text-transform: uppercase;
-        transition: all 0.3s ease;
-        opacity: 1;
+        @include m.project-send-button();
 
-        &:hover {
-            background-color: v.$color1;
-            border-color: v.$color6;
-        }
-
-        &:focus {
-            box-shadow: 0 0 3px #007bff, 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        &[disabled] {
-            background-color: v.$color6;
-            border-color: v.$color4;
-            cursor: not-allowed;
-            color: v.$color2;
-            opacity: 0.5;
-        }
     }
-
 }

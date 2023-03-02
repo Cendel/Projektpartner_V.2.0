@@ -9,6 +9,7 @@ import ContactPage from "../pages/user/ContactPage";
 import Homepage from "../pages/user/Homepage";
 import PrivacyPolicyPage from "../pages/user/PrivacyPolicyPage";
 import ProjectDetailsPage from "../pages/user/ProjectDetailsPage";
+import ProjectFormPage from "../pages/user/ProjectFormPage";
 import ProjectsPage from "../pages/user/ProjectsPage";
 
 const CustomRoutes = () => {
@@ -20,6 +21,7 @@ const CustomRoutes = () => {
           <Route index element={<Homepage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="contact" element={<ContactPage />} />
+          <Route path="project-form" element={<ProjectFormPage />} />
           <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="auth" element={<AuthPage />} />
           <Route path="unauthorized" element={<UnauthorizedPage />} />

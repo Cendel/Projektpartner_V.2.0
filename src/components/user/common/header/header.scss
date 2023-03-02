@@ -100,20 +100,55 @@
 
 
 
-.navbar .menubar {
-    @media(max-width: 879px) {
-        display: none;
+.navbar {
+    .menubar {
 
+        @media(max-width: 879px) {
+            display: none;
+
+        }
+
+        flex: 1;
+
+
+
+        .navbar-nav a {
+            padding-top: 0;
+            padding-bottom: 0;
+            margin-left: 3rem;
+        }
+
+        .project-form-button {
+            width: 9rem;
+
+            @media(max-width: 1129px) {
+                width: 10rem;
+
+            }
+
+            @media(max-width: 930px) {
+                width: 11rem;
+
+            }
+
+            button {
+                font-size: 0.8rem;
+                padding: .4rem;
+                margin: 0;
+                color: v.$color4;
+                background-color: v.$color1;
+                transition: all 0.7s ease;
+                opacity: 1;
+
+                &:hover {
+                    color: v.$color4;
+                    background-color: v.$color5;
+
+
+                }
+            }
+        }
     }
-
-    flex: 1;
-
-    .navbar-nav a {
-        padding-top: 0;
-        padding-bottom: 0;
-        margin-left: 3rem;
-    }
-
 
 
 
