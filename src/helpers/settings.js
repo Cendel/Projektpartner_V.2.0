@@ -2,7 +2,7 @@ export const settings = {
   apiURL: "",
   siteName: "Projektpartner",
   siteUrl: "",
-  email: "support@projektpartner.com",
+  email: "info@projektpartner.com",
   phone1: "0621 - 33 64 22 77",
   phone2: "0000 - 22 22 22 22",
   address: "Q1 17-18, 68161 Mannheim",

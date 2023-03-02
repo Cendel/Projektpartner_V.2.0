@@ -4,17 +4,17 @@ import "./ProjectForm.scss";
 
 const ProjectForm = () => {
   const [loading, setLoading] = useState(false);
-  const [selectedFiles, setSelectedFiles] = useState([]);
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileInputChange = (event) => {
-    setSelectedFiles([...selectedFiles, ...event.target.files]);
+    setSelectedFile(event.target.files[0]);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Use the selectedFiles variable to access the file data. For example:
-    console.log(selectedFiles);
-    // Add your form submission logic here: Handle form submission, including the selected files
+    // Use the selectedFile variable to access the file data. For example:
+    console.log(selectedFile);
+    // Add your form submission logic here: Handle form submission, including the selected file
   };
 
   const initialValues = {
@@ -27,7 +27,7 @@ const ProjectForm = () => {
     about: "",
     goal: "",
     support: "",
-    attachments: [], // array to hold uploaded files
+    attachment: "",
   };
 
   return (
@@ -54,7 +54,6 @@ const ProjectForm = () => {
             type="file"
             accept=".jpg,.jpeg,.png,.doc,.docx,.pdf"
             onChange={handleFileInputChange}
-            multiple
           />
         </Form.Group>
 
@@ -90,11 +89,6 @@ const ProjectForm = () => {
 
         <Form.Group className="mb-3" id="formGridCheckbox">
           <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formGridAttachments">
-          <Form.Label>Attachments</Form.Label>
-          <Form.Control type="file" multiple onChange={handleFileInputChange} />
         </Form.Group>
 
         <Button variant="primary" type="submit">

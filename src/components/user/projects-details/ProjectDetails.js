@@ -6,6 +6,7 @@ import { Accordion, Button, Container } from "react-bootstrap";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Spacer from "../../common/spacer/Spacer";
 import DownloadSection from "./DownloadSection";
+import { TiLocationOutline } from "react-icons/ti";
 
 const ProjectDetails = () => {
   const files = [
@@ -82,10 +83,24 @@ const ProjectDetails = () => {
               einer gesünderen Snackkultur!
             </div>
             <div className="info-right">
-              erstellt von
-              <h5>
-                <a href="www.google.com">Creavision GmBH</a>
-              </h5>
+              <div className="createdBy">
+                <span> erstellt von</span>
+                <h5>
+                  <a
+                    href="https://creavision.de/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Creavision GmBH
+                  </a>
+                </h5>
+              </div>
+              <div className="location">
+                <div>
+                  <TiLocationOutline />
+                </div>
+                <h5>Mannheim</h5>
+              </div>
             </div>
           </div>
           <div className="second-part">

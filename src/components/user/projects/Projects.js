@@ -15,7 +15,7 @@ const Projects = () => {
 
   return (
     <Container>
-      <Spacer />
+      <Spacer height={10}/>
       <div className="project-group">
         <Row className="g-5 groupRow">
           <h2 className="projects-title">Projekte</h2>
