@@ -191,7 +191,7 @@ const ProjectForm = () => {
           <Form.Group className="mb-3  worum">
             <FloatingLabel label="Worum geht es in dem Projekt?">
               <Form.Control
-                type="text"
+                as="textarea"
                 {...formik.getFieldProps("about")}
                 isInvalid={isInvalid("about")}
                 isValid={isValid("about")}
@@ -204,7 +204,7 @@ const ProjectForm = () => {
           <Form.Group className="mb-3  ziele">
             <FloatingLabel label="Was sind die Ziele und wer ist die Zielgruppe?">
               <Form.Control
-                type="text"
+                as="textarea"
                 {...formik.getFieldProps("goal")}
                 isInvalid={isInvalid("goal")}
                 isValid={isValid("goal")}
@@ -217,7 +217,7 @@ const ProjectForm = () => {
           <Form.Group className="mb-3  wer">
             <FloatingLabel label="Wer steht hinter dem Projekt?">
               <Form.Control
-                type="text"
+                as="textarea"
                 {...formik.getFieldProps("support")}
                 isInvalid={isInvalid("support")}
                 isValid={isValid("support")}
@@ -231,7 +231,7 @@ const ProjectForm = () => {
           <Form.Group className="mb-3 kurz">
             <FloatingLabel label="Geben Sie eine kurze Beschreibung ein, die maximal 200 Zeichen lang ist.">
               <Form.Control
-                type="text"
+                as="textarea"
                 {...formik.getFieldProps("shortDesc")}
                 isInvalid={isInvalid("shortDesc")}
                 isValid={isValid("shortDesc")}
@@ -245,7 +245,7 @@ const ProjectForm = () => {
           <Form.Group className="mb-3 lang">
             <FloatingLabel label="Geben Sie eine detaillierte Beschreibung ein, die mindestens 200 Zeichen lang ist.">
               <Form.Control
-                type="text"
+                as="textarea"
                 {...formik.getFieldProps("longDesc")}
                 isInvalid={isInvalid("longDesc")}
                 isValid={isValid("longDesc")}
