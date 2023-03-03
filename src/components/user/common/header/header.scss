@@ -149,9 +149,16 @@
             }
         }
     }
+}
+
+.project-form-button-navbar {
 
 
+    button {
+        margin-top: 1rem;
 
-
-
+        &:hover {
+            background-color: v.$color2;
+        }
+    }
 }

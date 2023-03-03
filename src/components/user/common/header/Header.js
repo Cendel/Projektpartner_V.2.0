@@ -60,7 +60,7 @@ const Header = () => {
               </ul>
 
               <Nav.Link
-                className="project-form-button"
+                className="project-form-button-navbar"
                 as={Link}
                 to="/project-form"
                 active={pathname === "/project-form"}
