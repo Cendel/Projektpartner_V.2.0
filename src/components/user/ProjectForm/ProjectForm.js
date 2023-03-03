@@ -11,11 +11,18 @@ import "./ProjectForm.scss";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "../../../helpers/functions/swal";
-import { sendProject } from "../../../api/project-service.";
+import { createProject } from "../../../api/project-service.";
+import {
+  convertCurrentDateToUserFormat,
+  getCurrentDate,
+} from "../../../helpers/functions/date-time";
 
 const ProjectForm = () => {
   const [loading, setLoading] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState([]);
+
+  const ada = getCurrentDate();
+  console.log(convertCurrentDateToUserFormat(ada));
 
   const handleFileInputChange = (event) => {
     const newFiles = event.target.files;
@@ -47,8 +54,9 @@ const ProjectForm = () => {
     support: "",
     shortDesc: "",
     longDesc: "",
-
-    attachments: [], // array to hold uploaded files
+    attachments: [],
+    createdBy: "Creavision GmBH",
+    createdDate: convertCurrentDateToUserFormat(getCurrentDate()),
   };
 
   const validationSchema = Yup.object({
@@ -93,7 +101,7 @@ const ProjectForm = () => {
     setLoading(true);
 
     try {
-      await sendProject(values);
+      await createProject(values);
       formik.resetForm();
       toast("Ihr Projekt wurde erfolgreich erstellt.", "success");
     } catch (err) {
@@ -155,6 +163,7 @@ const ProjectForm = () => {
               <FloatingLabel label="geschätztes Realisierungsdatum">
                 <Form.Control
                   type="date"
+                  min={getCurrentDate()}
                   {...formik.getFieldProps("estimatedImplementationDate")}
                   isInvalid={isInvalid("estimatedImplementationDate")}
                   isValid={isValid("estimatedImplementationDate")}

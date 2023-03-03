@@ -2,12 +2,11 @@ import axios from "axios";
 //import authHeader from "../helpers/functions/auth-header";
 import { settings } from "../helpers/settings";
 
-
 const API_URL = settings.apiURL; //api adresimizi setting dosyamizdan aldik
 
 // USER ENDPOINTS
-export const sendProject = (message) => {
-  return axios.post(`${API_URL}/contactmessage/visitors`, message);
+export const createProject = (project) => {
+  return axios.post(`${API_URL}/Projekte`, project);
   //bu fonksiyonda yapacagimiz islem, api ye mesaji yollamak oldugu icin, post metodunu kullandik. api adresimizi ekledik ve
   //dökümantasyondan bakarak end point imizi de ekledik (/contactmessage/visitors). Form'dan gelecek olan objemizi(message) parametre olarak ekledik.
   //bu fonksiyonu cagrildigi yerden return etmek istedigimiz icin return ifadesini ekledik
@@ -26,7 +25,6 @@ export const getMessagesByPage = (
 ) => {
   return axios.get(
     `${API_URL}/contactmessage/pages?page=${page}&size=${size}&sort=${sort}&direction=${direction}`
-   
   );
 };
 
