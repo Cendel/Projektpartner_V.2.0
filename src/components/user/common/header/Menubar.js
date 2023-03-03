@@ -32,7 +32,7 @@ const Menubar = () => {
           to="/project-form"
           active={pathname === "/project-form"}
         >
-          <Button>Project erstellen</Button>
+          <Button>Projekt erstellen</Button>
         </Nav.Link>
         <NavDropdown title="Benutzername" className="userName">
           <NavDropdown.Item as={Link} to="/admin">

@@ -65,7 +65,7 @@ const Header = () => {
                 to="/project-form"
                 active={pathname === "/project-form"}
               >
-                <Button>Project erstellen</Button>
+                <Button>Projekt erstellen</Button>
               </Nav.Link>
 
               <div className="separator"></div>
