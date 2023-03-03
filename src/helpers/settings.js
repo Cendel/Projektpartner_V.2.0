@@ -1,5 +1,5 @@
 export const settings = {
-  apiURL: "",
+  apiURL: "https://63e8e5e4b120461c6be7794a.mockapi.io",
   siteName: "Projektpartner",
   siteUrl: "",
   email: "info@projektpartner.com",

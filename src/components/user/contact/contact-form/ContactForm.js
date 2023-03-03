@@ -18,7 +18,7 @@ const ContactForm = () => {
   };
 
   const validationSchema = Yup.object({
-    name: Yup.string().required("Gib Ihren Namen ein"),
+    name: Yup.string().required("Geben Sie Ihren Namen ein"),
     email: Yup.string()
       .email("Geben Sie eine gültige E-Mail-Adresse ein")
       .required("Geben sie ihre E-Mail Adresse ein"),
