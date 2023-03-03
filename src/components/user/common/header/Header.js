@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Button,
   Container,
   Nav,
   Navbar,
@@ -50,13 +51,22 @@ const Header = () => {
               <ul>
                 <li>
                   <Link
-                    to="/about"
-                    className={pathname.startsWith("/about") ? "active" : ""}
+                    to="/contact"
+                    className={pathname.startsWith("/contact") ? "active" : ""}
                   >
-                    <h5>Über uns</h5>
+                    <h5>Kontakt</h5>
                   </Link>
                 </li>
               </ul>
+
+              <Nav.Link
+                className="project-form-button"
+                as={Link}
+                to="/project-form"
+                active={pathname === "/project-form"}
+              >
+                <Button>Project erstellen</Button>
+              </Nav.Link>
 
               <div className="separator"></div>
 
