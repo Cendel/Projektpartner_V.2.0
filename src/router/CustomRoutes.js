@@ -29,6 +29,7 @@ const CustomRoutes = () => {
             <Route index element={<ProjectsPage />} />
             <Route path=":projectId" element={<ProjectDetailsPage />} />
           </Route>
+
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

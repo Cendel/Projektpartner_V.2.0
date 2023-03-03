@@ -61,7 +61,9 @@ const Header = () => {
               <div className="separator"></div>
 
               <NavDropdown title="Benutzername" className="userName">
-                <NavDropdown.Item href="#action3">Profile</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/admin">
+                  Profile
+                </NavDropdown.Item>
                 <NavDropdown.Item href="#action4">
                   Meine Projekte
                 </NavDropdown.Item>

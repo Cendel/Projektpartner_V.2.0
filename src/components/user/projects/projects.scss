@@ -3,9 +3,11 @@
 
 .groupCol {
     text-decoration: none;
+    
 }
 
 .project-group {
+
     .project-group-title {
         color: v.$color1;
     }
@@ -13,7 +15,8 @@
 
 
     .groupRow {
-        margin: 3rem;
+        margin: 0 0 3rem 0;
+        
 
         >div:nth-child(n+5) {
             //eliminates the extra margin caused by the last Col
