@@ -54,9 +54,9 @@ const ProjectDetails = () => {
     ).then((result) => {
       if (result.isConfirmed) {
         try {
-          deleteProject(588);
+          deleteProject(10);
           toast(
-            "Das Projekt wurde erfolgreich gelöscht",
+            "Das Projekt wurde erfolgreich gelöscht.",
             "success",
             10000,
             true
@@ -64,6 +64,7 @@ const ProjectDetails = () => {
           window.history.back();
         } catch (err) {
           toast("Das Löschen konnte nicht durchgeführt werden", "warning");
+        } finally {
         }
       }
     });

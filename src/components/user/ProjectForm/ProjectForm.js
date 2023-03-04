@@ -48,7 +48,7 @@ const ProjectForm = () => {
     longDesc: "",
     projectImage: "",
     attachments: [],
-    createdBy: "Creavision GmBH",
+    createdBy: "",
     createdDate: convertCurrentDateToUserFormat(getCurrentDate()),
   };
 

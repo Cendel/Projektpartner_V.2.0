@@ -1,4 +1,4 @@
-import moment from "moment/moment"; //moment kütüphanemizi import ettik.
+import moment from "moment/moment"; 
 
 
 export const getCurrentDate = () => {

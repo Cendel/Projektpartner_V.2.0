@@ -21,6 +21,12 @@ export const deleteProject = (id) => {
   return axios.delete(`${API_URL}/Projects/${id}`);
 };
 
+
+
+
+
+
+
 //bundan sonra yazacagimiz backend baglantilarinda axios ile alakali her sey burada olacak, sayfalarda axios kullanmayacagiz, bu fonksiyonu cagiracagiz.
 //asenkron yapilarimiz ve await imiz fonksiyonlari nerede cagiriyorsak orada olacak.
 

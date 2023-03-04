@@ -35,7 +35,6 @@ const RecommendedProjects = () => {
               <ProjectCard {...project} />
             </Col>
           ))}
-          <h2 className="projects-title">Projekte</h2>
         </Row>
       </div>
       <div className="more-button-div g-5">
