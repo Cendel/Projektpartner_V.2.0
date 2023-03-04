@@ -3,7 +3,7 @@
 
 .groupCol {
     text-decoration: none;
-    
+
 }
 
 .project-group {
@@ -16,7 +16,7 @@
 
     .groupRow {
         margin: 0 0 3rem 0;
-        
+
 
         >div:nth-child(n+5) {
             //eliminates the extra margin caused by the last Col
@@ -74,9 +74,18 @@
         align-items: flex-start;
 
         h5 {
+            padding-top: .4rem;
+            margin-bottom: 1rem;
             font-size: 1rem;
-            font-weight: bold;
-            color: v.$color5;
+            color: v.$color1;
+            height: 3rem;
+            overflow: hidden;
+            text-overflow: clip;
+            white-space: normal;
+            position: relative;
+            text-overflow: ellipsis;
+
+
         }
 
         .desc {
@@ -90,7 +99,6 @@
             text-overflow: clip;
             white-space: normal;
             position: relative;
-            overflow: hidden;
             text-overflow: ellipsis;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
@@ -111,16 +119,41 @@
             width: 100%;
         }
 
-        .under-rogress {
-            padding-top: 0.5rem;
-            font-size: 1rem;
+        .progress-info {
+            @include m.flexbox();
             width: 100%;
-            text-align: right;
-            color: v.$color1;
+            justify-content: space-between;
 
-            span {
-                font-size: .7rem;
+            .location {
+                align-self: center;
+
+                svg {
+                    font-size: 1rem;
+                }
+
+                svg,
+                h5 {
+                    width: 100%;
+                    color: v.$color1;
+                }
+
+                h5 {
+                    font-size: 0.8rem;
+                }
             }
+
+            .under-progress {
+                padding-top: 0.5rem;
+                font-size: 1rem;
+                width: 100%;
+                text-align: right;
+                color: v.$color2;
+
+                span {
+                    font-size: .7rem;
+                }
+            }
+
         }
 
 
@@ -164,7 +197,7 @@
 }
 
 .project-card:hover .button-wrapper {
-    height: 9%;
+    height: 8%;
     opacity: 1;
 }
 

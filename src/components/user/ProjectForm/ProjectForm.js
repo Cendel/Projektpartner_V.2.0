@@ -30,14 +30,6 @@ const ProjectForm = () => {
     setSelectedFiles(newSelectedFiles);
   };
 
-  const handleImageInputChange = (event) => {
-    const file = event.target.files[0];
-    if (file && file.type.startsWith("image/")) {
-      const newSelectedFiles = [file, ...selectedFiles];
-      setSelectedFiles(newSelectedFiles);
-    }
-  };
-
   const handleRemoveFile = (index) => {
     const newSelectedFiles = [...selectedFiles];
     newSelectedFiles.splice(index, 1);
@@ -54,6 +46,7 @@ const ProjectForm = () => {
     support: "",
     shortDesc: "",
     longDesc: "",
+    projectImage: "",
     attachments: [],
     createdBy: "Creavision GmBH",
     createdDate: convertCurrentDateToUserFormat(getCurrentDate()),
@@ -264,7 +257,6 @@ const ProjectForm = () => {
                 className="imageatt"
                 type="file"
                 accept="image/*"
-                onChange={handleImageInputChange}
                 {...formik.getFieldProps("projectImage")}
                 isInvalid={isInvalid("projectImage")}
                 isValid={isValid("projectImage")}

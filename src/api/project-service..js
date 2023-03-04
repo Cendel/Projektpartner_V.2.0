@@ -6,11 +6,19 @@ const API_URL = settings.apiURL; //api adresimizi setting dosyamizdan aldik
 
 // USER ENDPOINTS
 export const createProject = (project) => {
-  return axios.post(`${API_URL}/Projekte`, project);
-  //bu fonksiyonda yapacagimiz islem, api ye mesaji yollamak oldugu icin, post metodunu kullandik. api adresimizi ekledik ve
-  //dökümantasyondan bakarak end point imizi de ekledik (/contactmessage/visitors). Form'dan gelecek olan objemizi(message) parametre olarak ekledik.
-  //bu fonksiyonu cagrildigi yerden return etmek istedigimiz icin return ifadesini ekledik
-  //son olarak export ifadesiyle fonksiyonumuzu export ettik.
+  return axios.post(`${API_URL}/Projects`, project);
+};
+
+export const getProject = (id) => {
+  return axios.get(`${API_URL}/Projects/${id}`);
+};
+
+export const getAllProjects = () => {
+  return axios.get(`${API_URL}/Projects`);
+};
+
+export const deleteProject = (id) => {
+  return axios.delete(`${API_URL}/Projects/${id}`);
 };
 
 //bundan sonra yazacagimiz backend baglantilarinda axios ile alakali her sey burada olacak, sayfalarda axios kullanmayacagiz, bu fonksiyonu cagiracagiz.
@@ -30,8 +38,4 @@ export const getMessagesByPage = (
 
 export const getMessage = (id) => {
   return axios.get(`${API_URL}/contactmessage/${id}`);
-};
-
-export const deleteMessage = (id) => {
-  return axios.delete(`${API_URL}/contactmessage/${id}`);
 };

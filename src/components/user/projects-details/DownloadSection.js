@@ -19,25 +19,7 @@ const DownloadSection = ({ files }) => {
             </span>
             <h5>PROJEKTMEDIEN</h5>
           </div>
-          <ul>
-            {files.map((file) => (
-              <li key={file.name}>
-                <span>
-                  {getFileExtension(file.url) === "pdf" ? (
-                    <AiOutlineFilePdf />
-                  ) : getFileExtension(file.url) === "jpg" ||
-                    getFileExtension(file.url) === "png" ? (
-                    <AiOutlineFileImage />
-                  ) : (
-                    <AiFillFolderOpen />
-                  )}
-                </span>
-                <a href={file.url} target="_blank" download={file.name}>
-                  {file.name}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <ul></ul>
         </div>
       )}
     </div>
