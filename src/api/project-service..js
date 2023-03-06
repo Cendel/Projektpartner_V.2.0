@@ -17,6 +17,12 @@ export const getAllProjects = () => {
   return axios.get(`${API_URL}/Projects`);
 };
 
+
+export const updateProject = (id, values) => {
+  return axios.put(`${API_URL}/Projects/${id}`, values);
+};
+
+
 export const deleteProject = (id) => {
   return axios.delete(`${API_URL}/Projects/${id}`);
 };

@@ -1,29 +1,37 @@
 import React, { useEffect, useState } from "react";
 import "./projectDetails.scss";
 import imageRounded from "../../../assets/img/rounded-bottom.svg";
-import { Accordion, Button, Container } from "react-bootstrap";
+import { Accordion, Button, Container, Nav } from "react-bootstrap";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Spacer from "../../common/spacer/Spacer";
 import DownloadSection from "./DownloadSection";
 import { TiLocationOutline } from "react-icons/ti";
 import { deleteProject, getProject } from "../../../api/project-service.";
 import { question, toast } from "../../../helpers/functions/swal";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import Loading from "../../common/loading/Loading";
 
 const ProjectDetails = () => {
   const { projectId } = useParams();
-
   const [project, setProject] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchProject = async () => {
+  const loadData = async () => {
+    try {
       const result = await getProject(projectId);
       setProject(result.data);
-    };
-    fetchProject();
-  }, []);
-  console.log(project);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  //handles scroll
   useEffect(() => {
     const handleScroll = () => {
       const scrollPos = window.scrollY;
@@ -54,7 +62,7 @@ const ProjectDetails = () => {
     ).then((result) => {
       if (result.isConfirmed) {
         try {
-          deleteProject(10);
+          deleteProject(projectId);
           toast(
             "Das Projekt wurde erfolgreich gelöscht.",
             "success",
@@ -71,114 +79,128 @@ const ProjectDetails = () => {
   };
 
   return (
-    <div className="project-details-main-component">
-      <div>
-        <img
-          src={project.projectImage}
-          alt="bakery"
-          className="project-screen-image"
-        />
-      </div>
-      <div className="project-details-container">
-        <div>
-          <img src={imageRounded} alt="" className="imageRounded" />
-        </div>
-      </div>
-      <div className="main-title">
-        <h1>{project.projectTitle}</h1>
-      </div>
-      <Container className="project-details">
-        <div className="title">
-          <h5>{project.projectTitle}</h5>
-        </div>
-        <div className="details-box">
-          <div className="first-part">
-            <div className="info-left">{project.longDesc}</div>
-            <div className="info-right">
-              <div className="createdBy">
-                <span> erstellt von</span>
-                <h5>
-                  <a
-                    href="https://creavision.de/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {project.createdBy}
-                  </a>
-                </h5>
-              </div>
-              <div className="location">
-                <div>
-                  <TiLocationOutline />
-                </div>
-                <h5>{project.projectPlace}</h5>
-              </div>
+    <>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div className="project-details-main-component">
+          <div>
+            <img
+              src={project.projectImage}
+              alt="bakery"
+              className="project-screen-image"
+            />
+          </div>
+          <div className="project-details-container">
+            <div>
+              <img src={imageRounded} alt="" className="imageRounded" />
             </div>
           </div>
-          <div className="second-part">
-            <div className="left">
-              <ProgressBar
-                className="progress"
-                animated={false}
-                now={4}
-                max={7}
-                label={"Teilnehmer/-innen"}
-                variant={"success"}
-              />
-              <div className="numeric-info">
-                <div>
-                  <h5>{project.createdDate}</h5>
-                  <span>Startdatum</span>
+          <div className="main-title">
+            <h1>{project.projectTitle}</h1>
+          </div>
+          <Container className="project-details">
+            <div className="title">
+              <h5>{project.projectTitle}</h5>
+            </div>
+            <div className="details-box">
+              <div className="first-part">
+                <div className="info-left">{project.longDesc}</div>
+                <div className="info-right">
+                  <div className="createdBy">
+                    <span> erstellt von</span>
+                    <h5>
+                      <a
+                        href="https://creavision.de/"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {project.createdBy}
+                      </a>
+                    </h5>
+                  </div>
+                  <div className="location">
+                    <div>
+                      <TiLocationOutline />
+                    </div>
+                    <h5>{project.projectPlace}</h5>
+                  </div>
                 </div>
-                <div>
-                  <h5> 7</h5> <span>Projektbeteiligte</span>
+              </div>
+              <div className="second-part">
+                <div className="left">
+                  <ProgressBar
+                    className="progress"
+                    animated={false}
+                    now={4}
+                    max={7}
+                    label={"Teilnehmer/-innen"}
+                    variant={"success"}
+                  />
+                  <div className="numeric-info">
+                    <div>
+                      <h5>{project.createdDate}</h5>
+                      <span>Startdatum</span>
+                    </div>
+                    <div>
+                      <h5> 7</h5> <span>Projektbeteiligte</span>
+                    </div>
+                    <div>
+                      <h5> {project.estimatedImplementationDate}</h5>
+                      <span>Fertigstellungsdatum</span>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <h5> {project.estimatedImplementationDate}</h5>
-                  <span>Fertigstellungsdatum</span>
+                <div className="right">
+                  <Button>Unterstützen</Button>
+                  <Button>Abonieren</Button>
                 </div>
               </div>
             </div>
-            <div className="right">
-              <Button>Unterstützen</Button>
-              <Button>Abonieren</Button>
+          </Container>
+          <Spacer height={30} />
+          <Container>
+            <DownloadSection files="{files}" />
+          </Container>
+          <Spacer height={30} />
+          <Container>
+            <Accordion className="accordion-info" alwaysOpen>
+              <Accordion.Item eventKey="0" className="item">
+                <Accordion.Header className="ada">
+                  <h5>Worum geht es in dem Projekt?</h5>
+                </Accordion.Header>
+                <Accordion.Body>{project.about}</Accordion.Body>
+              </Accordion.Item>
+              <Accordion.Item eventKey="1">
+                <Accordion.Header>
+                  <h5>Was sind die Ziele und wer ist die Zielgruppe?</h5>
+                </Accordion.Header>
+                <Accordion.Body>{project.goal}</Accordion.Body>
+              </Accordion.Item>
+              <Accordion.Item eventKey="2">
+                <Accordion.Header>
+                  <h5>Wer steht hinter dem Projekt?</h5>
+                </Accordion.Header>
+                <Accordion.Body>{project.support}</Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
+            <div className="project-details-edit-buttons">
+              <Button onClick={removeProject}>PROJEKT LÖSCHEN</Button>
+
+              <Nav.Link
+                className="project-form-button-navbar"
+                as={Link}
+                to={`/project-edit/${projectId}`}
+                mode="edit"
+              >
+                <Button>PROJEKT AKTUALISIEREN</Button>
+              </Nav.Link>
             </div>
-          </div>
+          </Container>
+          <Spacer />
         </div>
-      </Container>
-      <Spacer height={30} />
-      <Container>
-        <DownloadSection files="{files}" />
-      </Container>
-      <Spacer height={30} />
-      <Container>
-        <Accordion className="accordion-info" alwaysOpen>
-          <Accordion.Item eventKey="0" className="item">
-            <Accordion.Header className="ada">
-              <h5>Worum geht es in dem Projekt?</h5>
-            </Accordion.Header>
-            <Accordion.Body>{project.about}</Accordion.Body>
-          </Accordion.Item>
-          <Accordion.Item eventKey="1">
-            <Accordion.Header>
-              <h5>Was sind die Ziele und wer ist die Zielgruppe?</h5>
-            </Accordion.Header>
-            <Accordion.Body>{project.goal}</Accordion.Body>
-          </Accordion.Item>
-          <Accordion.Item eventKey="2">
-            <Accordion.Header>
-              <h5>Wer steht hinter dem Projekt?</h5>
-            </Accordion.Header>
-            <Accordion.Body>{project.support}</Accordion.Body>
-          </Accordion.Item>
-        </Accordion>
-        <div className="project-details-edit-buttons">
-          <Button onClick={removeProject}>PROJEKT LÖSCHEN</Button>
-          <Button>PROJEKT AKTUALISIEREN</Button>
-        </div>
-      </Container>
-      <Spacer />
-    </div>
+      )}
+    </>
   );
 };
 

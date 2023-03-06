@@ -9,6 +9,7 @@ import ContactPage from "../pages/user/ContactPage";
 import Homepage from "../pages/user/Homepage";
 import PrivacyPolicyPage from "../pages/user/PrivacyPolicyPage";
 import ProjectDetailsPage from "../pages/user/ProjectDetailsPage";
+import ProjectEditPage from "../pages/user/ProjectEditPage";
 import ProjectFormPage from "../pages/user/ProjectFormPage";
 import ProjectsPage from "../pages/user/ProjectsPage";
 
@@ -29,6 +30,7 @@ const CustomRoutes = () => {
             <Route index element={<ProjectsPage />} />
             <Route path=":projectId" element={<ProjectDetailsPage />} />
           </Route>
+          <Route path="project-edit/:projectId" element={<ProjectEditPage />} />
 
           <Route path="*" element={<NotFoundPage />} />
         </Route>

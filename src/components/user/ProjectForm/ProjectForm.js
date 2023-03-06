@@ -11,18 +11,14 @@ import "./ProjectForm.scss";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "../../../helpers/functions/swal";
-import { createProject } from "../../../api/project-service.";
-import {
-  convertCurrentDateToUserFormat,
-  getCurrentDate,
-} from "../../../helpers/functions/date-time";
+import { createProject, updateProject } from "../../../api/project-service.";
+import { getCurrentDate } from "../../../helpers/functions/date-time";
+import { useParams } from "react-router-dom";
 
-const ProjectForm = () => {
+const ProjectForm = (props) => {
   const [loading, setLoading] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState([]);
-
-  const ada = getCurrentDate();
-  console.log(convertCurrentDateToUserFormat(ada));
+  const { projectId } = useParams();
 
   const handleFileInputChange = (event) => {
     const newFiles = event.target.files;
@@ -37,19 +33,19 @@ const ProjectForm = () => {
   };
 
   const initialValues = {
-    projectTitle: "",
-    projectPlace: "",
-    estimatedImplementationDate: "",
-    slogan: "",
-    about: "",
-    goal: "",
-    support: "",
-    shortDesc: "",
-    longDesc: "",
-    projectImage: "",
-    attachments: [],
-    createdBy: "",
-    createdDate: convertCurrentDateToUserFormat(getCurrentDate()),
+    projectTitle: props.projectTitle,
+    projectPlace: props.projectPlace,
+    estimatedImplementationDate: props.estimatedImplementationDate,
+    slogan: props.slogan,
+    about: props.about,
+    goal: props.goal,
+    support: props.support,
+    shortDesc: props.shortDesc,
+    longDesc: props.longDesc,
+    projectImage: props.projectImage || "",
+    attachments: props.attachments || [],
+    createdBy: props.createdBy,
+    createdDate: props.createdDate,
   };
 
   const validationSchema = Yup.object({
@@ -92,15 +88,26 @@ const ProjectForm = () => {
 
   const onSubmit = async (values) => {
     setLoading(true);
+    if (props.mode === "edit") {
+      try {
+        await updateProject(projectId, values);
 
-    try {
-      await createProject(values);
-      formik.resetForm();
-      toast("Ihr Projekt wurde erfolgreich erstellt.", "success");
-    } catch (err) {
-      alert(err.response.data.message);
-    } finally {
-      setLoading(false);
+        toast("Ihr Projekt wurde erfolgreich aktualisiert.", "success");
+      } catch (err) {
+        alert(err.response.data.message);
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      try {
+        await createProject(values);
+        formik.resetForm();
+        toast("Ihr Projekt wurde erfolgreich erstellt.", "success");
+      } catch (err) {
+        alert(err.response.data.message);
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -306,7 +313,9 @@ const ProjectForm = () => {
             disabled={!(formik.dirty && formik.isValid) || loading}
           >
             {loading && <Spinner animation="border" size="sm" />}
-            PROJEKT ERSTELLEN
+            {props.mode === "edit"
+              ? "PROJEKT AKTUALISIEREN"
+              : "PROJEKT ERSTELLEN"}
           </Button>
         </Form>
       </div>
