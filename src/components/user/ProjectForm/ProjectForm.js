@@ -13,12 +13,13 @@ import * as Yup from "yup";
 import { toast } from "../../../helpers/functions/swal";
 import { createProject, updateProject } from "../../../api/project-service.";
 import { getCurrentDate } from "../../../helpers/functions/date-time";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const ProjectForm = (props) => {
   const [loading, setLoading] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState([]);
   const { projectId } = useParams();
+  const navigate = useNavigate();
 
   const handleFileInputChange = (event) => {
     const newFiles = event.target.files;
@@ -93,6 +94,7 @@ const ProjectForm = (props) => {
         await updateProject(projectId, values);
 
         toast("Ihr Projekt wurde erfolgreich aktualisiert.", "success");
+        navigate(`/projects/${projectId}`);
       } catch (err) {
         alert(err.response.data.message);
       } finally {

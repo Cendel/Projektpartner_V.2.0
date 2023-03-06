@@ -28,7 +28,7 @@ const RecommendedProjects = () => {
 
   return (
     <Container>
-      <Spacer height={40} />
+      <Spacer height={50} />
       <div className="project-group">
         <h2 className="projects-title">Empfohlene Projekte</h2>
         {loading ? (
@@ -49,14 +49,15 @@ const RecommendedProjects = () => {
                 </Col>
               ))}
             </Row>
+            <div className="more-button-div g-5">
+              <Button as={Link} to="/projects" className="more-button">
+                mehr anzeigen
+              </Button>
+            </div>{" "}
           </>
         )}
       </div>
-      <div className="more-button-div g-5">
-        <Button as={Link} to="/projects" className="more-button">
-          mehr anzeigen
-        </Button>
-      </div>
+
       <Spacer />
     </Container>
   );

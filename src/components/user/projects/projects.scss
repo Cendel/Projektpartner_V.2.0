@@ -8,9 +8,16 @@
 
 .project-group {
 
-    .project-group-title {
+    .projects-title {
+        font-weight: bold;
+        font-size: 2rem;
+        text-align: left;
         color: v.$color1;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid v.$color1;
+        padding-bottom: 1rem;
     }
+
 
 
 
@@ -25,13 +32,7 @@
     }
 
 
-    .projects-title {
-        font-weight: bold;
-        font-size: 2rem;
 
-        text-align: left;
-        color: v.$color1;
-    }
 }
 
 
@@ -206,7 +207,7 @@
 
 
     .more-button {
-        margin: 1rem 5rem 0rem 0rem;
+        margin: 1rem 2rem 0rem 0rem;
 
         @include m.custom-button();
 

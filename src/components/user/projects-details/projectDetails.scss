@@ -38,6 +38,11 @@
       }
     }
 
+    h4 {
+      padding: 0 2rem;
+      color: v.$color5;
+    }
+
   }
 
   .project-screen-image {
@@ -256,6 +261,10 @@
     justify-content: space-between;
     margin-top: 3rem;
 
+    .edit-button {
+      @include m.custom-button();
+      width: 15rem;
+    }
 
     button {
       width: 15rem;
@@ -268,10 +277,6 @@
           color: v.$color6;
         }
       }
-
-      &:nth-child(2) {
-        @include m.custom-button();
-      }
     }
 
     @media(max-width: 515px) {
@@ -282,6 +287,7 @@
       }
 
     }
+
 
   }
 }

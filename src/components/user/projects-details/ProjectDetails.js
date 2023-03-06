@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./projectDetails.scss";
 import imageRounded from "../../../assets/img/rounded-bottom.svg";
-import { Accordion, Button, Container, Nav } from "react-bootstrap";
+import { Accordion, Button, Container } from "react-bootstrap";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Spacer from "../../common/spacer/Spacer";
 import DownloadSection from "./DownloadSection";
@@ -78,6 +78,16 @@ const ProjectDetails = () => {
     });
   };
 
+  const daysUntilImplementation = Math.round(
+    (new Date(project.estimatedImplementationDate) - new Date()) / 86400000
+  );
+
+  const totalDays = Math.round(
+    (new Date(project.estimatedImplementationDate) -
+      new Date(project.createdDate)) /
+      86400000
+  );
+
   return (
     <>
       {loading ? (
@@ -98,6 +108,7 @@ const ProjectDetails = () => {
           </div>
           <div className="main-title">
             <h1>{project.projectTitle}</h1>
+            <h4>{project.shortDesc}</h4>
           </div>
           <Container className="project-details">
             <div className="title">
@@ -132,9 +143,9 @@ const ProjectDetails = () => {
                   <ProgressBar
                     className="progress"
                     animated={false}
-                    now={4}
-                    max={7}
-                    label={"Teilnehmer/-innen"}
+                    now={new Date(totalDays - daysUntilImplementation)}
+                    max={new Date(totalDays)}
+                    label={""}
                     variant={"success"}
                   />
                   <div className="numeric-info">
@@ -187,14 +198,14 @@ const ProjectDetails = () => {
             <div className="project-details-edit-buttons">
               <Button onClick={removeProject}>PROJEKT LÖSCHEN</Button>
 
-              <Nav.Link
-                className="project-form-button-navbar"
+              <Button
+                className="edit-button"
                 as={Link}
                 to={`/project-edit/${projectId}`}
                 mode="edit"
               >
-                <Button>PROJEKT AKTUALISIEREN</Button>
-              </Nav.Link>
+                PROJEKT AKTUALISIEREN
+              </Button>
             </div>
           </Container>
           <Spacer />

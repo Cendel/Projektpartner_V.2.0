@@ -11,10 +11,16 @@ const ProjectCard = (props) => {
     shortDesc,
     projectImage,
     createdBy,
+    createdDate,
   } = props;
   const daysUntilImplementation = Math.round(
     (new Date(estimatedImplementationDate) - new Date()) / 86400000
   );
+
+  const totalDays = Math.round(
+    (new Date(estimatedImplementationDate) - new Date(createdDate)) / 86400000
+  );
+ 
 
   return (
     <div className="project-card">
@@ -32,8 +38,8 @@ const ProjectCard = (props) => {
           <ProgressBar
             striped
             variant="success"
-            now={4}
-            max={7}
+            now={new Date(totalDays - daysUntilImplementation)}
+            max={new Date(totalDays)}
             label={""}
             className="progress-bar-card"
           />

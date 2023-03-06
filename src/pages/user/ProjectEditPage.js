@@ -14,7 +14,7 @@ const ProjectEditPage = () => {
       setProject(result.data);
     };
     fetchProject();
-  }, []);
+  });
 
   const initialVal = [];
 
