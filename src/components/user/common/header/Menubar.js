@@ -35,7 +35,7 @@ const Menubar = () => {
           <Button>Projekt erstellen</Button>
         </Nav.Link>
         <NavDropdown title="Benutzername" className="userName">
-          <NavDropdown.Item as={Link} to="/admin">
+          <NavDropdown.Item as={Link} to="/profile/1">
             Profile
           </NavDropdown.Item>
           <NavDropdown.Item href="#action4">Meine Projekte</NavDropdown.Item>

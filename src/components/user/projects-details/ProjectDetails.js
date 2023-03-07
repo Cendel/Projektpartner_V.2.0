@@ -10,6 +10,7 @@ import { deleteProject, getProject } from "../../../api/project-service.";
 import { question, toast } from "../../../helpers/functions/swal";
 import { Link, useParams } from "react-router-dom";
 import Loading from "../../common/loading/Loading";
+import { convertCurrentDateToUserFormat } from "../../../helpers/functions/date-time";
 
 const ProjectDetails = () => {
   const { projectId } = useParams();
@@ -150,14 +151,21 @@ const ProjectDetails = () => {
                   />
                   <div className="numeric-info">
                     <div>
-                      <h5>{project.createdDate}</h5>
+                      <h5>
+                        {convertCurrentDateToUserFormat(project.createdDate)}
+                      </h5>
                       <span>Startdatum</span>
                     </div>
                     <div>
                       <h5> 7</h5> <span>Projektbeteiligte</span>
                     </div>
                     <div>
-                      <h5> {project.estimatedImplementationDate}</h5>
+                      <h5>
+                        {" "}
+                        {convertCurrentDateToUserFormat(
+                          project.estimatedImplementationDate
+                        )}
+                      </h5>
                       <span>Fertigstellungsdatum</span>
                     </div>
                   </div>

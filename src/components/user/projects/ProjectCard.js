@@ -20,7 +20,11 @@ const ProjectCard = (props) => {
   const totalDays = Math.round(
     (new Date(estimatedImplementationDate) - new Date(createdDate)) / 86400000
   );
- 
+
+  console.log("create" + createdDate);
+  console.log("estimated" + estimatedImplementationDate);
+  console.log("totaldays" + totalDays);
+  console.log("days until" + daysUntilImplementation);
 
   return (
     <div className="project-card">

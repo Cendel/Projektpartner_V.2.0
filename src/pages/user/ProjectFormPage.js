@@ -20,7 +20,7 @@ const ProjectFormPage = () => {
     projectImage: "",
     attachments: [],
     createdBy: "",
-    createdDate: convertCurrentDateToUserFormat(getCurrentDate()),
+    createdDate: getCurrentDate(),
   };
 
   return (

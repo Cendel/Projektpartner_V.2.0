@@ -14,7 +14,7 @@ const ProjectEditPage = () => {
       setProject(result.data);
     };
     fetchProject();
-  });
+  }, [projectId]);
 
   const initialVal = [];
 
@@ -29,7 +29,6 @@ const ProjectEditPage = () => {
       support: project.support,
       shortDesc: project.shortDesc,
       longDesc: project.longDesc,
-      createdBy: project.createdBy,
       createdDate: project.createdDate,
       mode: "edit",
     };

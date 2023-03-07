@@ -8,6 +8,7 @@ import AboutPage from "../pages/user/AboutPage";
 import ContactPage from "../pages/user/ContactPage";
 import Homepage from "../pages/user/Homepage";
 import PrivacyPolicyPage from "../pages/user/PrivacyPolicyPage";
+import ProfilePage from "../pages/user/ProfilePage";
 import ProjectDetailsPage from "../pages/user/ProjectDetailsPage";
 import ProjectEditPage from "../pages/user/ProjectEditPage";
 import ProjectFormPage from "../pages/user/ProjectFormPage";
@@ -31,6 +32,7 @@ const CustomRoutes = () => {
             <Route path=":projectId" element={<ProjectDetailsPage />} />
           </Route>
           <Route path="project-edit/:projectId" element={<ProjectEditPage />} />
+          <Route path="profile/:userId" element={<ProfilePage />} />
 
           <Route path="*" element={<NotFoundPage />} />
         </Route>
