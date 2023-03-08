@@ -1,0 +1,69 @@
+@use "../../../assets/scss/variables"as v;
+@use "../../../assets/scss/mixins"as m;
+
+.profile-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px auto;
+    max-width: 800px;
+    padding-bottom: 10rem;
+    padding-top: 2rem;
+
+    .profile-card {
+        background-color: v.$color6;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        width: 45%;
+
+        h2 {
+            color: v.$color1;
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .short-info-fields,
+        .contact-info-fields {
+            @include m.flexbox($direction:column);
+
+            .field {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+
+                span {
+                    color: v.$color5;
+                    font-weight: 500;
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        @include m.flexbox($direction:column);
+
+        .profile-card {
+            margin-bottom: 30px;
+            width: 100%;
+        }
+    }
+
+    .projects-button {
+        background-color: v.$color4;
+        border: none;
+        border-radius: 5px;
+        color: v.$color5;
+        transition: all 0.3s ease;
+
+        font-weight: 500;
+
+        &:hover {
+            background-color: v.$color1;
+            color: v.$color6;
+            cursor: pointer;
+        }
+    }
+}

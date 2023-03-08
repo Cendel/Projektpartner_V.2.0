@@ -1,9 +1,6 @@
 import React from "react";
 import ProjectForm from "../../components/user/ProjectForm/ProjectForm";
-import {
-  convertCurrentDateToUserFormat,
-  getCurrentDate,
-} from "../../helpers/functions/date-time";
+import { getCurrentDate } from "../../helpers/functions/date-time";
 import UserTemplate from "../../templates/UserTemplate";
 
 const ProjectFormPage = () => {

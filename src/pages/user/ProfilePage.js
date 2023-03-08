@@ -1,5 +1,6 @@
 import React from "react";
 import Profile from "../../components/user/profile/Profile";
+//import ProfileEdit from "../../components/user/profile/ProfileEdit";
 import UserTemplate from "../../templates/UserTemplate";
 
 const ProfilePage = () => {
