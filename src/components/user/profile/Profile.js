@@ -17,7 +17,7 @@ function Profile() {
             <div className="field">
               <span>Ort:</span> Mannheim, Baden-Württemberg
             </div>
-            <button className="projects-button">Projekte</button>
+            <a className="projects-button">Projekte</a>
           </div>
         </div>
         <div className="profile-card">
@@ -30,7 +30,7 @@ function Profile() {
               <span>Telefon:</span> 0621 111-1111
             </div>
             <div className="field">
-              <span>Website:</span> www.markd.com
+              <span>Website:</span> www.markd.de
             </div>
           </div>
         </div>

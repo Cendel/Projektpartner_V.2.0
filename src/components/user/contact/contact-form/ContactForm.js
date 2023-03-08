@@ -4,13 +4,15 @@ import Spacer from "../../../common/spacer/Spacer";
 import "./contactForm.scss";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-
+import { sendMessage } from "../../../../api/contact-service";
 import { toast } from "../../../../helpers/functions/swal";
 import ContactInfo from "../contact-info/ContactInfo";
+import { getCurrentDate } from "../../../../helpers/functions/date-time";
 
 const ContactForm = () => {
   const [loading, setLoading] = useState(false);
   const initialValues = {
+    createdAt: getCurrentDate(),
     name: "",
     email: "",
     subject: "",
@@ -18,25 +20,27 @@ const ContactForm = () => {
   };
 
   const validationSchema = Yup.object({
-    name: Yup.string().required("Geben Sie Ihren Namen ein"),
+    name: Yup.string().required("Geben Sie Ihren Namen ein."),
     email: Yup.string()
-      .email("Geben Sie eine gültige E-Mail-Adresse ein")
-      .required("Geben sie ihre E-Mail Adresse ein"),
+      .email("Geben Sie eine gültige E-Mail-Adresse ein.")
+      .required("Geben sie ihre E-Mail Adresse ein."),
     subject: Yup.string()
-      .max(50, "Der Betreff sollte maximal 50 Zeichen lang sein")
-      .min(5, "Der Betreff sollte mindestens 5 Zeichen lang sein")
-      .required("Geben Sie einen Betreff ein"),
+      .max(50, "Der Betreff sollte maximal 50 Zeichen lang sein.")
+      .min(5, "Der Betreff sollte mindestens 5 Zeichen lang sein.")
+      .required("Geben Sie einen Betreff ein."),
     body: Yup.string()
-      .max(200, "Die Nachricht sollte maximal 200 Zeichen lang sein")
-      .min(20, "Die Nachricht sollte mindestens 20 Zeichen lang sein")
-      .required("Geben Sie eine Nachricht ein"),
+      .max(200, "Die Nachricht sollte maximal 200 Zeichen lang sein.")
+      .min(20, "Die Nachricht sollte mindestens 20 Zeichen lang sein.")
+      .required("Geben Sie eine Nachricht ein."),
   });
 
-  const onSubmit = async (values) => {
+  const onSubmit = async (values, { resetForm }) => {
     setLoading(true);
 
     try {
+      await sendMessage(values);
       toast("Ihre Nachricht wurde erfolgreich gesendet.", "success");
+      resetForm();
     } catch (err) {
       alert(err.response.data.message);
     } finally {

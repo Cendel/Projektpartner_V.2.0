@@ -1,5 +1,5 @@
-import moment from "moment/moment"; 
-
+import moment from "moment/moment";
+import "moment/locale/de";
 
 export const getCurrentDate = () => {
   return moment().format("YYYY-MM-DD");

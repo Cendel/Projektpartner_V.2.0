@@ -1,7 +1,8 @@
 import React from "react";
-import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import "./header.scss";
+import MenuDropdown from "./MenuDropdown";
 
 const Menubar = () => {
   const { pathname } = useLocation(); //problem: hangi sayfada bulunuyorsak, o sayfanin buton aktif görünsün: Bunun icin önce react-router-dom dan gelen useLocation hook unu kullanarak useLocation dan bulundugumuzu path i aliyoruz, daha sonra ilgili nav.link lere kodumuzu yaziyoruz.
@@ -34,14 +35,7 @@ const Menubar = () => {
         >
           <Button>Projekt erstellen</Button>
         </Nav.Link>
-        <NavDropdown title="Benutzername" className="userName">
-          <NavDropdown.Item as={Link} to="/profile/1">
-            Profile
-          </NavDropdown.Item>
-          <NavDropdown.Item href="#action4">Meine Projekte</NavDropdown.Item>
-          <NavDropdown.Divider />
-          <NavDropdown.Item href="#action5">Abmelden</NavDropdown.Item>
-        </NavDropdown>
+        <MenuDropdown />
       </Navbar>
     </div>
   );

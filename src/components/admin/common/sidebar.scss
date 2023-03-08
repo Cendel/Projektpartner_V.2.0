@@ -1,13 +1,14 @@
 @use "../../../assets/scss/variables"as v;
 @use "../../../assets/scss/mixins"as m;
 
-
-
 .admin-navbar {
 
     @media(min-width: 992px) {
         height: 100vh;
         align-items: flex-start !important;
+        position: fixed !important;
+        top: 0;
+        left: 0;
     }
 
     .container {
@@ -17,13 +18,16 @@
     }
 
     .navbar-nav {
-
         @media(min-width: 992px) {
             flex-direction: column !important;
         }
 
-        .nav-link {
+        padding-top: 1rem;
+        gap: 1rem;
+
+        button {
             color: v.$color2;
+
 
             &:hover {
                 color: v.$color4;

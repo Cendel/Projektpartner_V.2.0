@@ -52,18 +52,19 @@
     }
 
     .projects-button {
-        background-color: v.$color4;
-        border: none;
-        border-radius: 5px;
+        text-decoration: none;
+    
+        text-align: center;
+        border-bottom: 1px solid v.$color5;
         color: v.$color5;
         transition: all 0.3s ease;
 
         font-weight: 500;
 
-        &:hover {
-            background-color: v.$color1;
-            color: v.$color6;
+        &:hover {            
+            color: v.$color1;
             cursor: pointer;
+            border-color: v.$color5;
         }
     }
 }

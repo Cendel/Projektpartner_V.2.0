@@ -1,17 +1,11 @@
 import React from "react";
-import {
-  Button,
-  Container,
-  Nav,
-  Navbar,
-  NavDropdown,
-  Offcanvas,
-} from "react-bootstrap";
+import { Button, Container, Nav, Navbar, Offcanvas } from "react-bootstrap";
 
 import "./header.scss";
 import { settings } from "../../../../helpers/settings";
 import { Link, useLocation } from "react-router-dom";
 import Menubar from "./Menubar";
+import MenuDropdown from "./MenuDropdown";
 
 const Header = () => {
   const { pathname } = useLocation();
@@ -70,16 +64,7 @@ const Header = () => {
 
               <div className="separator"></div>
 
-              <NavDropdown title="Benutzername" className="userName">
-                <NavDropdown.Item as={Link} to="/admin">
-                  Profile
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action4">
-                  Meine Projekte
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5">Abmelden</NavDropdown.Item>
-              </NavDropdown>
+              <MenuDropdown />
             </Nav>
           </Offcanvas.Body>
         </Navbar.Offcanvas>

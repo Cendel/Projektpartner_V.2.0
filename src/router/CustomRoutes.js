@@ -1,6 +1,10 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "../components/common/scroll-to-top/ScrollToTop";
+import AdminContactMessageEditPage from "../pages/admin/AdminContactMessageEditPage";
+import AdminContactMessagesPage from "../pages/admin/AdminContactMessagesPage";
+import AdminProjectsPage from "../pages/admin/AdminProjectsPage";
+import AdminUsersPage from "../pages/admin/AdminUsersPage";
 import AuthPage from "../pages/common/AuthPage";
 import NotFoundPage from "../pages/common/NotFoundPage";
 import UnauthorizedPage from "../pages/common/UnauthorizedPage";
@@ -33,7 +37,15 @@ const CustomRoutes = () => {
           </Route>
           <Route path="project-edit/:projectId" element={<ProjectEditPage />} />
           <Route path="profile/:userId" element={<ProfilePage />} />
-
+          <Route path="admin-projects" element={<AdminProjectsPage />} />
+          <Route path="admin-users" element={<AdminUsersPage />} />
+          <Route path="admin-messages">
+            <Route index element={<AdminContactMessagesPage />} />
+            <Route
+              path=":messageId"
+              element={<AdminContactMessageEditPage />}
+            />
+          </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
