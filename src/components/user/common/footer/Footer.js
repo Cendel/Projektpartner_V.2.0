@@ -2,7 +2,7 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 import "./footer.scss";
 import { settings } from "../../../../helpers/settings";
-import logomm from "../../../../assets/img/logo/logomm.png";
+import logo from "../../../../assets/img/logo/logo_footer.png";
 import {
   MdOutlineHome,
   MdInfoOutline,
@@ -23,7 +23,7 @@ const Footer = () => {
         <Col lg={6} xl={5}>
           <Link to="/">
             <img
-              src={logomm}
+              src={logo}
               alt={settings.siteName}
               className="img-fluid logo"
             />

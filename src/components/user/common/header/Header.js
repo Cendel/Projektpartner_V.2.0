@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Container, Nav, Navbar, Offcanvas } from "react-bootstrap";
-
+import logo from "../../../../assets/img/logo/logo_header.png";
 import "./header.scss";
 import { settings } from "../../../../helpers/settings";
 import { Link, useLocation } from "react-router-dom";
@@ -13,7 +13,7 @@ const Header = () => {
     <Navbar expand={false} className=" navbar">
       <Container fluid>
         <Navbar.Brand href="/">
-          <h5>{settings.siteName}</h5>
+          <img src={logo} alt={settings.siteName} className="logo_header" />
         </Navbar.Brand>
         <Menubar />
         <Navbar.Toggle className="toggle" />
