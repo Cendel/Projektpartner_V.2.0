@@ -1,9 +1,20 @@
 @use "../../../../assets/scss/variables"as v;
 @use "../../../../assets/scss/mixins"as m;
 
-footer {
+.appFooter {
+    div {
+        padding: 0;
+        margin: 0;
+    }
+
+    .footerRow {
+        padding: 0 3rem;
+
+    }
+
     background-color: v.$color5;
     padding: 2rem 0;
+
 
     @media(max-width:992px) {
         text-align: center;
@@ -53,7 +64,8 @@ footer {
 
     .logo {
 
-        width: 20%;
+       
+       
 
     }
 
@@ -62,5 +74,5 @@ footer {
         font-size: .8rem;
     }
 
-
+    .adama {}
 }

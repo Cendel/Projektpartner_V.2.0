@@ -11,7 +11,7 @@ const Menubar = () => {
     <div className="menubar">
       <Navbar>
         <Container className="links">
-          <Nav className="asaaa">
+          <Nav>
             <Nav.Link
               as={Link}
               to="/projects"
