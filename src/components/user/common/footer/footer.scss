@@ -16,8 +16,12 @@
     padding: 2rem 0;
 
 
-    @media(max-width:992px) {
+    @media(max-width:991px) {
         text-align: center;
+
+        h2 {
+            margin-top: 2rem;
+        }
     }
 
     img {
@@ -29,8 +33,9 @@
         @include m.reset-list();
         @include m.flexbox($direction:column, $gap:1rem);
 
-        @media(max-width:992px) {
+        @media(max-width:991px) {
             @include m.flexbox($direction:column, $align-items:center, $gap:1rem);
+
 
         }
 
@@ -58,18 +63,21 @@
     h2 {
         font-weight: 800;
         font-size: 1rem;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
         color: v.$color4;
     }
 
     .logo {
-width: 10rem;
+        width: 10rem;
+        margin-top:-0.6rem;
+        margin-bottom: 1rem;
 
-           }
+    }
 
     p {
         color: v.$color4;
         font-size: .8rem;
+    
     }
 
 }

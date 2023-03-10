@@ -20,7 +20,7 @@ const Footer = () => {
   return (
     <footer className="appFooter">
       <Row className="g-5 footerRow">
-        <Col lg={6} xl={5}>
+        <Col lg={6} xl={6}>
           <Link to="/">
             <img
               src={logo}
@@ -32,8 +32,9 @@ const Footer = () => {
             Wir glauben an die Kraft von Kreativität, Zusammenarbeit und
             Innovation.
           </p>
+          <ContactInfo />
         </Col>
-        <Col lg={6} xl={3}>
+        <Col lg={5} xl={5}>
           <h2>Unsere Partner</h2>
           <ul>
             <li></li>
@@ -41,7 +42,7 @@ const Footer = () => {
             <li></li>
           </ul>
         </Col>
-        <Col lg={6} xl={2}>
+        <Col lg={1} xl={1}>
           <h2>Links</h2>
           <ul>
             <li>
@@ -82,10 +83,6 @@ const Footer = () => {
               </Link>
             </li>
           </ul>
-        </Col>
-        <Col lg={6} xl={2} className="adama">
-          <h2>Kontakt</h2>
-          <ContactInfo />
         </Col>
       </Row>
     </footer>
