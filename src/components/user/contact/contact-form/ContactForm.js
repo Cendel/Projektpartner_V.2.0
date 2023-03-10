@@ -8,6 +8,8 @@ import { sendMessage } from "../../../../api/contact-service";
 import { toast } from "../../../../helpers/functions/swal";
 import ContactInfo from "../contact-info/ContactInfo";
 import { getCurrentDate } from "../../../../helpers/functions/date-time";
+import logo from "../../../../assets/img/logo/logo_contact.png";
+import { settings } from "../../../../helpers/settings";
 
 const ContactForm = () => {
   const [loading, setLoading] = useState(false);
@@ -64,6 +66,7 @@ const ContactForm = () => {
             einfach mit uns in Kontakt treten möchten, freuen wir uns auf Ihre
             Nachricht!
           </p>
+          <img src={logo} alt={settings.siteName} className="logo_contact" />
           <div className="contact-contact-info">
             <ContactInfo />
           </div>

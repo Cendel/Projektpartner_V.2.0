@@ -99,7 +99,9 @@
 }
 
 .logo_header {
-    width: 80%;
+    width: 70%;
+    margin-top: -0.6rem;
+    
 
 }
 
@@ -139,9 +141,12 @@
             }
 
             @media(max-width: 930px) {
+                width: 12rem;
+            }
+            @media(max-width: 946px) {
                 width: 11rem;
             }
-          
+
 
             button {
                 font-size: 0.8rem;
