@@ -4,7 +4,7 @@ import Spacer from "../../common/spacer/Spacer";
 import ProjectCard from "./ProjectCard";
 import "./projects.scss";
 import { Link } from "react-router-dom";
-import { getAllProjects } from "../../../api/project-service.";
+import { getProjectsByStatus } from "../../../api/project-service.";
 import Loading from "../../common/loading/Loading";
 
 const Projects = () => {
@@ -13,7 +13,7 @@ const Projects = () => {
 
   const loadData = async () => {
     try {
-      const result = await getAllProjects();
+      const result = await getProjectsByStatus(true);
       setProjects(result.data);
     } catch (err) {
       console.log(err);

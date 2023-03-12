@@ -34,6 +34,7 @@ const ProjectForm = (props) => {
   };
 
   const initialValues = {
+    projectStatus: true,
     projectTitle: props.projectTitle,
     projectPlace: props.projectPlace,
     estimatedImplementationDate: props.estimatedImplementationDate,

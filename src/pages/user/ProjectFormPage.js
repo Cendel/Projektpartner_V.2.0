@@ -22,6 +22,7 @@ const ProjectFormPage = () => {
     totalShares: "",
     shareValue: "",
     maxSharesPerPerson: "",
+    projectStatus: true,
   };
 
   return (

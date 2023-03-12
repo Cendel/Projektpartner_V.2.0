@@ -13,8 +13,8 @@ export const getMessage = (id) => {
 };
 
 export const getMessages = () => {
-    return axios.get(`${API_URL}/messages`);
-  };
+  return axios.get(`${API_URL}/messages`);
+};
 
 export const deleteMessage = (id) => {
   return axios.delete(`${API_URL}/messages/${id}`);

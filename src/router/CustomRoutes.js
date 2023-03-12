@@ -4,6 +4,7 @@ import ScrollToTop from "../components/common/scroll-to-top/ScrollToTop";
 import AdminContactMessageEditPage from "../pages/admin/AdminContactMessageEditPage";
 import AdminContactMessagesPage from "../pages/admin/AdminContactMessagesPage";
 import AdminProjectsPage from "../pages/admin/AdminProjectsPage";
+import AdminRequestedProjectsPage from "../pages/admin/AdminRequestedProjectsPage";
 import AdminUsersPage from "../pages/admin/AdminUsersPage";
 import AuthPage from "../pages/common/AuthPage";
 import NotFoundPage from "../pages/common/NotFoundPage";
@@ -38,6 +39,10 @@ const CustomRoutes = () => {
           <Route path="project-edit/:projectId" element={<ProjectEditPage />} />
           <Route path="profile/:userId" element={<ProfilePage />} />
           <Route path="admin-projects" element={<AdminProjectsPage />} />
+          <Route
+            path="admin-requested-projects"
+            element={<AdminRequestedProjectsPage />}
+          />
           <Route path="admin-users" element={<AdminUsersPage />} />
           <Route path="admin-messages">
             <Route index element={<AdminContactMessagesPage />} />

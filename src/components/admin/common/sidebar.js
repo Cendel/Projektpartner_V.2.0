@@ -19,6 +19,13 @@ const Sidebar = () => {
             >
               Projekte
             </Button>
+            <Button
+              as={Link}
+              to="/admin-requested-projects"
+              active={pathname.startsWith("/admin-requested-projects")}
+            >
+              Projektvorschläge
+            </Button>
 
             <Button
               as={Link}

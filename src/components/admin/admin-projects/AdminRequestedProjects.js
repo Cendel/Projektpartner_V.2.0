@@ -18,11 +18,11 @@ const columns = [
   },
   {
     name: "Fertigstellungsdatum",
-    selector: (row, i) => row.estimatedImplementationDate,
+    selector: (row, i) => row.projectStatus,
     sortable: true,
   },
 ];
-const AdminProjects = () => {
+const AdminRequestedProjects = () => {
   const [projects, setProjects] = useState([]);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
@@ -30,7 +30,7 @@ const AdminProjects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await getProjectsByStatus(true);
+        const response = await getProjectsByStatus(false);
         setProjects(response.data);
       } catch (err) {
         toast("Fehler beim Laden der Nachrichten", "error");
@@ -65,4 +65,4 @@ const AdminProjects = () => {
   );
 };
 
-export default AdminProjects;
+export default AdminRequestedProjects;
