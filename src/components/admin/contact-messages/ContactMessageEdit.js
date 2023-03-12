@@ -10,6 +10,7 @@ const ContactMessageEdit = () => {
   const [loading, setLoading] = useState(true);
   const [deleting, setDeleting] = useState(false);
   const { messageId } = useParams();
+  const navigate = useNavigate();
 
   const loadData = async () => {
     try {
@@ -32,7 +33,7 @@ const ContactMessageEdit = () => {
         try {
           deleteMessage(messageId);
           toast("Die Nachtricht wurde erfolgreich gelöscht.", "success", 1500);
-          window.history.back();
+          navigate(`/admin-messages`);
         } catch (err) {
           toast("Das Löschen konnte nicht durchgeführt werden", "warning");
         } finally {

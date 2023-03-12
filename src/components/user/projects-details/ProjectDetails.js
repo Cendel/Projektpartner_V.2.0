@@ -89,6 +89,11 @@ const ProjectDetails = () => {
       86400000
   );
 
+  const handleSupportClick = () => {
+    const adaContainer = document.querySelector(".ada");
+    adaContainer.style.display = "block";
+  };
+
   return (
     <>
       {loading ? (
@@ -98,7 +103,7 @@ const ProjectDetails = () => {
           <div>
             <img
               src={project.projectImage}
-              alt="bakery"
+              alt={project.projectTitle}
               className="project-screen-image"
             />
           </div>
@@ -117,7 +122,7 @@ const ProjectDetails = () => {
             </div>
             <div className="details-box">
               <div className="first-part">
-                <div className="info-left">{project.longDesc} {project.projectValue.toLocaleString()}</div>
+                <div className="info-left">{project.longDesc}</div>
                 <div className="info-right">
                   <div className="createdBy">
                     <span> erstellt von</span>
@@ -157,11 +162,17 @@ const ProjectDetails = () => {
                       <span>Startdatum</span>
                     </div>
                     <div>
-                      <h5> 7</h5> <span>Projektbeteiligte</span>
+                      {project.participantCount ? (
+                        <>
+                          <h5>{project.participantCount}</h5>
+                          <span>Projektbeteiligte</span>
+                        </>
+                      ) : (
+                        ""
+                      )}
                     </div>
                     <div>
                       <h5>
-                        {" "}
                         {convertCurrentDateToUserFormat(
                           project.estimatedImplementationDate
                         )}
@@ -171,9 +182,40 @@ const ProjectDetails = () => {
                   </div>
                 </div>
                 <div className="right">
-                  <Button>Unterstützen</Button>
                   <Button>Abonieren</Button>
                 </div>
+              </div>
+            </div>
+          </Container>
+          <Spacer height={30} />
+          <Container>
+            <div className="support">
+              <div className="left">
+                <ProgressBar
+                  className="progress"
+                  animated={true}
+                  now={project.sharesTaken * project.shareValue}
+                  max={project.projectValue}
+                  label={""}
+                  variant={"success"}
+                />
+                <div className="numeric-info">
+                  <div>
+                    <h5>{(project.sharesTaken * 300).toLocaleString()} €</h5>
+                    <span>Finanzierung bereitgestellt</span>
+                  </div>
+                  <div>
+                    <h5>{project.totalShares - project.sharesTaken}</h5>
+                    <span>Aktien noch verfügbar</span>
+                  </div>
+                  <div>
+                    <h5>{project.projectValue.toLocaleString()} €</h5>
+                    <span>Finanzierungsziel</span>
+                  </div>
+                </div>
+              </div>
+              <div className="right">
+                <Button onClick={handleSupportClick}>Unterstützen</Button>
               </div>
             </div>
           </Container>
