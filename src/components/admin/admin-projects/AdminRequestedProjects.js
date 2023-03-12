@@ -1,31 +1,62 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Form } from "react-bootstrap";
 import DataTable from "react-data-table-component";
 import { useNavigate } from "react-router-dom";
-import { getProjectsByStatus } from "../../../api/project-service.";
+import {
+  getProjectsByStatus,
+  updateProjectStatus,
+} from "../../../api/project-service.";
 import { toast } from "../../../helpers/functions/swal";
 
-const columns = [
-  {
-    name: "Projecttitle",
-    selector: (row, i) => row.projectTitle,
-    sortable: true,
-  },
-  {
-    name: "Erstellt von",
-    selector: (row, i) => row.createdBy,
-    sortable: true,
-  },
-  {
-    name: "Fertigstellungsdatum",
-    selector: (row, i) => row.projectStatus,
-    sortable: true,
-  },
-];
 const AdminRequestedProjects = () => {
   const [projects, setProjects] = useState([]);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
+
+  const handleStatusChange = async (projectId, checked) => {
+    try {
+      await updateProjectStatus(projectId, checked);
+      // Update the project status in the local state
+      const updatedProjects = projects.map((project) =>
+        project.id === projectId
+          ? { ...project, projectStatus: checked }
+          : project
+      );
+      setProjects(updatedProjects);
+    } catch (err) {
+      toast("Fehler beim Aktualisieren des Projektstatus", "error");
+    }
+  };
+
+  const columns = [
+    {
+      name: "Projecttitle",
+      selector: (row, i) => row.projectTitle,
+      sortable: true,
+    },
+    {
+      name: "Erstellt von",
+      selector: (row, i) => row.createdBy,
+      sortable: true,
+    },
+    {
+      name: "Erstellungsdatum",
+      selector: (row, i) => row.createdDate,
+      sortable: true,
+    },
+    {
+      name: "Projektstatus",
+      selector: (row, i) => (
+        <Form.Check
+          type="switch"
+          id={row.id}
+          label=""
+          checked={row.projectStatus}
+          onChange={(e) => handleStatusChange(row.id, e.target.checked)}
+        />
+      ),
+    },
+  ];
 
   useEffect(() => {
     const fetchProjects = async () => {

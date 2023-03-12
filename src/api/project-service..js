@@ -2,7 +2,7 @@ import axios from "axios";
 //import authHeader from "../helpers/functions/auth-header";
 import { settings } from "../helpers/settings";
 
-const API_URL = settings.apiURL; 
+const API_URL = settings.apiURL;
 
 // USER ENDPOINTS
 export const createProject = (project) => {
@@ -21,11 +21,13 @@ export const getProjectsByStatus = (status) => {
   return axios.get(`${API_URL}/Projects?projectStatus=${status}`);
 };
 
+export const updateProjectStatus = (id, value) => {
+  return axios.put(`${API_URL}/Projects/${id}`, { projectStatus: value });
+};
 
 export const updateProject = (id, values) => {
   return axios.put(`${API_URL}/Projects/${id}`, values);
 };
-
 
 export const deleteProject = (id) => {
   return axios.delete(`${API_URL}/Projects/${id}`);
