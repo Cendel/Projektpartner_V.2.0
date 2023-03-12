@@ -47,6 +47,10 @@ const ProjectForm = (props) => {
     attachments: props.attachments || [],
     createdBy: props.createdBy,
     createdDate: props.createdDate,
+    projectValue: props.projectValue,
+    totalShares: props.totalShares,
+    shareValue: props.shareValue,
+    maxSharesPerPerson: props.maxSharesPerPerson,
   };
 
   const validationSchema = Yup.object({
@@ -85,6 +89,18 @@ const ProjectForm = (props) => {
     projectImage: Yup.mixed().required(
       "Laden Sie ein Bild für Ihr Projekt hoch."
     ),
+    projectValue: Yup.number().required(
+      "Geben Sie den Gesamtbetrag in Euro ein, der für das Projekt benötigt wird."
+    ),
+    totalShares: Yup.number().required(
+      "Geben Sie die Gesamtzahl der Anteile ein, die für das Projekt verfügbar sind."
+    ),
+    shareValue: Yup.number().required(
+      "Geben Sie den Wert eines Anteils in Euro ein."
+    ),
+    maxSharesPerPerson: Yup.number().required(
+      "Geben Sie die maximale Anzahl von Anteilen ein, die eine Person kaufen kann."
+    ),
   });
 
   const onSubmit = async (values) => {
@@ -105,6 +121,7 @@ const ProjectForm = (props) => {
         await createProject(values);
         formik.resetForm();
         toast("Ihr Projekt wurde erfolgreich erstellt.", "success");
+        navigate(`/`);
       } catch (err) {
         alert(err.response.data.message);
       } finally {
@@ -257,6 +274,72 @@ const ProjectForm = (props) => {
               </Form.Control.Feedback>
             </FloatingLabel>
           </Form.Group>
+
+          <Row className="mb-3  first-row">
+            <Form.Group as={Col}>
+              <FloatingLabel label="Gesamtbetrag in Euro" className="mb-3">
+                <Form.Control
+                  type="number"
+                  {...formik.getFieldProps("projectValue")}
+                  isInvalid={isInvalid("projectValue")}
+                  isValid={isValid("projectValue")}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {formik.errors.projectValue}
+                </Form.Control.Feedback>
+              </FloatingLabel>
+            </Form.Group>
+
+            <Form.Group as={Col}>
+              <FloatingLabel label="Gesamtzahl der Anteile" className="mb-3">
+                <Form.Control
+                  type="number"
+                  {...formik.getFieldProps("totalShares")}
+                  isInvalid={isInvalid("totalShares")}
+                  isValid={isValid("totalShares")}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {formik.errors.totalShares}
+                </Form.Control.Feedback>
+              </FloatingLabel>
+            </Form.Group>
+          </Row>
+
+          <Row className="mb-3  second-row">
+            <Form.Group as={Col}>
+              <FloatingLabel
+                label="Wert eines Anteils in Euro"
+                className="mb-3"
+              >
+                <Form.Control
+                  type="number"
+                  {...formik.getFieldProps("shareValue")}
+                  isInvalid={isInvalid("shareValue")}
+                  isValid={isValid("shareValue")}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {formik.errors.shareValue}
+                </Form.Control.Feedback>
+              </FloatingLabel>
+            </Form.Group>
+
+            <Form.Group as={Col}>
+              <FloatingLabel
+                label="Maximale Anzahl von Anteilen"
+                className="mb-3"
+              >
+                <Form.Control
+                  type="number"
+                  {...formik.getFieldProps("maxSharesPerPerson")}
+                  isInvalid={isInvalid("maxSharesPerPerson")}
+                  isValid={isValid("maxSharesPerPerson")}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {formik.errors.maxSharesPerPerson}
+                </Form.Control.Feedback>
+              </FloatingLabel>
+            </Form.Group>
+          </Row>
 
           {/* image file input field */}
           <Form.Group className="mb-3 projectImage" controlId="formImage">

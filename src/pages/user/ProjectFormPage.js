@@ -18,6 +18,10 @@ const ProjectFormPage = () => {
     attachments: [],
     createdBy: "",
     createdDate: getCurrentDate(),
+    projectValue: "",
+    totalShares: "",
+    shareValue: "",
+    maxSharesPerPerson: "",
   };
 
   return (

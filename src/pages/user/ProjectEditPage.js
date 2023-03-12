@@ -30,6 +30,10 @@ const ProjectEditPage = () => {
       shortDesc: project.shortDesc,
       longDesc: project.longDesc,
       createdDate: project.createdDate,
+      projectValue: project.projectValue,
+      totalShares: project.totalShares,
+      shareValue: project.shareValue,
+      maxSharesPerPerson: project.maxSharesPerPerson,
       mode: "edit",
     };
     initialVal.push(initialValues);

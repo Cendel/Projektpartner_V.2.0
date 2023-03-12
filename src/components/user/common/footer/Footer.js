@@ -34,7 +34,7 @@ const Footer = () => {
           </p>
           <ContactInfo />
         </Col>
-        <Col lg={5} xl={5}>
+        <Col lg={4} xl={5}>
           <h2>Unsere Partner</h2>
           <ul>
             <li></li>
@@ -42,7 +42,7 @@ const Footer = () => {
             <li></li>
           </ul>
         </Col>
-        <Col lg={1} xl={1}>
+        <Col lg={2} xl={1}>
           <h2>Links</h2>
           <ul>
             <li>

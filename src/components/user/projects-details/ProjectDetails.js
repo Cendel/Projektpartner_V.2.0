@@ -117,7 +117,7 @@ const ProjectDetails = () => {
             </div>
             <div className="details-box">
               <div className="first-part">
-                <div className="info-left">{project.longDesc}</div>
+                <div className="info-left">{project.longDesc} {project.projectValue.toLocaleString()}</div>
                 <div className="info-right">
                   <div className="createdBy">
                     <span> erstellt von</span>
