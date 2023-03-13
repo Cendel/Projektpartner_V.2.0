@@ -8,17 +8,17 @@ import { toast } from "../../../helpers/functions/swal";
 const columns = [
   {
     name: "Name",
-    selector: (row, i) => row.name,
+    selector: (row) => row.name,
     sortable: true,
   },
   {
     name: "Betreff",
-    selector: (row, i) => row.subject,
+    selector: (row) => row.subject,
     sortable: true,
   },
   {
     name: "Datum",
-    selector: (row, i) => row.createdAt,
+    selector: (row) => row.createdAt,
     sortable: true,
   },
 ];
@@ -59,7 +59,6 @@ const ContactMessages = () => {
             paginationPerPage={10}
             paginationRowsPerPageOptions={[10, 20, 30]}
             onRowClicked={handleRowClicked}
-           
           />
         </Col>
       </Row>

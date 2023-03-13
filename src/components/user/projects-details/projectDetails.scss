@@ -52,7 +52,7 @@
     transition: opacity 0.3s ease;
     z-index: -2;
 
-    @media(max-width: 1100px) {
+    @media(max-width: 790px) {
       width: auto;
       transform: translate(-50%, -50%);
     }
@@ -207,16 +207,7 @@
           }
 
           button {
-            width: 6.5rem;
-            text-align: center;
-            padding: 0.4rem;
-            background-color: v.$color1;
-            color: v.$color6;
-            border-radius: .3rem;
-
-            &:hover {
-              background-color: v.$color5;
-            }
+            @include m.custom-button();
 
             @media(max-width: 879px) {
               width: 100%;
@@ -233,9 +224,9 @@
   }
 
   .support {
-    background-color: v.$color6;
+    background-color: v.$color4;
     padding: 3rem;
-    box-shadow: 0px 0px 5px 0.5px v.$color4;
+    box-shadow: 0px 0px 5px 0.5px v.$color1;
     border-radius: .3rem;
     @include m.flexbox($gap:2rem);
     padding-bottom: 1rem;
@@ -282,15 +273,11 @@
       }
 
       button {
-        width: 6.5rem;
-        text-align: center;
-        padding: 0.4rem;
-        background-color: v.$color1;
-        color: v.$color6;
-        border-radius: .3rem;
+        @include m.custom-button();
 
         &:hover {
-          background-color: v.$color5;
+          background-color: v.$color2;
+          border: none;
         }
 
         @media(max-width: 879px) {
@@ -303,8 +290,64 @@
         }
       }
     }
+  }
 
-    
+  .invest-container {
+    transition: all 0.5s ease-in-out;
+    transform-style: preserve-3d;
+
+
+    .invest {
+      background-color: v.$color4;
+      padding: 3rem;
+      box-shadow: 0px 0px 5px 0.5px v.$color1;
+      border-radius: .3rem;
+
+      p {
+        color: v.$color5;
+        width: 100%;
+        text-align: center;
+
+        span {
+          font-weight: 600
+        }
+      }
+
+      .input {
+        form {
+          @include m.flexbox($justify-content: center, $align-items: center, $gap:1rem);
+
+
+          input[type="number"] {
+            padding: 0.5rem;
+            border: 2px solid #ccc;
+            border-radius: 0.3rem;
+            font-size: 1rem;
+
+            &:focus {
+              outline: none;
+              border-color: v.$color1;
+            }
+          }
+
+          button[type="submit"] {
+            @include m.custom-button();
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border-radius: 0.3rem;
+          }
+        }
+
+        p {
+          margin-top: 0.5rem;
+          font-size: 0.8rem;
+          color: v.$color5;
+        }
+      }
+
+
+
+    }
   }
 
   .accordion-info {

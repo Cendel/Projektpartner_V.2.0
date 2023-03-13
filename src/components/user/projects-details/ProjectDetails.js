@@ -10,12 +10,18 @@ import { deleteProject, getProject } from "../../../api/project-service.";
 import { question, toast } from "../../../helpers/functions/swal";
 import { Link, useParams } from "react-router-dom";
 import Loading from "../../common/loading/Loading";
-import { convertCurrentDateToUserFormat } from "../../../helpers/functions/date-time";
+import {
+  convertCurrentDateToUserFormat,
+  getCurrentDate,
+} from "../../../helpers/functions/date-time";
+import { sendMessage } from "../../../api/contact-service";
 
 const ProjectDetails = () => {
   const { projectId } = useParams();
   const [project, setProject] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [inputValue, setInputValue] = useState(""); //for the input field in invest class
+  const [feedback, setFeedback] = useState(""); //for the input field in invest class
 
   const loadData = async () => {
     try {
@@ -89,9 +95,39 @@ const ProjectDetails = () => {
       86400000
   );
 
-  const handleSupportClick = () => {
-    const adaContainer = document.querySelector(".ada");
+  const handleSupportClick = (ada) => {
+    const adaContainer = document.querySelector(".invest-container");
     adaContainer.style.display = "block";
+  };
+
+  const handleInputSubmit = async (event) => {
+    //for the input field in invest class
+    event.preventDefault();
+    if (
+      inputValue <= 0 ||
+      inputValue > project.totalShares - project.sharesTaken ||
+      inputValue > project.maxSharesPerPerson
+    ) {
+      setFeedback("Bitte geben Sie eine gültige Nummer ein.");
+    } else {
+      const values = {
+        createdAt: getCurrentDate(),
+        name: "ada",
+        email: "",
+        subject: "KAUFANFRAGE",
+        body: `fasfas${inputValue}`,
+      };
+      console.log(inputValue);
+      try {
+        await sendMessage(values);
+        const adaContainer = document.querySelector(".invest-container");
+        adaContainer.style.display = "none";
+        toast("Ihre Anfrage wurde erfolgreich gesendet.", "success");
+      } catch (err) {
+        alert(err.response.data.message);
+      }
+      setFeedback("");
+    }
   };
 
   return (
@@ -216,6 +252,35 @@ const ProjectDetails = () => {
               </div>
               <div className="right">
                 <Button onClick={handleSupportClick}>Unterstützen</Button>
+              </div>
+            </div>
+          </Container>
+          <Spacer height={30} />
+          <Container className="invest-container" style={{ display: "none" }}>
+            <div className="invest">
+              <p>
+                Die maximale Anzahl an Anteilen, die erworben werden können:
+              </p>
+              <p>
+                <span>{project.maxSharesPerPerson}</span>
+              </p>
+              <p>Anzahl verfügbarer Aktien:</p>
+              <p>
+                <span>{project.totalShares - project.sharesTaken}</span>
+              </p>
+              <p>Geben Sie die Anzahl der Aktien ein, die Sie kaufen möchten</p>
+              <div>
+                <div className="input">
+                  <form onSubmit={handleInputSubmit}>
+                    <input
+                      type="number"
+                      value={inputValue}
+                      onChange={(event) => setInputValue(event.target.value)}
+                    />
+                    <button type="submit">Anfrage senden</button>
+                  </form>
+                  {feedback && <p>{feedback}</p>}
+                </div>
               </div>
             </div>
           </Container>

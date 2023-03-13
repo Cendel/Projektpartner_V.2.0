@@ -30,23 +30,23 @@ const AdminProjects = () => {
 
   const columns = [
     {
-      name: "Projecttitle",
-      selector: (row, i) => row.projectTitle,
+      name: "Projekttitle",
+      selector: (row) => row.projectTitle,
       sortable: true,
     },
     {
       name: "Erstellt von",
-      selector: (row, i) => row.createdBy,
+      selector: (row) => row.createdBy,
       sortable: true,
     },
     {
       name: "Fertigstellungsdatum",
-      selector: (row, i) => row.estimatedImplementationDate,
+      selector: (row) => row.estimatedImplementationDate,
       sortable: true,
     },
     {
       name: "Projektstatus",
-      selector: (row, i) => (
+      selector: (row) => (
         <Form.Check
           type="switch"
           id={row.id}

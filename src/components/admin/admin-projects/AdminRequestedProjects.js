@@ -30,13 +30,13 @@ const AdminRequestedProjects = () => {
 
   const columns = [
     {
-      name: "Projecttitle",
-      selector: (row, i) => row.projectTitle,
+      name: "Projekttitle",
+      selector: (row) => row.projectTitle,
       sortable: true,
     },
     {
       name: "Erstellt von",
-      selector: (row, i) => row.createdBy,
+      selector: (row) => row.createdBy,
       sortable: true,
     },
     {
