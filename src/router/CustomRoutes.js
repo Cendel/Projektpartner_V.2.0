@@ -5,6 +5,7 @@ import AdminContactMessageEditPage from "../pages/admin/AdminContactMessageEditP
 import AdminContactMessagesPage from "../pages/admin/AdminContactMessagesPage";
 import AdminProjectsPage from "../pages/admin/AdminProjectsPage";
 import AdminRequestedProjectsPage from "../pages/admin/AdminRequestedProjectsPage";
+import AdminShareEditPage from "../pages/admin/AdminShareEditPage";
 import AdminUsersPage from "../pages/admin/AdminUsersPage";
 import AuthPage from "../pages/common/AuthPage";
 import NotFoundPage from "../pages/common/NotFoundPage";
@@ -51,6 +52,10 @@ const CustomRoutes = () => {
               element={<AdminContactMessageEditPage />}
             />
           </Route>
+          <Route
+            path="admin-share-edit/:projectId"
+            element={<AdminShareEditPage />}
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

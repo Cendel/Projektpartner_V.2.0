@@ -47,7 +47,7 @@ const ContactMessages = () => {
   };
 
   return (
-    <Container className="contact-messages">
+    <Container>
       <Row>
         <Col>
           <DataTable

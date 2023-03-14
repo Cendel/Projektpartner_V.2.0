@@ -77,11 +77,11 @@ const AdminRequestedProjects = () => {
   };
 
   return (
-    <Container className="contact-messages">
+    <Container>
       <Row>
         <Col>
           <DataTable
-            title="Projekte"
+            title="Projektvorschläge"
             columns={columns}
             data={projects}
             progressPending={loading}

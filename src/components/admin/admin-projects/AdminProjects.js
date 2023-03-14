@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Form } from "react-bootstrap";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import DataTable from "react-data-table-component";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   getProjectsByStatus,
   updateProjectStatus,
@@ -16,7 +16,6 @@ const AdminProjects = () => {
   const handleStatusChange = async (projectId, checked) => {
     try {
       await updateProjectStatus(projectId, checked);
-      // Update the project status in the local state
       const updatedProjects = projects.map((project) =>
         project.id === projectId
           ? { ...project, projectStatus: checked }
@@ -56,6 +55,18 @@ const AdminProjects = () => {
         />
       ),
     },
+    {
+      name: "Aktien",
+      selector: (row) => (
+        <Button
+          as={Link}
+          to={`/admin-share-edit/${row.id}`}
+          style={{ width: "2rem", padding: "0.1rem", fontSize: "0.7rem" }}
+        >
+          {row.sharesTaken}
+        </Button>
+      ),
+    },
   ];
 
   useEffect(() => {
@@ -77,7 +88,7 @@ const AdminProjects = () => {
   };
 
   return (
-    <Container className="contact-messages">
+    <Container>
       <Row>
         <Col>
           <DataTable

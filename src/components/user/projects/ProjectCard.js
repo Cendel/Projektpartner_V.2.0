@@ -12,6 +12,10 @@ const ProjectCard = (props) => {
     projectImage,
     createdBy,
     createdDate,
+    sharesTaken,
+    shareValue,
+    projectValue,
+    totalShares,
   } = props;
   const daysUntilImplementation = Math.round(
     (new Date(estimatedImplementationDate) - new Date()) / 86400000
@@ -35,7 +39,7 @@ const ProjectCard = (props) => {
         </div>
         <div className="progress">
           <ProgressBar
-            striped
+            striped={false}
             variant="success"
             now={new Date(totalDays - daysUntilImplementation)}
             max={new Date(totalDays)}
@@ -53,6 +57,25 @@ const ProjectCard = (props) => {
           <h5 className="under-progress">
             <span>noch</span> {daysUntilImplementation} Tage
           </h5>
+        </div>
+
+        <div className="progress">
+          <ProgressBar
+            className="progress-bar-card"
+            animated={false}
+            striped={true}
+            now={sharesTaken}
+            max={totalShares}
+            label={""}
+            variant={"success"}
+          />
+        </div>
+        <div className="progress-info">
+          <h5 className="under-progress" style={{ textAlign: "left" }}>
+            {(sharesTaken * shareValue).toLocaleString()} €
+          </h5>
+
+          <h5 className="under-progress">{projectValue.toLocaleString()} €</h5>
         </div>
       </div>
     </div>

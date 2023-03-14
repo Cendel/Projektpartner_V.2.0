@@ -33,13 +33,6 @@ export const deleteProject = (id) => {
   return axios.delete(`${API_URL}/Projects/${id}`);
 };
 
-export const getProjectsByPage = (
-  page = 0,
-  size = 20,
-  sort = "id",
-  direction = "DESC"
-) => {
-  return axios.get(
-    `${API_URL}/projects/pages?page=${page}&size=${size}&sort=${sort}&direction=${direction}`
-  );
+export const updateParticipantList = (id, values) => {
+  return axios.post(`${API_URL}/Projects/${id}.participantList`, values);
 };

@@ -229,15 +229,16 @@ const ProjectDetails = () => {
               <div className="left">
                 <ProgressBar
                   className="progress"
-                  animated={true}
-                  now={project.sharesTaken * project.shareValue}
-                  max={project.projectValue}
+                  animated={false}
+                  striped={true}
+                  now={project.sharesTaken}
+                  max={project.totalShares}
                   label={""}
                   variant={"success"}
                 />
                 <div className="numeric-info">
                   <div>
-                    <h5>{(project.sharesTaken * 300).toLocaleString()} €</h5>
+                    <h5>{(project.sharesTaken * project.shareValue).toLocaleString()} €</h5>
                     <span>Finanzierung bereitgestellt</span>
                   </div>
                   <div>
@@ -258,12 +259,17 @@ const ProjectDetails = () => {
           <Spacer height={30} />
           <Container className="invest-container" style={{ display: "none" }}>
             <div className="invest">
+              <p>Aktienwert:</p>
+              <p>
+                <span>{project.shareValue} €</span>
+              </p>
               <p>
                 Die maximale Anzahl an Anteilen, die erworben werden können:
               </p>
               <p>
                 <span>{project.maxSharesPerPerson}</span>
               </p>
+
               <p>Anzahl verfügbarer Aktien:</p>
               <p>
                 <span>{project.totalShares - project.sharesTaken}</span>
