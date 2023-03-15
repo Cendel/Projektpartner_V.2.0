@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Button, Col, Container } from "react-bootstrap";
+import { Col, Container } from "react-bootstrap";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
+import logo from "../../../assets/img/logo/logo_auth.png";
 import "./auth.scss";
 
 const Auth = () => {
@@ -10,6 +11,8 @@ const Auth = () => {
   return (
     <Container className="board ">
       <Col xs={10} sm={8} md={6} lg={4}>
+        <img src={logo} alt="Projektpartner" className="logo-auth" />
+
         {!register ? <LoginForm /> : <RegisterForm />}
         <h5 className="mt-5 command-line">
           {!register
