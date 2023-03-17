@@ -1,0 +1,450 @@
+/* SWEETALERT */
+.project-details-main-component {
+  position: relative;
+}
+.project-details-main-component .main-title {
+  width: 100%;
+  text-align: center;
+}
+.project-details-main-component .main-title h1 {
+  margin-top: 6rem;
+  font-size: 5rem;
+  color: #3d5a80;
+  font-weight: 900;
+  opacity: 0.7;
+  text-transform: uppercase;
+}
+@media (max-width: 879px) {
+  .project-details-main-component .main-title h1 {
+    font-size: 3rem;
+  }
+}
+@media (max-width: 450px) {
+  .project-details-main-component .main-title h1 {
+    font-size: 2.7rem;
+  }
+}
+@media (max-width: 350px) {
+  .project-details-main-component .main-title h1 {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 300px) {
+  .project-details-main-component .main-title h1 {
+    font-size: 1rem;
+  }
+}
+.project-details-main-component .main-title h4 {
+  padding: 0 2rem;
+  color: #293241;
+}
+.project-details-main-component .project-screen-image {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 0.3s ease;
+  z-index: -2;
+}
+@media (max-width: 790px) {
+  .project-details-main-component .project-screen-image {
+    width: auto;
+    transform: translate(-50%, -50%);
+  }
+}
+.project-details-main-component .project-details-container {
+  position: relative;
+  z-index: -2;
+}
+.project-details-main-component .project-details-container .imageRounded {
+  transform: rotate(180deg);
+  position: static;
+  margin: -30px 0 0 0;
+  width: 100vw;
+  -o-object-fit: fill;
+     object-fit: fill;
+  max-width: 100%;
+  filter: invert(-89%) sepia(8%) saturate(9294%) hue-rotate(-552deg) brightness(992%) contrast(87%);
+  opacity: 0.5;
+}
+.project-details-main-component .project-details {
+  margin-top: 100vh;
+}
+.project-details-main-component .project-details .title {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0;
+}
+.project-details-main-component .project-details .title h5 {
+  background-color: #293241;
+  color: #e0fbfc;
+  font-size: 1rem;
+  width: auto;
+  padding: 0.3rem 1rem 0.3rem 1rem;
+  margin-bottom: 0;
+  box-shadow: -6px 0 0 1px #3d5a80;
+}
+.project-details-main-component .project-details .title span {
+  flex: 3;
+}
+.project-details-main-component .project-details .details-box {
+  background-color: #e0fbfc;
+  padding: 3rem;
+  box-shadow: 0px 0px 5px 0.5px #98c1d9;
+  border-radius: 0.3rem;
+  color: #293241;
+}
+.project-details-main-component .project-details .details-box .first-part {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2rem;
+  padding-bottom: 1rem;
+  flex-wrap: nowrap;
+  position: relative;
+}
+@media (max-width: 879px) {
+  .project-details-main-component .project-details .details-box .first-part {
+    flex-direction: column;
+  }
+}
+.project-details-main-component .project-details .details-box .first-part .info-left {
+  text-align: justify;
+}
+.project-details-main-component .project-details .details-box .first-part .info-right {
+  text-align: right;
+  color: #293241;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+@media (max-width: 879px) {
+  .project-details-main-component .project-details .details-box .first-part .info-right {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+.project-details-main-component .project-details .details-box .first-part .info-right a {
+  text-decoration: none;
+  cursor: pointer;
+}
+.project-details-main-component .project-details .details-box .first-part .info-right .location {
+  align-self: center;
+}
+.project-details-main-component .project-details .details-box .first-part .info-right .location svg {
+  font-size: 1.5rem;
+}
+.project-details-main-component .project-details .details-box .first-part .info-right .location svg,
+.project-details-main-component .project-details .details-box .first-part .info-right .location h5 {
+  width: 100%;
+  color: #9fad3c;
+}
+.project-details-main-component .project-details .details-box .first-part .info-right .location h5 {
+  font-size: 1rem;
+}
+.project-details-main-component .project-details .details-box .second-part {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2rem;
+  padding-bottom: 1rem;
+  flex-wrap: wrap;
+  position: relative;
+}
+.project-details-main-component .project-details .details-box .second-part .left {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+.project-details-main-component .project-details .details-box .second-part .left .progress {
+  width: 100%;
+}
+.project-details-main-component .project-details .details-box .second-part .left .numeric-info {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2rem;
+  width: 100%;
+  justify-content: space-between;
+  position: relative;
+}
+@media (max-width: 879px) {
+  .project-details-main-component .project-details .details-box .second-part .left .numeric-info {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.project-details-main-component .project-details .details-box .second-part .left .numeric-info div {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  align-items: center;
+}
+.project-details-main-component .project-details .details-box .second-part .left .numeric-info div h4 {
+  font-size: 2rem;
+}
+.project-details-main-component .project-details .details-box .second-part .right {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  align-items: flex-end;
+}
+@media (max-width: 879px) {
+  .project-details-main-component .project-details .details-box .second-part .right {
+    flex-direction: row;
+    width: 100%;
+  }
+}
+.project-details-main-component .project-details .details-box .second-part .right button {
+  color: #e0fbfc;
+  background-color: #3d5a80;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  transform-style: preserve-3d;
+  border: none;
+}
+.project-details-main-component .project-details .details-box .second-part .right button:hover {
+  box-shadow: 0 1px 5px #9fad3c;
+  background-color: #9fad3c;
+  color: #e0fbfc;
+}
+@media (max-width: 879px) {
+  .project-details-main-component .project-details .details-box .second-part .right button {
+    width: 100%;
+  }
+}
+@media (max-width: 300px) {
+  .project-details-main-component .project-details .details-box .second-part .right button {
+    font-size: 0.5rem;
+    padding: 0.2rem;
+  }
+}
+.project-details-main-component .support {
+  background-color: #98c1d9;
+  padding: 3rem;
+  box-shadow: 0px 0px 5px 0.5px #3d5a80;
+  border-radius: 0.3rem;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2rem;
+  padding-bottom: 1rem;
+  flex-wrap: wrap;
+  position: relative;
+}
+.project-details-main-component .support .left {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+.project-details-main-component .support .left .progress {
+  width: 100%;
+}
+.project-details-main-component .support .left .numeric-info {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2rem;
+  width: 100%;
+  justify-content: space-between;
+  position: relative;
+}
+@media (max-width: 879px) {
+  .project-details-main-component .support .left .numeric-info {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.project-details-main-component .support .left .numeric-info div {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  align-items: center;
+}
+.project-details-main-component .support .left .numeric-info div h4 {
+  font-size: 2rem;
+}
+.project-details-main-component .support .right {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  align-items: flex-end;
+}
+@media (max-width: 879px) {
+  .project-details-main-component .support .right {
+    flex-direction: row;
+    width: 100%;
+  }
+}
+.project-details-main-component .support .right button {
+  color: #e0fbfc;
+  background-color: #3d5a80;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  transform-style: preserve-3d;
+  border: none;
+}
+.project-details-main-component .support .right button:hover {
+  box-shadow: 0 1px 5px #9fad3c;
+  background-color: #9fad3c;
+  color: #e0fbfc;
+}
+.project-details-main-component .support .right button:hover {
+  background-color: #9fad3c;
+  border: none;
+}
+@media (max-width: 879px) {
+  .project-details-main-component .support .right button {
+    width: 100%;
+  }
+}
+@media (max-width: 300px) {
+  .project-details-main-component .support .right button {
+    font-size: 0.5rem;
+    padding: 0.2rem;
+  }
+}
+.project-details-main-component .invest-container {
+  transition: all 0.5s ease-in-out;
+  transform-style: preserve-3d;
+}
+.project-details-main-component .invest-container .invest {
+  background-color: #98c1d9;
+  padding: 3rem;
+  box-shadow: 0px 0px 5px 0.5px #3d5a80;
+  border-radius: 0.3rem;
+}
+.project-details-main-component .invest-container .invest p {
+  color: #293241;
+  width: 100%;
+  text-align: center;
+}
+.project-details-main-component .invest-container .invest p span {
+  font-weight: 600;
+}
+.project-details-main-component .invest-container .invest .input form {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+.project-details-main-component .invest-container .invest .input form input[type=number] {
+  padding: 0.5rem;
+  border: 2px solid #ccc;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+}
+.project-details-main-component .invest-container .invest .input form input[type=number]:focus {
+  outline: none;
+  border-color: #3d5a80;
+}
+.project-details-main-component .invest-container .invest .input form button[type=submit] {
+  color: #e0fbfc;
+  background-color: #3d5a80;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  transform-style: preserve-3d;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+}
+.project-details-main-component .invest-container .invest .input form button[type=submit]:hover {
+  box-shadow: 0 1px 5px #9fad3c;
+  background-color: #9fad3c;
+  color: #e0fbfc;
+}
+.project-details-main-component .invest-container .invest .input p {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #293241;
+}
+.project-details-main-component .accordion-info {
+  background-color: #e0fbfc;
+  padding: 3rem;
+  box-shadow: 0px 0px 5px 0.5px #98c1d9;
+  border-radius: 0.3rem;
+}
+.project-details-main-component .project-details-edit-buttons {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-top: 3rem;
+}
+.project-details-main-component .project-details-edit-buttons .edit-button {
+  color: #e0fbfc;
+  background-color: #3d5a80;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  transform-style: preserve-3d;
+  border: none;
+  width: 15rem;
+}
+.project-details-main-component .project-details-edit-buttons .edit-button:hover {
+  box-shadow: 0 1px 5px #9fad3c;
+  background-color: #9fad3c;
+  color: #e0fbfc;
+}
+.project-details-main-component .project-details-edit-buttons button {
+  width: 15rem;
+}
+.project-details-main-component .project-details-edit-buttons button:nth-child(1) {
+  color: #e0fbfc;
+  background-color: #3d5a80;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  transform-style: preserve-3d;
+  border: none;
+}
+.project-details-main-component .project-details-edit-buttons button:nth-child(1):hover {
+  box-shadow: 0 1px 5px #9fad3c;
+  background-color: #9fad3c;
+  color: #e0fbfc;
+}
+.project-details-main-component .project-details-edit-buttons button:nth-child(1):hover {
+  background-color: #ee6c4d;
+  color: #e0fbfc;
+}
+@media (max-width: 515px) {
+  .project-details-main-component .project-details-edit-buttons {
+    flex-direction: column;
+  }
+  .project-details-main-component .project-details-edit-buttons button {
+    width: 100%;
+  }
+  .project-details-main-component .project-details-edit-buttons .edit-button {
+    width: 100%;
+  }
+}/*# sourceMappingURL=projectDetails.css.map */

@@ -1,0 +1,145 @@
+/* SWEETALERT */
+.offcanvas-body,
+.offcanvas-header {
+  background-color: #e0fbfc;
+}
+
+.navbar {
+  background-color: #98c1d9;
+  color: #ee6c4d;
+}
+.navbar button {
+  border: none;
+}
+
+.navbar-toggler:focus {
+  color: #98c1d9;
+}
+
+.navbar .toggle {
+  border: none;
+  color: #98c1d9;
+}
+@media (min-width: 890px) {
+  .navbar .toggle {
+    display: none;
+  }
+}
+
+.offCanvas {
+  background-color: #98c1d9;
+}
+.offCanvas .title {
+  color: #293241;
+}
+.offCanvas .active {
+  color: #9fad3c;
+}
+.offCanvas a {
+  text-decoration: none;
+}
+.offCanvas ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  padding: 0.5rem 0 0.5rem 0.5rem;
+}
+.offCanvas ul:hover {
+  background-color: #98c1d9;
+}
+.offCanvas ul:hover a {
+  color: #e0fbfc;
+}
+.offCanvas .separator {
+  padding-top: 2rem;
+  border-bottom: 1px solid #98c1d9;
+  margin-bottom: 1rem;
+}
+
+.navbar .userName {
+  background-color: #98c1d9;
+  color: #293241;
+  margin-left: 1rem;
+  position: relative;
+}
+.navbar .userName a {
+  padding-left: 1rem;
+}
+
+.dropdown .dropdown-menu {
+  padding-left: 0;
+  margin: 0;
+  background-color: #98c1d9;
+  border-radius: 5px;
+}
+.dropdown .dropdown-menu a:hover {
+  background-color: #98c1d9;
+  color: #e0fbfc;
+}
+
+.logo_header {
+  width: 70%;
+  margin-top: -0.6rem;
+}
+
+.navbar .menubar {
+  flex: 1;
+}
+@media (max-width: 890px) {
+  .navbar .menubar {
+    display: none;
+  }
+}
+.navbar .menubar .navbar-nav a {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-left: 3rem;
+}
+@media (max-width: 944px) {
+  .navbar .menubar .navbar-nav a {
+    margin-left: 2rem;
+  }
+}
+.navbar .menubar .project-form-button {
+  width: 9rem;
+}
+@media (max-width: 1129px) {
+  .navbar .menubar .project-form-button {
+    width: 10rem;
+  }
+}
+@media (max-width: 998px) {
+  .navbar .menubar .project-form-button {
+    width: 12rem;
+  }
+}
+@media (max-width: 930px) {
+  .navbar .menubar .project-form-button {
+    width: 12rem;
+  }
+}
+@media (max-width: 946px) {
+  .navbar .menubar .project-form-button {
+    width: 11rem;
+  }
+}
+.navbar .menubar .project-form-button button {
+  font-size: 0.8rem;
+  padding: 0.4rem;
+  margin: 0;
+  color: #98c1d9;
+  background-color: #3d5a80;
+  transition: all 0.7s ease;
+  opacity: 1;
+}
+.navbar .menubar .project-form-button button:hover {
+  color: #98c1d9;
+  background-color: #293241;
+}
+
+.project-form-button-navbar button {
+  margin-top: 1rem;
+}
+.project-form-button-navbar button:hover {
+  background-color: #9fad3c;
+}/*# sourceMappingURL=header.css.map */

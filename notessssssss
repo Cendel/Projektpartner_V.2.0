@@ -1,44 +1,34 @@
-import React from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
-import { Link, useLocation } from "react-router-dom";
-import "./sidebar.scss";
-
-const Sidebar = () => {
-  const { pathname } = useLocation();
-
-  return (
-    <Navbar bg="primary" expand="lg" className="admin-navbar" variant="dark">
-      <Container>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link
-              as={Link}
-              to="/admin/users"
-              active={pathname.startsWith("/admin/users")}
-            >
-              Benutzer
-            </Nav.Link>
-            <Nav.Link
-              as={Link}
-              to="/admin/projects"
-              active={pathname.startsWith("/admin/vehicles")}
-            >
-              Projekte
-            </Nav.Link>
-
-            <Nav.Link
-              as={Link}
-              to="/admin/messages"
-              active={pathname.startsWith("/admin/contact-messages")}
-            >
-              Kontakt-Nachrichten
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-  );
-};
-
-export default Sidebar;
+import React from "react"; import { Button } from "react-bootstrap"; import
+"./Profile.scss"; function Profile() { return (
+<div className="profile-user">
+  <div className="profile-container">
+    <div className="profile-card">
+      <h2>Kurzinfo</h2>
+      <div className="short-info-fields">
+        <div className="field"><span>Name:</span> Mark D</div>
+        <div className="field"><span>Beruf:</span> Leasingspezialist</div>
+        <div className="field">
+          <span>Ort:</span> Mannheim, Baden-Württemberg
+        </div>
+        <a className="projects-button">Projekte</a>
+      </div>
+    </div>
+    <div className="profile-card">
+      <h2>Kontaktinformationen</h2>
+      <div className="contact-info-fields">
+        <div className="field"><span>E-Mail:</span> markd@markd.de</div>
+        <div className="field"><span>Telefon:</span> 0621 111-1111</div>
+        <div className="field"><span>Website:</span> www.markd.de</div>
+      </div>
+    </div>
+  </div>
+  <div className="buttons">
+    <div className="three-buttons">
+      <Button>Erstellte Projekte</Button>
+      <Button>Teilnehmende Projekte</Button>
+      <Button>Verfolgte Projekte</Button>
+    </div>
+    <div className="edit-button"><Button>Profil bearbeiten</Button></div>
+  </div>
+</div>
+); } export default Profile;

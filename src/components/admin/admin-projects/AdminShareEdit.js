@@ -16,7 +16,7 @@ import {
   updateProject,
 } from "../../../api/project-service.";
 import * as Yup from "yup";
-import "./AdminShareEdit.scss";
+
 import { toast } from "../../../helpers/functions/swal";
 import { useFormik } from "formik";
 
@@ -166,13 +166,14 @@ const AdminShareEdit = () => {
             </FloatingLabel>
           </Form.Group>
           <Button
+            style={{ marginTop: "1rem " }}
             variant="primary"
             type="submit"
             className="submit-button"
             disabled={!(formik.dirty && formik.isValid) || loading}
           >
             {loading && <Spinner animation="border" size="sm" />}
-            Submit
+            Aktienkauf bestätigen
           </Button>
         </Row>
       </Form>

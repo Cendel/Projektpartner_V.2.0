@@ -1,0 +1,103 @@
+/* SWEETALERT */
+.contact-contact-form {
+  margin: 0;
+  padding: 6rem 0 12rem 0;
+  box-shadow: 0 4px 8px #3d5a80;
+}
+.contact-contact-form div {
+  padding: 0;
+  margin: 0;
+}
+.contact-contact-form .logo_contact {
+  width: 20rem;
+  padding-left: 4rem;
+}
+.contact-contact-form p {
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 4rem 4rem 2rem 4rem;
+  color: #293241;
+  text-align: justify;
+}
+.contact-contact-form .contact-contact-info {
+  width: 100%;
+  padding: 3rem;
+}
+.contact-contact-form .contact-contact-info ul li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+.contact-contact-form .contact-contact-info ul svg {
+  color: #3d5a80;
+  padding-right: 0.1rem;
+}
+.contact-contact-form .contact-contact-info ul a {
+  text-decoration: none;
+  color: #98c1d9;
+}
+.contact-contact-form .contact-contact-info ul a:hover {
+  color: #9fad3c;
+}
+.contact-contact-form .form-group {
+  padding: 0rem 1rem;
+  position: relative;
+}
+.contact-contact-form .form-group label {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #293241;
+  margin-bottom: 10px;
+  display: block;
+}
+.contact-contact-form .form-group input[type=text],
+.contact-contact-form .form-group input[type=email],
+.contact-contact-form .form-group textarea {
+  width: 100%;
+  border: none;
+  background-color: #98c1d9;
+  padding: 1.5rem;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  box-shadow: 0 2px 4px #293241;
+  transition: all 0.01s ease;
+}
+.contact-contact-form .form-group input[type=text]:focus,
+.contact-contact-form .form-group input[type=email]:focus,
+.contact-contact-form .form-group textarea:focus {
+  outline: none;
+  box-shadow: 0 0 3px #9fad3c, 0 2px 4px #293241;
+  background-color: #e0fbfc;
+}
+.contact-contact-form .form-group input[type=text],
+.contact-contact-form .form-group input[type=email] {
+  height: 3.2rem;
+}
+.contact-contact-form .form-group textarea {
+  resize: none;
+  height: 10rem;
+}
+.contact-contact-form button {
+  margin: 1rem 1rem 0 1rem;
+  background-color: #e0fbfc;
+  color: #9fad3c;
+  border-color: #98c1d9;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  opacity: 1;
+}
+.contact-contact-form button:hover {
+  background-color: #3d5a80;
+  border-color: #e0fbfc;
+}
+.contact-contact-form button[disabled] {
+  background-color: #e0fbfc;
+  border-color: #98c1d9;
+  cursor: not-allowed;
+  color: #9fad3c;
+  opacity: 0.5;
+}/*# sourceMappingURL=contactForm.css.map */

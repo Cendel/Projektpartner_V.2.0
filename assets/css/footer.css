@@ -1,0 +1,71 @@
+/* SWEETALERT */
+.appFooter {
+  background-color: #293241;
+  padding: 2rem 0;
+}
+.appFooter div {
+  padding: 0;
+  margin: 0;
+}
+.appFooter .footerRow {
+  padding: 0 3rem;
+}
+@media (max-width: 991px) {
+  .appFooter {
+    text-align: center;
+  }
+  .appFooter h2 {
+    margin-top: 2rem;
+  }
+}
+.appFooter img {
+  margin-bottom: 2rem;
+}
+.appFooter ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+@media (max-width: 991px) {
+  .appFooter ul {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+.appFooter ul .active {
+  color: #9fad3c;
+}
+.appFooter ul a {
+  color: #98c1d9;
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+.appFooter ul a:hover {
+  color: #9fad3c;
+}
+.appFooter ul a svg {
+  font-size: 1.2rem;
+}
+.appFooter h2 {
+  font-weight: 800;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #98c1d9;
+}
+.appFooter .logo {
+  width: 10rem;
+  margin-top: -0.6rem;
+  margin-bottom: 1rem;
+}
+.appFooter p {
+  color: #98c1d9;
+  font-size: 0.8rem;
+}/*# sourceMappingURL=footer.css.map */

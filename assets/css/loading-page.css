@@ -1,0 +1,21 @@
+/* SWEETALERT */
+.loading-page {
+  background-color: #3d5a80;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 0;
+}
+.loading-page img {
+  width: 200px;
+  height: auto;
+}
+.loading-page .spinner-border {
+  width: 15rem;
+  height: 15rem;
+  color: white !important;
+  position: absolute;
+}/*# sourceMappingURL=loading-page.css.map */

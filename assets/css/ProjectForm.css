@@ -1,0 +1,92 @@
+/* SWEETALERT */
+.project-form {
+  color: #3d5a80;
+  padding: 4rem 1rem 6rem 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.project-form div {
+  padding: 0;
+  margin: 0;
+}
+.project-form .first-row,
+.project-form .second-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.project-form .worum textarea,
+.project-form .ziele textarea,
+.project-form .wer textarea,
+.project-form .kurz textarea,
+.project-form .lang textarea {
+  height: 200px;
+  resize: vertical;
+  color: #293241;
+}
+.project-form .projectImage {
+  padding-top: 1rem;
+}
+.project-form .projectImage input[type=file],
+.project-form .attachments input[type=file] {
+  margin-top: 0.5rem;
+}
+.project-form .projectImage label,
+.project-form .attachments label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+}
+.project-form .display {
+  margin-top: 1rem;
+}
+.project-form .display div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.project-form .display div button {
+  margin-right: 0.5rem;
+  font-size: 0.6rem;
+  padding: 0.1rem;
+}
+.project-form .display div span {
+  font-size: 0.9rem;
+}
+.project-form .display label {
+  font-weight: 500;
+}
+.project-form .submit-button {
+  margin-top: 3rem;
+  font-weight: 600;
+  width: 100%;
+  color: #e0fbfc;
+  background-color: #3d5a80;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  transform-style: preserve-3d;
+  border: none;
+}
+.project-form .submit-button:hover {
+  box-shadow: 0 1px 5px #9fad3c;
+  background-color: #9fad3c;
+  color: #e0fbfc;
+}
+.project-form .form-control:disabled,
+.project-form .form-control[readonly] {
+  background-color: #ee6c4d;
+  opacity: 1;
+}
+.project-form .form-control:focus {
+  border-color: #3d5a80;
+  box-shadow: 0 0 0.5rem 0.05rem #e0fbfc;
+}
+.project-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+}
+.project-form input[type=file]::file-selector-button {
+  min-width: 12rem;
+  background-color: #98c1d9;
+}/*# sourceMappingURL=ProjectForm.css.map */

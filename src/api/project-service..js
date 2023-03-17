@@ -21,12 +21,14 @@ export const getProjectsByStatus = (status) => {
   return axios.get(`${API_URL}/Projects?projectStatus=${status}`);
 };
 
-export const updateProjectStatus = (id, value) => {
-  return axios.put(`${API_URL}/Projects/${id}`, { projectStatus: value });
-};
-
 export const updateProject = (id, values) => {
   return axios.put(`${API_URL}/Projects/${id}`, values);
+};
+
+// ADMIN ENDPOINTS
+
+export const updateProjectStatus = (id, value) => {
+  return axios.put(`${API_URL}/Projects/${id}`, { projectStatus: value });
 };
 
 export const deleteProject = (id) => {

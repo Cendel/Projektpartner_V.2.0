@@ -1,0 +1,30 @@
+/* SWEETALERT */
+@media (min-width: 992px) {
+  .admin-navbar {
+    height: 100vh;
+    align-items: flex-start !important;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+  }
+}
+@media (min-width: 992px) {
+  .admin-navbar .container {
+    flex-direction: column;
+  }
+}
+.admin-navbar .navbar-nav {
+  padding-top: 1rem;
+  gap: 1rem;
+}
+@media (min-width: 992px) {
+  .admin-navbar .navbar-nav {
+    flex-direction: column !important;
+  }
+}
+.admin-navbar .navbar-nav button {
+  color: #9fad3c;
+}
+.admin-navbar .navbar-nav button:hover {
+  color: #98c1d9;
+}/*# sourceMappingURL=sidebar.css.map */

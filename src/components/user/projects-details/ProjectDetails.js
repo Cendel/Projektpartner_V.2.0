@@ -112,12 +112,12 @@ const ProjectDetails = () => {
     } else {
       const values = {
         createdAt: getCurrentDate(),
-        name: "ada",
+        name: "",
         email: "",
         subject: "KAUFANFRAGE",
-        body: `fasfas${inputValue}`,
+        body: `Der Benutzer XXX mit der ID-Nummer XXX fordert ${inputValue} Anteile an dem Projekt  ${project.projectTitle} mit der ID ${projectId} an.`,
       };
-      console.log(inputValue);
+      setInputValue("");
       try {
         await sendMessage(values);
         const adaContainer = document.querySelector(".invest-container");
@@ -238,7 +238,12 @@ const ProjectDetails = () => {
                 />
                 <div className="numeric-info">
                   <div>
-                    <h5>{(project.sharesTaken * project.shareValue).toLocaleString()} €</h5>
+                    <h5>
+                      {(
+                        project.sharesTaken * project.shareValue
+                      ).toLocaleString()}{" "}
+                      €
+                    </h5>
                     <span>Finanzierung bereitgestellt</span>
                   </div>
                   <div>

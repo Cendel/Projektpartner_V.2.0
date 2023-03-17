@@ -1,0 +1,10 @@
+/* SWEETALERT */
+.loading {
+  height: 25rem;
+  position: relative;
+  padding: 2rem;
+  text-align: center;
+}
+.loading .spinner-border {
+  color: #9fad3c;
+}/*# sourceMappingURL=loading.css.map */
