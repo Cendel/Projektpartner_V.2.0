@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Form } from "react-bootstrap";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import DataTable from "react-data-table-component";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   getProjectsByStatus,
   updateProjectStatus,
@@ -55,6 +55,18 @@ const AdminRequestedProjects = () => {
           checked={row.projectStatus}
           onChange={(e) => handleStatusChange(row.id, e.target.checked)}
         />
+      ),
+    },
+    {
+      name: "Aktien",
+      selector: (row) => (
+        <Button
+          as={Link}
+          to={`/admin-share-edit/${row.id}`}
+          style={{ width: "2rem", padding: "0.1rem", fontSize: "0.7rem" }}
+        >
+          {row.sharesTaken}
+        </Button>
       ),
     },
   ];

@@ -55,6 +55,7 @@ const RegisterForm = ({ setKey }) => {
 
   return (
     <Form noValidate onSubmit={formik.handleSubmit} className="">
+      <h3>Registrieren</h3>
       <Form.Group className="">
         <FloatingLabel label="Name" className="">
           <Form.Control
