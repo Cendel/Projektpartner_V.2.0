@@ -23,9 +23,9 @@ export const updateUserById = (id, values) => {
 // ADMIN ENDPOINT
 
 export const getUsers = () => {
-  return axios.get(`${API_URL}/users`);
+  return axios.get(`https://640781398ee73db92e2b1261.mockapi.io/user`);
 };
 
-export const getProjectList = () => {
-  return axios.get(`https://640781398ee73db92e2b1261.mockapi.io/user`);
+export const deleteUser = (id) => {
+  return axios.delete(`https://640781398ee73db92e2b1261.mockapi.io/user/${id}`);
 };

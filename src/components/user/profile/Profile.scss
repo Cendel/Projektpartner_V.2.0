@@ -21,6 +21,7 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 30px;
             width: 45%;
+            color: v.$color1;
 
             h2 {
                 color: v.$color1;
@@ -75,11 +76,21 @@
         }
     }
 
+    .profile-about {
+        margin: auto;
+        max-width: 800px;
+        background-color: v.$color6;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        color: v.$color1;
+    }
+
     .buttons {
         margin: 3rem 10rem 3rem 10rem;
 
         @media(max-width: 512px) {
-            margin: 0 1rem 3rem 1rem;
+            margin: 2rem 1rem 3rem 1rem;
         }
 
         button {

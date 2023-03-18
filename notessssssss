@@ -1,34 +1,26 @@
-import React from "react"; import { Button } from "react-bootstrap"; import
-"./Profile.scss"; function Profile() { return (
-<div className="profile-user">
-  <div className="profile-container">
-    <div className="profile-card">
-      <h2>Kurzinfo</h2>
-      <div className="short-info-fields">
-        <div className="field"><span>Name:</span> Mark D</div>
-        <div className="field"><span>Beruf:</span> Leasingspezialist</div>
-        <div className="field">
-          <span>Ort:</span> Mannheim, Baden-Württemberg
-        </div>
-        <a className="projects-button">Projekte</a>
-      </div>
-    </div>
-    <div className="profile-card">
-      <h2>Kontaktinformationen</h2>
-      <div className="contact-info-fields">
-        <div className="field"><span>E-Mail:</span> markd@markd.de</div>
-        <div className="field"><span>Telefon:</span> 0621 111-1111</div>
-        <div className="field"><span>Website:</span> www.markd.de</div>
-      </div>
-    </div>
-  </div>
-  <div className="buttons">
-    <div className="three-buttons">
-      <Button>Erstellte Projekte</Button>
-      <Button>Teilnehmende Projekte</Button>
-      <Button>Verfolgte Projekte</Button>
-    </div>
-    <div className="edit-button"><Button>Profil bearbeiten</Button></div>
-  </div>
-</div>
-); } export default Profile;
+name: props.name,
+    email: props.email,
+    password: "",
+    role: props.role,
+    job: props.job,
+    location: props.location,
+    phone: props.phone,
+    website: props.website,
+    about: props.about,
+    projectsCreated: props.projectsCreated,
+    projectsParticipated: props.projectsParticipated,
+    projectsFollowed: props.projectsFollowed,
+
+
+
+    name: Yup.string().required("Bitte geben den Namen ein."),
+    email: Yup.string()
+      .email("Bitte geben Sie eine gültige E-Mail-Adresse ein.")
+      .required("Bitte geben Sie eine E-mail-Adresse ein."),
+    password: Yup.string()
+      .min(8, "Bitte geben Sie mindestens 8 Zeichen ein.")
+      .matches(/[a-z]+/, "Ein Kleinbuchstabe")
+      .matches(/[A-Z]+/, "Ein Großbuchstabe")
+      .matches(/[@$!%*#?&.]+/, "Ein besonderes Zeichen")
+      .matches(/\d+/, "Eine Nummer"),
+    roles: Yup.string().

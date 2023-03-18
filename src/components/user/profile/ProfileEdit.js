@@ -17,6 +17,7 @@ const ProfileEdit = (props) => {
     location: props.location,
     phone: props.phone,
     website: props.website,
+    about: props.about,
   };
 
   const validationSchema = Yup.object({
@@ -83,6 +84,10 @@ const ProfileEdit = (props) => {
             <Form.Control type="text" {...formik.getFieldProps("website")} />
           </Form.Group>
         </Row>
+        <Form.Group as={Col} className="mb-3">
+            <Form.Label>Über mich</Form.Label>
+            <Form.Control type="text" as="textarea" {...formik.getFieldProps("about")} />
+          </Form.Group>
 
         <Button
           type="submit"

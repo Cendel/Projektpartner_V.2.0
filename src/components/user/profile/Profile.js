@@ -18,6 +18,7 @@ function Profile() {
     email: "klaus_r@hotmail.com",
     phone: "",
     website: "www.google.com",
+    about: "Hallo!",
     projectsCreated: ["6", "2", "3"],
     projectsParticipated: ["5", "7", "8"],
     projectsFollowed: ["1", "4", "7"],
@@ -73,7 +74,7 @@ function Profile() {
               <span>Telefon:</span> {user.phone}
             </div>
             <div className="field">
-              <span>Website:</span>{" "}
+              <span>Website:</span>
               <a
                 target="_blank"
                 rel="noopener noreferrer"
@@ -84,6 +85,12 @@ function Profile() {
             </div>
           </div>
         </div>
+      </div>
+      <div
+        className="profile-about"
+        style={{ display: user.about === "" ? "none" : "block" }}
+      >
+        {user.about}
       </div>
       <div className="buttons">
         <div className="three-buttons">
