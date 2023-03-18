@@ -19,6 +19,7 @@ import * as Yup from "yup";
 
 import { toast } from "../../../helpers/functions/swal";
 import { useFormik } from "formik";
+import SectionHeader from "../../user/common/section-header/SectionHeader";
 
 const AdminShareEdit = () => {
   const { projectId } = useParams();
@@ -135,9 +136,10 @@ const AdminShareEdit = () => {
   };
 
   return (
-    <Container className="edit-share">
-      <Form noValidate onSubmit={formik.handleSubmit}>
-        <Row className="mb-3 first-row">
+    <Container>
+      <Form noValidate onSubmit={formik.handleSubmit} className="mb-5">
+        <SectionHeader title="Aktienkauf" />
+        <Row>
           <Form.Group as={Col}>
             <FloatingLabel label="ID">
               <Form.Control
@@ -165,23 +167,22 @@ const AdminShareEdit = () => {
               </Form.Control.Feedback>
             </FloatingLabel>
           </Form.Group>
-          <Button
-            style={{ marginTop: "1rem " }}
-            variant="primary"
-            type="submit"
-            className="submit-button"
-            disabled={!(formik.dirty && formik.isValid) || loading}
-          >
-            {loading && <Spinner animation="border" size="sm" />}
-            Aktienkauf bestätigen
-          </Button>
         </Row>
+        <Button
+          style={{ marginTop: "1rem", width: "100%" }}
+          variant="primary"
+          type="submit"
+          disabled={!(formik.dirty && formik.isValid) || loading}
+        >
+          {loading && <Spinner animation="border" size="sm" />}
+          Aktienkauf bestätigen
+        </Button>
       </Form>
 
       <Row>
+        <SectionHeader title="Projektbeteiligte" />
         <Col>
           <DataTable
-            title="Projektbeteiligte"
             columns={columns}
             data={project.participantList}
             progressPending={loading}

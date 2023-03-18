@@ -4,6 +4,7 @@ import DataTable from "react-data-table-component";
 import { useNavigate } from "react-router-dom";
 import { getMessages } from "../../../api/contact-service";
 import { toast } from "../../../helpers/functions/swal";
+import SectionHeader from "../../user/common/section-header/SectionHeader";
 
 const columns = [
   {
@@ -48,10 +49,10 @@ const ContactMessages = () => {
 
   return (
     <Container>
+      <SectionHeader title="Nachrichten" />
       <Row>
         <Col>
           <DataTable
-            title="Nachrichten"
             columns={columns}
             data={messages}
             progressPending={loading}

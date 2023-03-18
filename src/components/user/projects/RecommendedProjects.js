@@ -6,6 +6,7 @@ import "./projects.scss";
 import { Link } from "react-router-dom";
 import { getProjectsByStatus } from "../../../api/project-service.";
 import Loading from "../../common/loading/Loading";
+import SectionHeader from "../common/section-header/SectionHeader";
 
 const RecommendedProjects = () => {
   const [projects, setProjects] = useState([]);
@@ -30,7 +31,8 @@ const RecommendedProjects = () => {
     <Container>
       <Spacer height={50} />
       <div className="project-group">
-        <h2 className="projects-title">Empfohlene Projekte</h2>
+        <SectionHeader title="Empfohlene Projekte" />
+
         {loading ? (
           <Loading />
         ) : (

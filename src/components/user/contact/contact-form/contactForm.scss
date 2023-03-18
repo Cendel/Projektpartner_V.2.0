@@ -7,27 +7,23 @@
         padding: 0;
         margin: 0;
     }
-    .logo_contact{
+
+    .logo_contact {
         width: 20rem;
         padding-left: 4rem;
     }
 
-
     margin: 0;
-    padding: 6rem 0 12rem 0;
+    padding: 2rem 0 12rem 0;
     box-shadow: 0 4px 8px v.$color1;
 
     p {
         font-size: 1rem;
         line-height: 1.5;
-        padding: 4rem 4rem 2rem 4rem;
-        color: v.$color5;
+        padding: 2rem 4rem 2rem 4rem;
+        color: v.$color1;
         text-align: justify;
-
     }
-
-
-
 
     .contact-contact-info {
         width: 100%;
@@ -37,7 +33,6 @@
             li {
                 @include m.reset-list();
                 margin-bottom: .5rem;
-
             }
 
             svg {
@@ -59,7 +54,6 @@
     .form-group {
         padding: 0rem 1rem;
         position: relative;
-        ;
 
         label {
             font-weight: bold;
@@ -67,7 +61,6 @@
             color: v.$color5;
             margin-bottom: 10px;
             display: block;
-
         }
 
         input[type="text"],
@@ -99,11 +92,9 @@
             resize: none;
             height: 10rem;
         }
-
     }
 
     button {
         @include m.project-send-button();
-
     }
 }

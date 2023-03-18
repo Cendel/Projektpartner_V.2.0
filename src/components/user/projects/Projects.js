@@ -6,6 +6,7 @@ import "./projects.scss";
 import { Link } from "react-router-dom";
 import { getProjectsByStatus } from "../../../api/project-service.";
 import Loading from "../../common/loading/Loading";
+import SectionHeader from "../common/section-header/SectionHeader";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -30,7 +31,8 @@ const Projects = () => {
     <Container>
       <Spacer height={50} />
       <div className="project-group">
-        <h2 className="projects-title">Projekte</h2>
+        <SectionHeader title="Projekte" />
+
         {loading ? (
           <Loading />
         ) : (

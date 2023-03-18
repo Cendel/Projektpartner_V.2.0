@@ -10,6 +10,7 @@ import ContactInfo from "../contact-info/ContactInfo";
 import { getCurrentDate } from "../../../../helpers/functions/date-time";
 import logo from "../../../../assets/img/logo/logo_contact.png";
 import { settings } from "../../../../helpers/settings";
+import SectionHeader from "../../common/section-header/SectionHeader";
 
 const ContactForm = () => {
   const [loading, setLoading] = useState(false);
@@ -23,9 +24,7 @@ const ContactForm = () => {
 
   const validationSchema = Yup.object({
     name: Yup.string().required("Geben Sie Ihren Namen ein."),
-    email: Yup.string()
-      .email("Geben Sie eine gültige E-Mail-Adresse ein.")
-      .required("Geben sie ihre E-Mail Adresse ein."),
+
     subject: Yup.string()
       .max(50, "Der Betreff sollte maximal 50 Zeichen lang sein.")
       .min(5, "Der Betreff sollte mindestens 5 Zeichen lang sein.")
@@ -58,6 +57,9 @@ const ContactForm = () => {
 
   return (
     <Container className="contact-contact-form">
+      <div style={{ padding: "0rem 1rem 0rem 1rem" }}>
+        <SectionHeader title="Kontaktieren Sie uns" />
+      </div>
       <Row className="gy-5">
         <Col md={6}>
           <p>
@@ -70,7 +72,6 @@ const ContactForm = () => {
           <div className="contact-contact-info">
             <ContactInfo />
           </div>
-          <Spacer height={30} />
         </Col>
         <Col md={6}>
           <Form noValidate onSubmit={formik.handleSubmit}>
@@ -84,19 +85,6 @@ const ContactForm = () => {
               />
               <Form.Control.Feedback type="invalid">
                 {formik.errors.name}
-              </Form.Control.Feedback>
-            </Form.Group>
-
-            <Form.Group className="mb-3 form-group">
-              <Form.Label>E-Mail</Form.Label>
-              <Form.Control
-                type="email"
-                {...formik.getFieldProps("email")}
-                isInvalid={formik.touched.email && !!formik.errors.email}
-                isValid={formik.touched.email && !formik.errors.email}
-              />
-              <Form.Control.Feedback type="invalid">
-                {formik.errors.email}
               </Form.Control.Feedback>
             </Form.Group>
 
@@ -116,7 +104,6 @@ const ContactForm = () => {
             <Form.Group className="mb-3 form-group">
               <Form.Label>Nachricht</Form.Label>
               <Form.Control
-                type="text"
                 as="textarea"
                 rows="5"
                 {...formik.getFieldProps("body")}
@@ -140,6 +127,7 @@ const ContactForm = () => {
           </Form>
         </Col>
       </Row>
+      <Spacer height={30} />
     </Container>
   );
 };

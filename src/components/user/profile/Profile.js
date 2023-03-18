@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
+import SectionHeader from "../common/section-header/SectionHeader";
 import "./Profile.scss";
 import ProfileEdit from "./ProfileEdit";
 import ProjectList from "./ProjectList";
@@ -49,6 +50,9 @@ function Profile() {
 
   return (
     <div className="profile-user">
+      <div style={{ padding: "1rem 1rem 0rem 1rem" }}>
+        <SectionHeader title={user.name} />
+      </div>
       <div className="profile-container">
         <div className="profile-card">
           <h2>Kurzinfo</h2>

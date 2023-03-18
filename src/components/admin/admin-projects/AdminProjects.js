@@ -7,6 +7,7 @@ import {
   updateProjectStatus,
 } from "../../../api/project-service.";
 import { toast } from "../../../helpers/functions/swal";
+import SectionHeader from "../../user/common/section-header/SectionHeader";
 
 const AdminProjects = () => {
   const [projects, setProjects] = useState([]);
@@ -89,10 +90,10 @@ const AdminProjects = () => {
 
   return (
     <Container>
+      <SectionHeader title="Aktuelle Projekte" />
       <Row>
         <Col>
           <DataTable
-            title="Projekte"
             columns={columns}
             data={projects}
             progressPending={loading}

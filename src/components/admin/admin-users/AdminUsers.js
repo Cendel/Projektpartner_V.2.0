@@ -4,6 +4,7 @@ import DataTable from "react-data-table-component";
 import { useNavigate } from "react-router-dom";
 import { deleteUser, getUsers } from "../../../api/user-service";
 import { question, toast } from "../../../helpers/functions/swal";
+import SectionHeader from "../../user/common/section-header/SectionHeader";
 import AdminEditUser from "./AdminEditUser";
 
 const AdminProjects = () => {
@@ -113,10 +114,10 @@ const AdminProjects = () => {
 
   return (
     <Container>
+      <SectionHeader title="Benutzer" />
       <Row>
         <Col>
           <DataTable
-            title="Benutzer"
             columns={columns}
             data={users}
             progressPending={loading}
