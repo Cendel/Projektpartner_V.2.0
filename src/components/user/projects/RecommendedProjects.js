@@ -4,7 +4,7 @@ import Spacer from "../../common/spacer/Spacer";
 import ProjectCard from "./ProjectCard";
 import "./projects.scss";
 import { Link } from "react-router-dom";
-import { getProjectsByStatus } from "../../../api/project-service.";
+import { getProjectsByAdminAdvice } from "../../../api/project-service.";
 import Loading from "../../common/loading/Loading";
 import SectionHeader from "../common/section-header/SectionHeader";
 
@@ -14,7 +14,7 @@ const RecommendedProjects = () => {
 
   const loadData = async () => {
     try {
-      const result = await getProjectsByStatus(true);
+      const result = await getProjectsByAdminAdvice(true);
       setProjects(result.data);
     } catch (err) {
       console.log(err);

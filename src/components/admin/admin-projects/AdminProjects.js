@@ -4,6 +4,7 @@ import DataTable from "react-data-table-component";
 import { Link, useNavigate } from "react-router-dom";
 import {
   getProjectsByStatus,
+  updateAdminAdvice,
   updateProjectStatus,
 } from "../../../api/project-service.";
 import { toast } from "../../../helpers/functions/swal";
@@ -20,6 +21,20 @@ const AdminProjects = () => {
       const updatedProjects = projects.map((project) =>
         project.id === projectId
           ? { ...project, projectStatus: checked }
+          : project
+      );
+      setProjects(updatedProjects);
+    } catch (err) {
+      toast("Fehler beim Aktualisieren des Projektstatus", "error");
+    }
+  };
+
+  const handleAdminAdvice = async (projectId, checked) => {
+    try {
+      await updateAdminAdvice(projectId, checked);
+      const updatedProjects = projects.map((project) =>
+        project.id === projectId
+          ? { ...project, adminAdvice: checked }
           : project
       );
       setProjects(updatedProjects);
@@ -66,6 +81,18 @@ const AdminProjects = () => {
         >
           {row.sharesTaken}
         </Button>
+      ),
+    },
+    {
+      name: "Promoten",
+      selector: (row) => (
+        <Form.Check
+          type="switch"
+          id={row.id}
+          label=""
+          checked={row.adminAdvice}
+          onChange={(e) => handleAdminAdvice(row.id, e.target.checked)}
+        />
       ),
     },
   ];
