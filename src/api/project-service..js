@@ -20,6 +20,7 @@ export const getAllProjects = () => {
 export const getProjectsByStatus = (status) => {
   return axios.get(`${API_URL}/Projects?projectStatus=${status}`);
 };
+
 export const getProjectsByAdminAdvice = (status) => {
   return axios.get(`${API_URL}/Projects?adminAdvice=${status}`);
 };

@@ -6,7 +6,7 @@ const MenuDropdown = () => {
   return (
     <NavDropdown title="Benutzername" className="userName">
       <NavDropdown.Item as={Link} to="/profile/1">
-        Profile
+        Profil
       </NavDropdown.Item>
       <NavDropdown.Item href="#action4">Meine Projekte</NavDropdown.Item>
       <NavDropdown.Divider />

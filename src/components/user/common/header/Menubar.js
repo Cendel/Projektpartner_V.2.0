@@ -19,9 +19,11 @@ const Menubar = () => {
             >
               Projekte
             </Nav.Link>
+            {/*
             <Nav.Link as={Link} to="/about" active={pathname === "/about"}>
               Über uns
             </Nav.Link>
+  */}
             <Nav.Link as={Link} to="/contact" active={pathname === "/contact"}>
               Kontakt
             </Nav.Link>
