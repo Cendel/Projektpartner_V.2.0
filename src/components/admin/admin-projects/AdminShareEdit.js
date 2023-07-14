@@ -105,7 +105,6 @@ const AdminShareEdit = () => {
 
   const onSubmit = async (values) => {
     setLoading(true);
-
     try {
       const ada = [...project, values];
       const response = await updateProject(projectId, ada);

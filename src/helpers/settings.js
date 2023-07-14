@@ -4,7 +4,7 @@ export const settings = {
   siteUrl: "",
   email: "info@projektpartner.com",
   phone1: "0621 - 33 64 22 77",
-  phone2: "0000 - 22 22 22 22",
+  phone2: "0174 - 60 00 669",
   address: "Q1 17-18, 68161 Mannheim",
   mapUrl: "https://goo.gl/maps/xjM5DYqHRx4u1KH48",
   mapEmbedUrl:

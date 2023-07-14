@@ -101,7 +101,6 @@ const ProjectDetails = () => {
   };
 
   const handleInputSubmit = async (event) => {
-    //for the input field in invest class
     event.preventDefault();
     if (
       inputValue <= 0 ||
