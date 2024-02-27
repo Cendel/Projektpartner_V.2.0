@@ -1,5 +1,5 @@
 export const settings = {
-  apiURL: "http://127.0.0.1:8000",
+  apiURL: "https://cendel.eu.pythonanywhere.com/",
   siteName: "Projektpartner",
   siteUrl: "",
   email: "info@projektpartner.com",
