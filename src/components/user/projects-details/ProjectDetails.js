@@ -1,42 +1,70 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import "./projectDetails.scss";
 import imageRounded from "../../../assets/img/rounded-bottom.svg";
-import { Accordion, Button, Container } from "react-bootstrap";
+import { Accordion, Button, Col, Container, Row } from "react-bootstrap";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Spacer from "../../common/spacer/Spacer";
 import DownloadSection from "./DownloadSection";
 import { TiLocationOutline } from "react-icons/ti";
-import { deleteProject, getProject } from "../../../api/project-service.";
+import {
+  deleteProject,
+  getProject,
+  updateProjectFollowerList,
+  projectListShares,
+} from "../../../api/project-service";
 import { question, toast } from "../../../helpers/functions/swal";
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, Link, useParams } from "react-router-dom";
 import Loading from "../../common/loading/Loading";
 import {
   convertCurrentDateToUserFormat,
   getCurrentDate,
 } from "../../../helpers/functions/date-time";
 import { sendMessage } from "../../../api/contact-service";
+import { useAppSelector } from "../../../store/hooks";
+import SectionHeader from "../common/section-header/SectionHeader";
+import DataTable from "react-data-table-component";
 
 const ProjectDetails = () => {
+  const user = useAppSelector((state) => state.auth.user);
   const { projectId } = useParams();
   const [project, setProject] = useState([]);
   const [loading, setLoading] = useState(true);
+  const followed_projects = Object.values(user.followed_projects).map(
+    (value) => value
+  );
+  const isFollowedProjectsIncludes = followed_projects.includes(project.id);
+  const participated_projects = Object.values(user.participated_projects).map(
+    (value) => value
+  );
+  const isParticipatedProjectsIncludes = participated_projects.includes(
+    project.id
+  );
+
+  const [isFollowing, setIsFollowing] = useState(isFollowedProjectsIncludes);
   const [inputValue, setInputValue] = useState(""); //for the input field in invest class
   const [feedback, setFeedback] = useState(""); //for the input field in invest class
+  const navigate = useNavigate();
+  const [showParticipantsList, setShowParticipantsList] = useState(false);
+  const [participantsList, setParticipantsList] = useState([]);
 
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     try {
       const result = await getProject(projectId);
       setProject(result.data);
     } catch (err) {
-      console.log(err);
+      toast(err, "error");
     } finally {
       setLoading(false);
     }
-  };
+  }, [projectId]);
 
   useEffect(() => {
     loadData();
-  }, []);
+  }, [loadData]);
+
+  useEffect(() => {
+    setIsFollowing(isFollowedProjectsIncludes);
+  }, [isFollowedProjectsIncludes]);
 
   //handles scroll
   useEffect(() => {
@@ -66,21 +94,28 @@ const ProjectDetails = () => {
     question(
       "Sind Sie sicher, dass Sie löschen möchten?",
       "Das können Sie nicht rückgängig machen!"
-    ).then((result) => {
-      if (result.isConfirmed) {
-        try {
-          deleteProject(projectId);
-          toast(
-            "Das Projekt wurde erfolgreich gelöscht.",
-            "success",
-            10000,
-            true
-          );
-          window.history.back();
-        } catch (err) {
-          toast("Das Löschen konnte nicht durchgeführt werden", "warning");
-        } finally {
-        }
+    ).then((firstResult) => {
+      if (firstResult.isConfirmed) {
+        question(
+          "Alle Inhalte und Mediendateien, die zu diesem Projekt gehören, werden gelöscht.",
+          "Möchten Sie fortfahren und das Projekt endgültig löschen?"
+        ).then((secondResult) => {
+          if (secondResult.isConfirmed) {
+            try {
+              deleteProject(projectId);
+              toast(
+                "Das Projekt wurde erfolgreich gelöscht.",
+                "success",
+                10000,
+                true
+              );
+              navigate("/");
+            } catch (err) {
+              toast("Das Löschen konnte nicht durchgeführt werden", "warning");
+            } finally {
+            }
+          }
+        });
       }
     });
   };
@@ -95,9 +130,20 @@ const ProjectDetails = () => {
       86400000
   );
 
+  const handleFollowClick = async () => {
+    try {
+      updateProjectFollowerList(project.id);
+      setIsFollowing(!isFollowing);
+    } catch (err) {
+      console.log(err);
+    } finally {
+    }
+  };
+
   const handleSupportClick = (ada) => {
-    const adaContainer = document.querySelector(".invest-container");
-    adaContainer.style.display = "block";
+    const investContainer = document.querySelector(".invest-container");
+    investContainer.style.display = "block";
+    window.scrollBy(0, 250);
   };
 
   const handleInputSubmit = async (event) => {
@@ -110,23 +156,62 @@ const ProjectDetails = () => {
       setFeedback("Bitte geben Sie eine gültige Nummer ein.");
     } else {
       const values = {
-        createdAt: getCurrentDate(),
-        name: "",
-        email: "",
-        subject: "KAUFANFRAGE",
-        body: `Der Benutzer XXX mit der ID-Nummer XXX fordert ${inputValue} Anteile an dem Projekt  ${project.projectTitle} mit der ID ${projectId} an.`,
+        createdDate: getCurrentDate(),
+        sender: user.id,
+        title: "KAUFANFRAGE",
+        text: `
+        Der Benutzer ${user.name} mit der ID-Nummer ${user.id} fordert ${inputValue} Anteile an dem Projekt  ${project.projectTitle} mit der ID ${project.id} an.
+
+        Projektinformationen:
+        - Projekttitel: ${project.projectTitle}
+        - Projekt-ID: ${project.id}
+      `,
       };
       setInputValue("");
       try {
         await sendMessage(values);
-        const adaContainer = document.querySelector(".invest-container");
-        adaContainer.style.display = "none";
+        const investContainer = document.querySelector(".invest-container");
+        investContainer.style.display = "none";
         toast("Ihre Anfrage wurde erfolgreich gesendet.", "success");
       } catch (err) {
         alert(err.response.data.message);
       }
       setFeedback("");
     }
+  };
+
+  const participantsListHandleClick = async () => {
+    try {
+      const result = await projectListShares(projectId);
+      setParticipantsList(result.data);
+      window.scrollBy(0, 100);
+      setShowParticipantsList(true);
+    } catch (err) {
+      toast(err, "error");
+    } finally {
+    }
+  };
+
+  const columns = [
+    {
+      name: "Name",
+      selector: (row) => row.user_name,
+      sortable: true,
+    },
+    {
+      name: "Aktien in diesem Projekt",
+      selector: (row) => row.shares,
+      sortable: true,
+    },
+    {
+      name: "Wert der Aktien",
+      selector: (row) => {
+        return (row.shares * row.share_value).toLocaleString() + " €";
+      },
+    },
+  ];
+  const handleRowClicked = (row) => {
+    navigate(`/profile/${row.user}`);
   };
 
   return (
@@ -159,23 +244,19 @@ const ProjectDetails = () => {
               <div className="first-part">
                 <div className="info-left">{project.longDesc}</div>
                 <div className="info-right">
-                  <div className="createdBy">
+                  <div className="createdByName">
                     <span> erstellt von</span>
                     <h5>
-                      <a
-                        href="https://creavision.de/"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {project.createdBy}
-                      </a>
+                      <Link to={`/profile/${project.createdBy}`}>
+                        {project.createdByName.substring(0, 20)}
+                      </Link>
                     </h5>
                   </div>
                   <div className="location">
                     <div>
                       <TiLocationOutline />
                     </div>
-                    <h5>{project.projectPlace}</h5>
+                    <h5>{project.projectPlace.substring(0, 20)}</h5>
                   </div>
                 </div>
               </div>
@@ -217,7 +298,13 @@ const ProjectDetails = () => {
                   </div>
                 </div>
                 <div className="right">
-                  <Button>Abonieren</Button>
+                  {isFollowing ? (
+                    <Button className="followed" onClick={handleFollowClick}>
+                      Verfolgt
+                    </Button>
+                  ) : (
+                    <Button onClick={handleFollowClick}>Folgen</Button>
+                  )}
                 </div>
               </div>
             </div>
@@ -240,7 +327,7 @@ const ProjectDetails = () => {
                     <h5>
                       {(
                         project.sharesTaken * project.shareValue
-                      ).toLocaleString()}{" "}
+                      ).toLocaleString()}
                       €
                     </h5>
                     <span>Finanzierung bereitgestellt</span>
@@ -256,47 +343,75 @@ const ProjectDetails = () => {
                 </div>
               </div>
               <div className="right">
-                <Button onClick={handleSupportClick}>Unterstützen</Button>
+                {isParticipatedProjectsIncludes ? (
+                  <Button className="participated" onClick={handleSupportClick}>
+                    Unterstützt
+                  </Button>
+                ) : (
+                  <Button onClick={handleSupportClick}>Unterstützen</Button>
+                )}
               </div>
             </div>
           </Container>
           <Spacer height={30} />
           <Container className="invest-container" style={{ display: "none" }}>
             <div className="invest">
-              <p>Aktienwert:</p>
-              <p>
-                <span>{project.shareValue} €</span>
-              </p>
-              <p>
-                Die maximale Anzahl an Anteilen, die erworben werden können:
-              </p>
-              <p>
-                <span>{project.maxSharesPerPerson}</span>
-              </p>
+              {isParticipatedProjectsIncludes ? (
+                <>
+                  <p>
+                    In diesem Projekt besitzen Sie bereits Aktien. Sie können
+                    Ihr Profil besuchen, um Ihre Aktieninformationen einzusehen.
+                  </p>
+                  <p>
+                    Für Aktualisierungen oder Stornierungen Ihrer Aktien können
+                    Sie Kontakt mit uns aufnehmen.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p>Aktienwert:</p>
+                  <p>
+                    <span>{project.shareValue} €</span>
+                  </p>
+                  <p>
+                    Die maximale Anzahl an Anteilen, die erworben werden können:
+                  </p>
+                  <p>
+                    <span>{project.maxSharesPerPerson}</span>
+                  </p>
 
-              <p>Anzahl verfügbarer Aktien:</p>
-              <p>
-                <span>{project.totalShares - project.sharesTaken}</span>
-              </p>
-              <p>Geben Sie die Anzahl der Aktien ein, die Sie kaufen möchten</p>
-              <div>
-                <div className="input">
-                  <form onSubmit={handleInputSubmit}>
-                    <input
-                      type="number"
-                      value={inputValue}
-                      onChange={(event) => setInputValue(event.target.value)}
-                    />
-                    <button type="submit">Anfrage senden</button>
-                  </form>
-                  {feedback && <p>{feedback}</p>}
-                </div>
-              </div>
+                  <p>Anzahl verfügbarer Aktien:</p>
+                  <p>
+                    <span>{project.totalShares - project.sharesTaken}</span>
+                  </p>
+                  <p>
+                    Geben Sie die Anzahl der Aktien ein, die Sie kaufen möchten
+                  </p>
+                  <div>
+                    <div className="input">
+                      <form onSubmit={handleInputSubmit}>
+                        <input
+                          type="number"
+                          value={inputValue}
+                          onChange={(event) =>
+                            setInputValue(event.target.value)
+                          }
+                        />
+                        <button type="submit">Anfrage senden</button>
+                      </form>
+                      {feedback && <p>{feedback}</p>}
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </Container>
           <Spacer height={30} />
           <Container>
-            <DownloadSection files="{files}" />
+            <DownloadSection
+              createdBy={project.createdBy}
+              projectId={projectId}
+            />
           </Container>
           <Spacer height={30} />
           <Container>
@@ -320,19 +435,44 @@ const ProjectDetails = () => {
                 <Accordion.Body>{project.support}</Accordion.Body>
               </Accordion.Item>
             </Accordion>
-            <div className="project-details-edit-buttons">
-              <Button onClick={removeProject}>PROJEKT LÖSCHEN</Button>
-
-              <Button
-                className="edit-button"
-                as={Link}
-                to={`/project-edit/${projectId}`}
-                mode="edit"
-              >
-                PROJEKT AKTUALISIEREN
-              </Button>
-            </div>
+            {(user.is_superuser || user.name === project.createdByName) && (
+              <>
+                <div className="project-details-edit-buttons">
+                  <Button onClick={removeProject}>PROJEKT LÖSCHEN</Button>
+                  <Button onClick={() => participantsListHandleClick()}>
+                    PROJEKTTEILNEHMER
+                  </Button>
+                  <Button
+                    className="edit-button"
+                    as={Link}
+                    to={`/project-edit/${project.id}`}
+                    mode="edit"
+                  >
+                    PROJEKT AKTUALISIEREN
+                  </Button>
+                </div>
+              </>
+            )}
           </Container>
+          <Spacer height={50} />
+          {showParticipantsList && (
+            <Container>
+              <Row>
+                <SectionHeader title="Projektbeteiligte" />
+                <Col>
+                  <DataTable
+                    columns={columns}
+                    data={participantsList}
+                    progressPending={loading}
+                    pagination
+                    paginationPerPage={10}
+                    paginationRowsPerPageOptions={[10, 20, 30]}
+                    onRowClicked={handleRowClicked}
+                  />
+                </Col>
+              </Row>
+            </Container>
+          )}
           <Spacer />
         </div>
       )}

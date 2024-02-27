@@ -2,24 +2,25 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DataTable from "react-data-table-component";
 import { useNavigate } from "react-router-dom";
-import { getMessages } from "../../../api/contact-service";
+import { listMessages } from "../../../api/contact-service";
 import { toast } from "../../../helpers/functions/swal";
 import SectionHeader from "../../user/common/section-header/SectionHeader";
+import { convertCurrentDateToUserFormat } from "../../../helpers/functions/date-time";
 
 const columns = [
   {
     name: "Name",
-    selector: (row) => row.name,
+    selector: (row) => row.senderName,
     sortable: true,
   },
   {
     name: "Betreff",
-    selector: (row) => row.subject,
+    selector: (row) => row.title,
     sortable: true,
   },
   {
     name: "Datum",
-    selector: (row) => row.createdAt,
+    selector: (row) => convertCurrentDateToUserFormat(row.created_date),
     sortable: true,
   },
 ];
@@ -32,7 +33,7 @@ const ContactMessages = () => {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const response = await getMessages();
+        const response = await listMessages();
         setMessages(response.data);
       } catch (err) {
         toast("Fehler beim Laden der Nachrichten", "error");

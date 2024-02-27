@@ -6,9 +6,10 @@ import {
   getProjectsByStatus,
   updateAdminAdvice,
   updateProjectStatus,
-} from "../../../api/project-service.";
+} from "../../../api/project-service";
 import { toast } from "../../../helpers/functions/swal";
 import SectionHeader from "../../user/common/section-header/SectionHeader";
+import { convertCurrentDateToUserFormat } from "../../../helpers/functions/date-time";
 
 const AdminProjects = () => {
   const [projects, setProjects] = useState([]);
@@ -18,6 +19,7 @@ const AdminProjects = () => {
   const handleStatusChange = async (projectId, checked) => {
     try {
       await updateProjectStatus(projectId, checked);
+      await updateAdminAdvice(projectId, checked);
       const updatedProjects = projects.map((project) =>
         project.id === projectId
           ? { ...project, projectStatus: checked }
@@ -51,12 +53,13 @@ const AdminProjects = () => {
     },
     {
       name: "Erstellt von",
-      selector: (row) => row.createdBy,
+      selector: (row) => row.createdByName,
       sortable: true,
     },
     {
       name: "Fertigstellungsdatum",
-      selector: (row) => row.estimatedImplementationDate,
+      selector: (row) =>
+        convertCurrentDateToUserFormat(row.estimatedImplementationDate),
       sortable: true,
     },
     {
@@ -103,7 +106,7 @@ const AdminProjects = () => {
         const response = await getProjectsByStatus(true);
         setProjects(response.data);
       } catch (err) {
-        toast("Fehler beim Laden der Nachrichten", "error");
+        toast("Fehler beim Laden der Projekten.", "error");
       } finally {
         setLoading(false);
       }

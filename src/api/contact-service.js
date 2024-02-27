@@ -1,21 +1,32 @@
 import axios from "axios";
-const API_URL = "https://640781398ee73db92e2b1261.mockapi.io";
+import authHeader from "../helpers/functions/auth-header";
+import { settings } from "../helpers/settings";
+
+const API_URL = settings.apiURL;
 
 // USER ENDPOINTS
 export const sendMessage = (message) => {
-  return axios.post(`${API_URL}/messages`, message);
+  return axios.post(`${API_URL}/messages/create/`, message, {
+    headers: authHeader(),
+  });
 };
 
-// ADMIN ENDPOINT
+// ADMIN ENDPOINTS
+
+export const listMessages = () => {
+  return axios.get(`${API_URL}/messages/`, {
+    headers: authHeader(),
+  });
+};
 
 export const getMessage = (id) => {
-  return axios.get(`${API_URL}/messages/${id}`);
-};
-
-export const getMessages = () => {
-  return axios.get(`${API_URL}/messages`);
+  return axios.get(`${API_URL}/messages/${id}/`, {
+    headers: authHeader(),
+  });
 };
 
 export const deleteMessage = (id) => {
-  return axios.delete(`${API_URL}/messages/${id}`);
+  return axios.delete(`${API_URL}/messages/${id}/`, {
+    headers: authHeader(),
+  });
 };

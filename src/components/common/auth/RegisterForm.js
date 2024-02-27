@@ -37,11 +37,21 @@ const RegisterForm = ({ setKey }) => {
     setLoading(true);
     try {
       await register(values);
-      toast("Sie sind registriert.", "success");
       formik.resetForm();
+      toast("Sie sind registriert.", "success");
       setKey("login");
     } catch (err) {
-      toast(err.response.data.message, "error");
+      if (err.response && err.response.data) {
+        const errorMessage = err.response.data.message;
+
+        if (errorMessage === "Name taken") {
+          toast("Der Benutzername ist bereits vergeben.", "warning");
+        } else if (errorMessage === "Email taken") {
+          toast("Die E-Mail-Adresse ist bereits vergeben.", "warning");
+        } else {
+          toast("Ein Fehler ist aufgetreten.", "error");
+        }
+      }
     } finally {
       setLoading(false);
     }
@@ -88,7 +98,7 @@ const RegisterForm = ({ setKey }) => {
       </Form.Group>
 
       <Form.Group className="" style={{ marginBottom: "1rem" }}>
-        <FloatingLabel label="Password" className="">
+        <FloatingLabel label="Passwort" className="">
           <PasswordInput
             {...formik.getFieldProps("password")}
             isValid={formik.touched.password && !formik.errors.password}

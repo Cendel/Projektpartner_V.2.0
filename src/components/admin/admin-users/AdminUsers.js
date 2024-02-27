@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Button, Spinner } from "react-bootstrap";
 import DataTable from "react-data-table-component";
-import { useNavigate } from "react-router-dom";
-import { deleteUser, getUsers } from "../../../api/user-service";
+//import { useNavigate } from "react-router-dom";
+import {
+  getUsersAdmin,
+  getUserAdmin,
+  deleteUserAdmin,
+} from "../../../api/user-service";
 import { question, toast } from "../../../helpers/functions/swal";
 import SectionHeader from "../../user/common/section-header/SectionHeader";
 import AdminEditUser from "./AdminEditUser";
 
 const AdminProjects = () => {
   const [users, setUsers] = useState([]);
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [deleting, setDeleting] = useState(false);
   const [showEditUser, setshowEditUser] = useState(false);
@@ -71,10 +75,10 @@ const AdminProjects = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await getUsers();
+        const response = await getUsersAdmin();
         setUsers(response.data);
       } catch (err) {
-        toast("Fehler beim Laden der Nachrichten", "error");
+        toast("Benutzerdaten konnten nicht geladen werden.", "error");
       } finally {
         setLoading(false);
       }
@@ -82,9 +86,9 @@ const AdminProjects = () => {
     fetchUsers();
   }, []);
 
-  const handleRowClicked = (row) => {
-    navigate(`/profile/${row.id}`);
-  };
+  //const handleRowClicked = (row) => {
+  //navigate(`/profile/${row.id}`);
+  //};
 
   const handleDelete = (idToDelete) => {
     question(
@@ -94,7 +98,7 @@ const AdminProjects = () => {
       if (result.isConfirmed) {
         setDeleting(true);
         try {
-          deleteUser(idToDelete);
+          deleteUserAdmin(idToDelete);
           toast("Der Benutzer wurde erfolgreich gelöscht.", "success", 1500);
           setUsers(users.filter((user) => user.id !== idToDelete));
         } catch (err) {
@@ -106,10 +110,15 @@ const AdminProjects = () => {
     });
   };
 
-  const HandleEditButton = (userToBeEdited) => {
+  const HandleEditButton = async (userToBeEdited) => {
     setshowEditUser(false);
-    setUserToBeEdited(userToBeEdited);
-    setshowEditUser(true);
+    try {
+      const response = await getUserAdmin(userToBeEdited.id);
+      setUserToBeEdited(response.data);
+      setshowEditUser(true);
+    } catch (err) {
+      toast("Benutzerdaten konnten nicht geladen werden.", "error");
+    }
   };
 
   return (
@@ -124,7 +133,7 @@ const AdminProjects = () => {
             pagination
             paginationPerPage={10}
             paginationRowsPerPageOptions={[10, 20, 30]}
-            onRowClicked={handleRowClicked}
+            //onRowClicked={handleRowClicked}
           />
         </Col>
       </Row>

@@ -11,25 +11,28 @@ import { getCurrentDate } from "../../../../helpers/functions/date-time";
 import logo from "../../../../assets/img/logo/logo_contact.png";
 import { settings } from "../../../../helpers/settings";
 import SectionHeader from "../../common/section-header/SectionHeader";
+import { useAppSelector } from "../../../../store/hooks";
 
 const ContactForm = () => {
+  const { name: senderName, id: senderId } = useAppSelector(
+    (state) => state.auth.user
+  );
   const [loading, setLoading] = useState(false);
   const initialValues = {
-    createdAt: getCurrentDate(),
-    name: "",
-    email: "",
-    subject: "",
-    body: "",
+    created_date: getCurrentDate(),
+    sender: senderId,
+    title: "",
+    text: "",
   };
 
   const validationSchema = Yup.object({
-    name: Yup.string().required("Geben Sie Ihren Namen ein."),
+    sender: Yup.string().required("Geben Sie Ihren Namen ein."),
 
-    subject: Yup.string()
+    title: Yup.string()
       .max(50, "Der Betreff sollte maximal 50 Zeichen lang sein.")
       .min(5, "Der Betreff sollte mindestens 5 Zeichen lang sein.")
       .required("Geben Sie einen Betreff ein."),
-    body: Yup.string()
+    text: Yup.string()
       .max(200, "Die Nachricht sollte maximal 200 Zeichen lang sein.")
       .min(20, "Die Nachricht sollte mindestens 20 Zeichen lang sein.")
       .required("Geben Sie eine Nachricht ein."),
@@ -57,7 +60,7 @@ const ContactForm = () => {
 
   return (
     <Container className="contact-contact-form">
-      <div style={{ padding: "0rem 1rem 0rem 1rem" }}>
+      <div style={{ padding: "1rem 1rem 0rem 1rem" }}>
         <SectionHeader title="Kontaktieren Sie uns" />
       </div>
       <Row className="gy-5">
@@ -79,12 +82,14 @@ const ContactForm = () => {
               <Form.Label>Name</Form.Label>
               <Form.Control
                 type="text"
-                {...formik.getFieldProps("name")}
-                isInvalid={formik.touched.name && !!formik.errors.name}
-                isValid={formik.touched.name && !formik.errors.name}
+                {...formik.getFieldProps("sender")}
+                isInvalid={formik.touched.sender && !!formik.errors.sender}
+                isValid={formik.touched.sender && !formik.errors.sender}
+                value={senderName}
+                disabled
               />
               <Form.Control.Feedback type="invalid">
-                {formik.errors.name}
+                {formik.errors.sender}
               </Form.Control.Feedback>
             </Form.Group>
 
@@ -92,12 +97,12 @@ const ContactForm = () => {
               <Form.Label>Betreff</Form.Label>
               <Form.Control
                 type="text"
-                {...formik.getFieldProps("subject")}
-                isInvalid={formik.touched.subject && !!formik.errors.subject}
-                isValid={formik.touched.subject && !formik.errors.subject}
+                {...formik.getFieldProps("title")}
+                isInvalid={formik.touched.title && !!formik.errors.title}
+                isValid={formik.touched.title && !formik.errors.title}
               />
               <Form.Control.Feedback type="invalid">
-                {formik.errors.subject}
+                {formik.errors.title}
               </Form.Control.Feedback>
             </Form.Group>
 
@@ -106,12 +111,12 @@ const ContactForm = () => {
               <Form.Control
                 as="textarea"
                 rows="5"
-                {...formik.getFieldProps("body")}
-                isInvalid={formik.touched.body && !!formik.errors.body}
-                isValid={formik.touched.body && !formik.errors.body}
+                {...formik.getFieldProps("text")}
+                isInvalid={formik.touched.text && !!formik.errors.text}
+                isValid={formik.touched.text && !formik.errors.text}
               />
               <Form.Control.Feedback type="invalid">
-                {formik.errors.body}
+                {formik.errors.text}
               </Form.Control.Feedback>
             </Form.Group>
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getProject } from "../../api/project-service.";
+import { getProject } from "../../api/project-service";
 import ProjectForm from "../../components/user/ProjectForm/ProjectForm";
 import UserTemplate from "../../templates/UserTemplate";
 
@@ -29,11 +29,12 @@ const ProjectEditPage = () => {
       support: project.support,
       shortDesc: project.shortDesc,
       longDesc: project.longDesc,
-      createdDate: project.createdDate,
       projectValue: project.projectValue,
       totalShares: project.totalShares,
       shareValue: project.shareValue,
       maxSharesPerPerson: project.maxSharesPerPerson,
+      projectImage: project.projectImage,
+      createdBy: project.createdBy,
       mode: "edit",
     };
     initialVal.push(initialValues);

@@ -10,13 +10,14 @@ const ProjectCard = (props) => {
     slogan,
     shortDesc,
     projectImage,
-    createdBy,
+    createdByName,
     createdDate,
     sharesTaken,
     shareValue,
     projectValue,
     totalShares,
   } = props;
+
   const daysUntilImplementation = Math.round(
     (new Date(estimatedImplementationDate) - new Date()) / 86400000
   );
@@ -35,7 +36,9 @@ const ProjectCard = (props) => {
 
         <div className="desc">{shortDesc}</div>
         <div className="button-wrapper">
-          <Button variant="primary">erstellt von {createdBy}</Button>
+          <Button variant="primary">
+            erstellt von {createdByName.substring(0, 20)}
+          </Button>
         </div>
         <div className="progress">
           <ProgressBar
@@ -52,10 +55,11 @@ const ProjectCard = (props) => {
             <div>
               <TiLocationOutline />
             </div>
-            <h5>{projectPlace}</h5>
+            <h5>{projectPlace.substring(0, 25)}</h5>
           </div>
           <h5 className="under-progress">
-            <span>noch</span> {daysUntilImplementation} Tage
+            <span>noch</span>{" "}
+            {daysUntilImplementation > 0 ? daysUntilImplementation : 0} Tage
           </h5>
         </div>
 

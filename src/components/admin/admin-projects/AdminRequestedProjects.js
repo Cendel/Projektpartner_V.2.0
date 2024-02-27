@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import {
   getProjectsByStatus,
   updateProjectStatus,
-} from "../../../api/project-service.";
+} from "../../../api/project-service";
 import { toast } from "../../../helpers/functions/swal";
 import SectionHeader from "../../user/common/section-header/SectionHeader";
 
@@ -77,7 +77,7 @@ const AdminRequestedProjects = () => {
         const response = await getProjectsByStatus(false);
         setProjects(response.data);
       } catch (err) {
-        toast("Fehler beim Laden der Nachrichten", "error");
+        toast("Fehler beim Laden der Projekten.", "error");
       } finally {
         setLoading(false);
       }

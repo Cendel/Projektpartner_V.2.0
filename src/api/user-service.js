@@ -1,4 +1,5 @@
 import axios from "axios";
+import authHeader from "../helpers/functions/auth-header";
 import { settings } from "../helpers/settings";
 
 const API_URL = settings.apiURL;
@@ -6,26 +7,49 @@ const API_URL = settings.apiURL;
 // USER ENDPOINTS
 
 export const register = (user) => {
-  return axios.post(`${API_URL}/users`, user);
+  return axios.post(`${API_URL}/register/`, user); // OK
 };
 
 export const login = (credential) => {
-  return axios.post(`${API_URL}/login`, credential);
+  return axios.post(`${API_URL}/login/`, credential); // OK
 };
 
-export const updateUserById = (id, values) => {
-  return axios.put(
-    `https://640781398ee73db92e2b1261.mockapi.io/user/${id}`,
-    values
-  );
+export const getUser = () => {
+  return axios.get(`${API_URL}/user/`, { headers: authHeader() }); // OK
+};
+
+export const getUserById = (id) => {
+  return axios.get(`${API_URL}/user/${id}/`, { headers: authHeader() }); 
+};
+
+export const updateUser = (user) => {
+  return axios.put(`${API_URL}/user/`, user, { headers: authHeader() }); // OK
+};
+
+export const updatePassword = (credential) => {
+  return axios.patch(`${API_URL}/user/auth/`, credential, {
+    headers: authHeader(),
+  });
 };
 
 // ADMIN ENDPOINT
 
-export const getUsers = () => {
-  return axios.get(`https://640781398ee73db92e2b1261.mockapi.io/user`);
+export const getUsersAdmin = () => {
+  return axios.get(`${API_URL}/auth/users/`, { headers: authHeader() }); // OK
 };
 
-export const deleteUser = (id) => {
-  return axios.delete(`https://640781398ee73db92e2b1261.mockapi.io/user/${id}`);
+export const getUserAdmin = (id) => {
+  return axios.get(`${API_URL}/user/${id}/`, { headers: authHeader() }); // OK
 };
+
+export const updateUserAdmin = (id, user) => {
+  return axios.put(`${API_URL}/user/${id}/update/`, user, {
+    headers: authHeader(),
+  });   // OK
+};
+
+export const deleteUserAdmin = (id) => {
+  return axios.delete(`${API_URL}/user/${id}/delete/`, {
+    headers: authHeader(),
+  });
+};    // OK

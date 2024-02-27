@@ -1,31 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import Spacer from "../../common/spacer/Spacer";
 import ProjectCard from "./ProjectCard";
 import "./projects.scss";
 import { Link } from "react-router-dom";
-import { getProjectsByAdminAdvice } from "../../../api/project-service";
+import { getProjectsByIds } from "../../../api/project-service";
 import Loading from "../../common/loading/Loading";
 import SectionHeader from "../common/section-header/SectionHeader";
+import { useAppSelector } from "../../../store/hooks";
 
-const RecommendedProjects = () => {
+const ProjectsUser = () => {
+  const createdProjects = useAppSelector(
+    (state) => state.auth.user.created_projects
+  );
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [visibleProjects, setVisibleProjects] = useState(6);
 
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     try {
-      const result = await getProjectsByAdminAdvice(true);
+      const result = await getProjectsByIds(createdProjects);
       setProjects(result.data);
     } catch (err) {
+      console.log(err);
     } finally {
       setLoading(false);
     }
-  };
+  }, [createdProjects]);
 
   useEffect(() => {
     loadData();
-  }, []);
+  }, [loadData]);
 
   const handleShowMore = () => {
     setVisibleProjects((prevVisibleProjects) => prevVisibleProjects + 6);
@@ -38,7 +43,7 @@ const RecommendedProjects = () => {
     <Container>
       <Spacer height={50} />
       <div className="project-group">
-        <SectionHeader title="Empfohlene Projekte" />
+        <SectionHeader title="Meine Projekte" />
         {visibleProjectsList.length < 1 && (
           <div>Auf dieser Seite sind keine Projekte verfügbar.</div>
         )}
@@ -71,9 +76,10 @@ const RecommendedProjects = () => {
           </>
         )}
       </div>
+
       <Spacer />
     </Container>
   );
 };
 
-export default RecommendedProjects;
+export default ProjectsUser;

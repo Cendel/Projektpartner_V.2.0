@@ -1,23 +1,24 @@
+import { useFormik } from "formik";
 import React, { useState } from "react";
 import { Button, Col, Form, Row, Spinner } from "react-bootstrap";
 import * as Yup from "yup";
-import { useFormik } from "formik";
 import { toast } from "../../../helpers/functions/swal";
-import { updateUserById } from "../../../api/user-service";
-import { useParams } from "react-router-dom";
+import { updateUser } from "../../../api/user-service";
+import { useAppSelector } from "../../../store/hooks";
 import "./Profile.scss";
 
 const ProfileEdit = (props) => {
-  const [updating, setUpdating] = useState(false);
-  const { userId } = useParams();
+  const [loading, setLoading] = useState(false);
+  const user = useAppSelector((state) => state.auth.user);
+  const { name, job, location, about, phone, website } = user;
 
   const initialValues = {
-    name: props.name,
-    job: props.job,
-    location: props.location,
-    phone: props.phone,
-    website: props.website,
-    about: props.about,
+    name,
+    job,
+    location,
+    about,
+    phone,
+    website,
   };
 
   const validationSchema = Yup.object({
@@ -25,18 +26,15 @@ const ProfileEdit = (props) => {
   });
 
   const onSubmit = async (values) => {
-    if (!values.password) {
-      delete values.password;
-    }
-
-    setUpdating(true);
+    setLoading(true);
     try {
-      await updateUserById(userId, values);
+      await updateUser(values);
       toast("Ihr Profil wurde erfolgreich aktualisiert.", "success");
     } catch (err) {
       toast(err.response.data.message, "error");
+      console.log(err);
     } finally {
-      setUpdating(false);
+      setLoading(false);
     }
   };
 
@@ -85,15 +83,19 @@ const ProfileEdit = (props) => {
           </Form.Group>
         </Row>
         <Form.Group as={Col} className="mb-3">
-            <Form.Label>Über mich</Form.Label>
-            <Form.Control type="text" as="textarea" {...formik.getFieldProps("about")} />
-          </Form.Group>
+          <Form.Label>Über mich</Form.Label>
+          <Form.Control
+            type="text"
+            as="textarea"
+            {...formik.getFieldProps("about")}
+          />
+        </Form.Group>
 
         <Button
           type="submit"
-          disabled={!(formik.dirty && formik.isValid) || updating}
+          disabled={!(formik.dirty && formik.isValid) || loading}
         >
-          {updating && <Spinner animation="border" size="sm" />} Aktualisieren
+          {loading && <Spinner animation="border" size="sm" />} Aktualisieren
         </Button>
       </Form>
     </div>

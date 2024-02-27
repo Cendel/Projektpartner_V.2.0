@@ -1,0 +1,7 @@
+onChange={(e) => {
+              formik.setFieldValue(
+                "shareValue",
+                formik.values.projectValue / formik.values.totalShares
+              );
+              formik.handleChange(e);
+            }}

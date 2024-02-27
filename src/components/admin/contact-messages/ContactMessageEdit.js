@@ -53,12 +53,12 @@ const ContactMessageEdit = () => {
         <Loading />
       ) : (
         <>
-          <h2>{message.subject}</h2>
-          <p>{message.body}</p>
+          <h2>{message.title}</h2>
+          <p>{message.text}</p>
           <hr />
           <p>
             <em>
-              {message.name} - {message.email}
+              {message.senderName} - {message.senderEmail}
             </em>
           </p>
 

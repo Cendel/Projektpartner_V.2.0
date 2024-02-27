@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { Alert, Button, Col, Form, Row, Spinner } from "react-bootstrap";
-import PasswordInput from "../../common/password-input/PasswordInput";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { toast } from "../../../helpers/functions/swal";
-
-import { updateUserById } from "../../../api/user-service";
+import { updateUserAdmin } from "../../../api/user-service";
 
 const AdminEditUser = (props) => {
   const [updating, setUpdating] = useState(false);
@@ -13,40 +11,21 @@ const AdminEditUser = (props) => {
   const initialValues = {
     name: props.name,
     email: props.email,
-    password: "",
-    role: props.role,
     job: props.job,
     location: props.location,
     phone: props.phone,
     website: props.website,
     about: props.about,
-    projectsCreated: props.projectsCreated,
-    projectsParticipated: props.projectsParticipated,
-    projectsFollowed: props.projectsFollowed,
   };
 
   const validationSchema = Yup.object({
     name: Yup.string().required("Bitte geben den Namen ein."),
-    email: Yup.string()
-      .email("Bitte geben Sie eine gültige E-Mail-Adresse ein.")
-      .required("Bitte geben Sie eine E-mail-Adresse ein."),
-    password: Yup.string()
-      .min(8, "Bitte geben Sie mindestens 8 Zeichen ein.")
-      .matches(/[a-z]+/, "Ein Kleinbuchstabe")
-      .matches(/[A-Z]+/, "Ein Großbuchstabe")
-      .matches(/[@$!%*#?&.]+/, "Ein besonderes Zeichen")
-      .matches(/\d+/, "Eine Nummer"),
-    role: Yup.string().required("Bitte wählen Sie eine Rolle aus."),
   });
 
   const onSubmit = async (values) => {
-    if (!values.password) {
-      delete values.password;
-    }
-
     setUpdating(true);
     try {
-      await updateUserById(props.id, values);
+      await updateUserAdmin(props.id, values);
       toast("Das Profil wurde erfolgreich aktualisiert.", "success");
     } catch (err) {
       toast(err.response.data.message, "error");
@@ -97,28 +76,6 @@ const AdminEditUser = (props) => {
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group as={Col} className="mb-3">
-            <Form.Label>Password</Form.Label>
-            <PasswordInput
-              {...formik.getFieldProps("password")}
-              isValid={formik.touched.password && !formik.errors.password}
-              isInvalid={formik.touched.password && !!formik.errors.password}
-              error={formik.errors.password}
-            />
-          </Form.Group>
-
-          <Form.Group as={Col} className="mb-3">
-            <Form.Label>Role</Form.Label>
-            <Form.Control
-              type="text"
-              {...formik.getFieldProps("role")}
-              isValid={formik.touched.role && !formik.errors.role}
-              isInvalid={formik.touched.role && !!formik.errors.role}
-            />
-            <Form.Control.Feedback type="invalid">
-              {formik.errors.role}
-            </Form.Control.Feedback>
-          </Form.Group>
           <Form.Group as={Col} className="mb-3">
             <Form.Label>Beruf</Form.Label>
             <Form.Control type="text" {...formik.getFieldProps("job")} />

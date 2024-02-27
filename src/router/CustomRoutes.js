@@ -10,7 +10,6 @@ import AdminUsersPage from "../pages/admin/AdminUsersPage";
 import AuthPage from "../pages/common/AuthPage";
 import NotFoundPage from "../pages/common/NotFoundPage";
 import UnauthorizedPage from "../pages/common/UnauthorizedPage";
-import AboutPage from "../pages/user/AboutPage";
 import ContactPage from "../pages/user/ContactPage";
 import Homepage from "../pages/user/Homepage";
 import PrivacyPolicyPage from "../pages/user/PrivacyPolicyPage";
@@ -19,6 +18,8 @@ import ProjectDetailsPage from "../pages/user/ProjectDetailsPage";
 import ProjectEditPage from "../pages/user/ProjectEditPage";
 import ProjectFormPage from "../pages/user/ProjectFormPage";
 import ProjectsPage from "../pages/user/ProjectsPage";
+import ProtectedRoute from "./ProtectedRoute";
+import ProjectsUserPage from "../pages/user/ProjectsUserPage";
 
 const CustomRoutes = () => {
   return (
@@ -26,35 +27,143 @@ const CustomRoutes = () => {
       <ScrollToTop />
       <Routes>
         <Route path="/">
-          <Route index element={<Homepage />} />
-          <Route path="about" element={<AboutPage />} />
-          <Route path="contact" element={<ContactPage />} />
-          <Route path="project-form" element={<ProjectFormPage />} />
-          <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route
+            index
+            element={
+              <ProtectedRoute>
+                <Homepage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="contact"
+            element={
+              <ProtectedRoute>
+                <ContactPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="project-form"
+            element={
+              <ProtectedRoute>
+                <ProjectFormPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="privacy-policy"
+            element={
+              <ProtectedRoute>
+                <PrivacyPolicyPage />
+              </ProtectedRoute>
+            }
+          />
           <Route path="auth" element={<AuthPage />} />
           <Route path="unauthorized" element={<UnauthorizedPage />} />
           <Route path="projects">
-            <Route index element={<ProjectsPage />} />
-            <Route path=":projectId" element={<ProjectDetailsPage />} />
+            <Route
+              index
+              element={
+                <ProtectedRoute>
+                  <ProjectsPage />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path=":projectId"
+              element={
+                <ProtectedRoute>
+                  <ProjectDetailsPage />
+                </ProtectedRoute>
+              }
+            />
           </Route>
-          <Route path="project-edit/:projectId" element={<ProjectEditPage />} />
-          <Route path="profile/:userId" element={<ProfilePage />} />
-          <Route path="admin-projects" element={<AdminProjectsPage />} />
+          <Route path="projects-user">
+            <Route
+              index
+              element={
+                <ProtectedRoute>
+                  <ProjectsUserPage />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path=":projectId"
+              element={
+                <ProtectedRoute>
+                  <ProjectDetailsPage />
+                </ProtectedRoute>
+              }
+            />
+          </Route>
+          <Route
+            path="project-edit/:projectId"
+            element={
+              <ProtectedRoute>
+                <ProjectEditPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="profile/:userId"
+            element={
+              <ProtectedRoute>
+                <ProfilePage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="admin-projects"
+            element={
+              <ProtectedRoute admin={true}>
+                <AdminProjectsPage />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="admin-requested-projects"
-            element={<AdminRequestedProjectsPage />}
+            element={
+              <ProtectedRoute admin={true}>
+                <AdminRequestedProjectsPage />
+              </ProtectedRoute>
+            }
           />
-          <Route path="admin-users" element={<AdminUsersPage />} />
+          <Route
+            path="admin-users"
+            element={
+              <ProtectedRoute admin={true}>
+                <AdminUsersPage />
+              </ProtectedRoute>
+            }
+          />
           <Route path="admin-messages">
-            <Route index element={<AdminContactMessagesPage />} />
+            <Route
+              index
+              element={
+                <ProtectedRoute admin={true}>
+                  <AdminContactMessagesPage />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path=":messageId"
-              element={<AdminContactMessageEditPage />}
+              element={
+                <ProtectedRoute admin={true}>
+                  <AdminContactMessageEditPage />
+                </ProtectedRoute>
+              }
             />
           </Route>
           <Route
             path="admin-share-edit/:projectId"
-            element={<AdminShareEditPage />}
+            element={
+              <ProtectedRoute admin={true}>
+                <AdminShareEditPage />
+              </ProtectedRoute>
+            }
           />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
