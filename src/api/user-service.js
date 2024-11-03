@@ -2,7 +2,7 @@ import axios from "axios";
 import authHeader from "../helpers/functions/auth-header";
 import { settings } from "../helpers/settings";
 
-const API_URL = process.env.REACT_APP_BACKEND_URL;
+const API_URL = settings.apiURL;
 
 // USER ENDPOINTS
 
